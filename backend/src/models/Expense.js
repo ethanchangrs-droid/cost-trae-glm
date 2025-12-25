@@ -18,7 +18,7 @@ const Expense = sequelize.define('expenses', {
   },
   trip_start_date: {
     type: DataTypes.DATEONLY,
-    allowNull: false,
+    allowNull: true,
     field: 'trip_start_date',
     validate: {
       isDate: true,
@@ -27,13 +27,13 @@ const Expense = sequelize.define('expenses', {
   },
   trip_end_date: {
     type: DataTypes.DATEONLY,
-    allowNull: false,
+    allowNull: true,
     field: 'trip_end_date',
     validate: {
       isDate: true,
       notEmpty: true,
       isAfterStartDate(value) {
-        if (value <= this.trip_start_date) {
+        if (value && this.trip_start_date && value <= this.trip_start_date) {
           throw new Error('结束日期必须晚于开始日期');
         }
       },
@@ -41,7 +41,7 @@ const Expense = sequelize.define('expenses', {
   },
   destination_city: {
     type: DataTypes.STRING(100),
-    allowNull: false,
+    allowNull: true,
     field: 'destination_city',
     validate: {
       notEmpty: true,

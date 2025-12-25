@@ -16,10 +16,11 @@ const config = {
     path: process.env.DB_PATH || path.join(__dirname, '../../database/expense_system.db'),
   },
 
-  // JWT配置
-  jwt: {
-    secret: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
-    expiresIn: process.env.JWT_EXPIRES_IN || '24h',
+  // 认证配置
+  auth: {
+    jwtSecret: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
+    jwtExpiresIn: process.env.JWT_EXPIRES_IN || '24h',
+    refreshTokenExpiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN || '7d',
   },
 
   // LLM配置
@@ -39,13 +40,18 @@ const config = {
   // 日志配置
   logging: {
     level: process.env.LOG_LEVEL || 'info',
-    file: path.join(__dirname, '../../logs/app.log'),
+    dir: path.join(__dirname, '../../logs'),
   },
 
   // CORS配置
   cors: {
     origin: process.env.CORS_ORIGIN || ['http://localhost:5173', 'http://localhost:3000'],
     credentials: true,
+  },
+
+  // 限流配置
+  rateLimit: {
+    max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   },
 };
 

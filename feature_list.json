@@ -244,7 +244,7 @@
         "添加数据库索引优化",
         "创建初始数据种子"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "数据库连接和操作测试",
         "type": "unit",
@@ -263,7 +263,7 @@
         "添加错误处理机制",
         "集成日志记录功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "后端API健康检查测试",
         "type": "integration",

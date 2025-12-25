@@ -1,4 +1,4 @@
-const { User, Rule } = require('../models');
+const { User, Rule, CityTier } = require('../models');
 const bcrypt = require('bcryptjs');
 
 const seed = async () => {
@@ -171,6 +171,45 @@ const seed = async () => {
       });
       if (created) {
         console.log(`✅ 创建规则: ${rule.name}`);
+      }
+    }
+    
+    // 创建城市等级数据
+    const cityTiers = [
+      // 一线城市
+      { city_name: '北京', tier: 'first' },
+      { city_name: '上海', tier: 'first' },
+      { city_name: '广州', tier: 'first' },
+      { city_name: '深圳', tier: 'first' },
+      
+      // 二线城市
+      { city_name: '杭州', tier: 'second' },
+      { city_name: '南京', tier: 'second' },
+      { city_name: '武汉', tier: 'second' },
+      { city_name: '成都', tier: 'second' },
+      { city_name: '重庆', tier: 'second' },
+      { city_name: '西安', tier: 'second' },
+      { city_name: '苏州', tier: 'second' },
+      { city_name: '天津', tier: 'second' },
+      
+      // 三线城市
+      { city_name: '青岛', tier: 'third' },
+      { city_name: '大连', tier: 'third' },
+      { city_name: '厦门', tier: 'third' },
+      { city_name: '宁波', tier: 'third' },
+      { city_name: '无锡', tier: 'third' },
+      { city_name: '长沙', tier: 'third' },
+      { city_name: '郑州', tier: 'third' },
+      { city_name: '福州', tier: 'third' },
+    ];
+    
+    for (const cityData of cityTiers) {
+      const [cityTier, created] = await CityTier.findOrCreate({
+        where: { city_name: cityData.city_name },
+        defaults: cityData,
+      });
+      if (created) {
+        console.log(`✅ 创建城市等级: ${cityTier.city_name} - ${cityTier.tier}`);
       }
     }
     
