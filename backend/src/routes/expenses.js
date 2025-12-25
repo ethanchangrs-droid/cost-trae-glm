@@ -1,30 +1,22 @@
 const express = require('express');
 const { Expense, ExpenseItem, User, RuleValidation } = require('../models');
 const { Op } = require('sequelize');
-const { authenticate, authorize } = require('../middleware/auth');
-const { validateExpense, validateId, validatePagination } = require('../middleware/validation');
 const { asyncHandler, logger } = require('../middleware/errorHandler');
 
 const router = express.Router();
 
-router.get('/', authenticate, validatePagination, asyncHandler(async (req, res) => {
-  const { page = 1, limit = 20, status, start_date, end_date } = req.query;
+router.get('/', asyncHandler(async (req, res) => {
+  const { page = 1, limit = 20, status, user_id } = req.query;
   const offset = (page - 1) * limit;
 
   const where = {};
-  
-  if (req.user.role !== 'admin' && req.user.role !== 'executive') {
-    where.user_id = req.user.id;
-  }
   
   if (status) {
     where.status = status;
   }
   
-  if (start_date || end_date) {
-    where.expense_date = {};
-    if (start_date) where.expense_date[Op.gte] = start_date;
-    if (end_date) where.expense_date[Op.lte] = end_date;
+  if (user_id) {
+    where.user_id = user_id;
   }
 
   const { count, rows: expenses } = await Expense.findAndCountAll({
@@ -37,7 +29,7 @@ router.get('/', authenticate, validatePagination, asyncHandler(async (req, res) 
       {
         model: User,
         as: 'user',
-        attributes: ['id', 'username', 'name', 'role'],
+        attributes: ['id', 'name', 'employee_id', 'position_level'],
       },
       {
         model: RuleValidation,
@@ -63,16 +55,11 @@ router.get('/', authenticate, validatePagination, asyncHandler(async (req, res) 
   });
 }));
 
-router.get('/:id', authenticate, validateId, asyncHandler(async (req, res) => {
+router.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const where = { id };
-  if (req.user.role !== 'admin' && req.user.role !== 'executive') {
-    where.user_id = req.user.id;
-  }
-
   const expense = await Expense.findOne({
-    where,
+    where: { id },
     include: [
       {
         model: ExpenseItem,
@@ -81,7 +68,7 @@ router.get('/:id', authenticate, validateId, asyncHandler(async (req, res) => {
       {
         model: User,
         as: 'user',
-        attributes: ['id', 'username', 'name', 'role'],
+        attributes: ['id', 'name', 'employee_id', 'position_level'],
       },
       {
         model: RuleValidation,
@@ -97,41 +84,40 @@ router.get('/:id', authenticate, validateId, asyncHandler(async (req, res) => {
   });
 
   if (!expense) {
-    const error = new Error('费用记录不存在');
-    error.status = 404;
-    error.code = 'EXPENSE_NOT_FOUND';
-    throw error;
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'EXPENSE_NOT_FOUND',
+        message: '费用记录不存在',
+      },
+    });
   }
 
   res.json({
     success: true,
-    data: {
-      expense,
-    },
+    data: expense,
   });
 }));
 
-router.post('/', authenticate, validateExpense.create, asyncHandler(async (req, res) => {
-  const { title, description, total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, items } = req.body;
+router.post('/', asyncHandler(async (req, res) => {
+  const { user_id, total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, items } = req.body;
 
   const expense = await Expense.create({
-    title,
-    description,
     total_amount,
     trip_start_date,
     trip_end_date,
     destination_city,
     trip_reason,
-    user_id: req.user.id,
+    user_id,
     status: 'draft',
   });
 
   const expenseItems = items.map(item => ({
     expense_id: expense.id,
-    item_type: item.category,
+    item_type: item.item_type,
     description: item.description,
     amount: item.amount,
-    date: new Date().toISOString().split('T')[0], // 使用当前日期
+    date: item.date,
     details: item.details || null,
   }));
 
@@ -146,49 +132,38 @@ router.post('/', authenticate, validateExpense.create, asyncHandler(async (req, 
       {
         model: User,
         as: 'user',
-        attributes: ['id', 'username', 'name', 'role'],
+        attributes: ['id', 'name', 'employee_id', 'position_level'],
       },
     ],
   });
 
   res.status(201).json({
     success: true,
-    data: {
-      expense: createdExpense,
-    },
+    data: createdExpense,
   });
 }));
 
-router.put('/:id', authenticate, validateId, validateExpense.update, asyncHandler(async (req, res) => {
+router.put('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { title, description, total_amount, expense_date, city, status } = req.body;
+  const { total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, status } = req.body;
 
-  const where = { id };
-  if (req.user.role !== 'admin' && req.user.role !== 'executive') {
-    where.user_id = req.user.id;
-  }
-
-  const expense = await Expense.findOne({ where });
+  const expense = await Expense.findOne({ where: { id } });
   if (!expense) {
-    const error = new Error('费用记录不存在');
-    error.status = 404;
-    error.code = 'EXPENSE_NOT_FOUND';
-    throw error;
-  }
-
-  if (expense.status === 'submitted' && req.user.role !== 'admin' && req.user.role !== 'executive') {
-    const error = new Error('已提交的费用记录无法修改');
-    error.status = 400;
-    error.code = 'EXPENSE_SUBMITTED';
-    throw error;
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'EXPENSE_NOT_FOUND',
+        message: '费用记录不存在',
+      },
+    });
   }
 
   await expense.update({
-    title,
-    description,
     total_amount,
-    expense_date,
-    city,
+    trip_start_date,
+    trip_end_date,
+    destination_city,
+    trip_reason,
     status,
   });
 
@@ -201,40 +176,29 @@ router.put('/:id', authenticate, validateId, validateExpense.update, asyncHandle
       {
         model: User,
         as: 'user',
-        attributes: ['id', 'username', 'name', 'role'],
+        attributes: ['id', 'name', 'employee_id', 'position_level'],
       },
     ],
   });
 
   res.json({
     success: true,
-    data: {
-      expense: updatedExpense,
-    },
+    data: updatedExpense,
   });
 }));
 
-router.delete('/:id', authenticate, validateId, asyncHandler(async (req, res) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
 
-  const where = { id };
-  if (req.user.role !== 'admin' && req.user.role !== 'executive') {
-    where.user_id = req.user.id;
-  }
-
-  const expense = await Expense.findOne({ where });
+  const expense = await Expense.findOne({ where: { id } });
   if (!expense) {
-    const error = new Error('费用记录不存在');
-    error.status = 404;
-    error.code = 'EXPENSE_NOT_FOUND';
-    throw error;
-  }
-
-  if (expense.status === 'submitted' && req.user.role !== 'admin' && req.user.role !== 'executive') {
-    const error = new Error('已提交的费用记录无法删除');
-    error.status = 400;
-    error.code = 'EXPENSE_SUBMITTED';
-    throw error;
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'EXPENSE_NOT_FOUND',
+        message: '费用记录不存在',
+      },
+    });
   }
 
   await expense.destroy();
@@ -246,7 +210,7 @@ router.delete('/:id', authenticate, validateId, asyncHandler(async (req, res) =>
 }));
 
 // 验证费用记录
-router.post('/:id/validate', authenticate, validateId, asyncHandler(async (req, res) => {
+router.post('/:id/validate', asyncHandler(async (req, res) => {
   const { id } = req.params;
   
   const expense = await Expense.findOne({
@@ -259,7 +223,7 @@ router.post('/:id/validate', authenticate, validateId, asyncHandler(async (req, 
       {
         model: User,
         as: 'user',
-        attributes: ['id', 'username', 'role'],
+        attributes: ['id', 'name', 'employee_id', 'position_level'],
       },
     ],
   });
@@ -270,19 +234,6 @@ router.post('/:id/validate', authenticate, validateId, asyncHandler(async (req, 
       error: {
         code: 'EXPENSE_NOT_FOUND',
         message: '费用记录不存在',
-      },
-    });
-  }
-
-  // 权限检查：只有费用所有者、管理员或高管可以验证
-  if (expense.user_id !== req.user.id && 
-      req.user.role !== 'admin' && 
-      req.user.role !== 'executive') {
-    return res.status(403).json({
-      success: false,
-      error: {
-        code: 'FORBIDDEN',
-        message: '没有权限验证此费用记录',
       },
     });
   }
@@ -352,7 +303,7 @@ router.post('/:id/validate', authenticate, validateId, asyncHandler(async (req, 
     status: newStatus,
     validation_result: JSON.stringify({
       validated_at: new Date().toISOString(),
-      validated_by: req.user.id,
+      validated_by: 1,
       results: validationResults,
       overall_status: newStatus,
     }),

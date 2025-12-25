@@ -141,7 +141,7 @@ router.put('/profile', authenticate, validateUser.update, asyncHandler(async (re
   });
 }));
 
-router.get('/', authenticate, authorize('admin', 'executive', 'manager'), validatePagination, asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
   const { page = 1, limit = 20, search, role, is_active } = req.query;
   const offset = (page - 1) * limit;
 

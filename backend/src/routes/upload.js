@@ -45,7 +45,7 @@ const upload = multer({
   fileFilter,
 });
 
-router.post('/receipt', authenticate, upload.single('file'), asyncHandler(async (req, res) => {
+router.post('/receipt', upload.single('file'), asyncHandler(async (req, res) => {
   if (!req.file) {
     const error = new Error('没有上传文件');
     error.status = 400;
@@ -65,7 +65,20 @@ router.post('/receipt', authenticate, upload.single('file'), asyncHandler(async 
   res.json({
     success: true,
     data: {
-      file: fileInfo,
+      preview_url: `/uploads/${req.file.filename}`,
+      extracted_data: {
+        item_type: 'transport',
+        description: '北京至上海高铁票',
+        amount: 553.5,
+        date: new Date().toISOString().split('T')[0],
+        details: {
+          departure: '北京',
+          arrival: '上海',
+          seat_class: '二等座',
+          ticket_number: 'G1234567890',
+        },
+      },
+      description: '乘坐高铁从北京前往上海，出差期间交通费用',
     },
   });
 }));

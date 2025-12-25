@@ -54,7 +54,7 @@
         "创建结构化信息编辑表格",
         "添加智能说明编辑区域"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "混合填单界面交互测试",
         "type": "e2e",

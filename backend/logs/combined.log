@@ -1,0 +1,366 @@
+2025-12-25 15:21:15 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:15 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:23 [INFO]: ::1 - - [25/Dec/2025:07:21:23 +0000] "GET /health HTTP/1.1" 200 234 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:29 [INFO]: ::1 - - [25/Dec/2025:07:21:29 +0000] "GET /api/info HTTP/1.1" 200 180 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:21:36 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 15:21:36 [INFO]: ::1 - - [25/Dec/2025:07:21:36 +0000] "POST /api/users/register HTTP/1.1" 400 248 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:33 [INFO]: 收到 SIGINT 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:33 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 15:55:34 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:02:10 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:02:10 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:11 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:37 [INFO]: ::1 - - [25/Dec/2025:08:03:37 +0000] "GET /health HTTP/1.1" 200 234 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:48 [INFO]: ::1 - - [25/Dec/2025:08:03:48 +0000] "GET /api/info HTTP/1.1" 200 180 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:03:55 [INFO]: ::1 - - [25/Dec/2025:08:03:55 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:04:00 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:04:00 [INFO]: ::1 - - [25/Dec/2025:08:04:00 +0000] "POST /api/users/login HTTP/1.1" 401 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:04:51 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:04:51 [INFO]: ::1 - - [25/Dec/2025:08:04:51 +0000] "POST /api/users/login HTTP/1.1" 401 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:09 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:09 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:14 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:14 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:15 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:23 [INFO]: ::1 - - [25/Dec/2025:08:05:23 +0000] "POST /api/users/login HTTP/1.1" 200 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:31 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:05:31 [INFO]: ::1 - - [25/Dec/2025:08:05:31 +0000] "GET /api/expenses HTTP/1.1" 401 164 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:55 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:05:55 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:28 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:06:53 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: user.full_name","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:06:53 [INFO]: ::1 - - [25/Dec/2025:08:06:53 +0000] "GET /api/expenses HTTP/1.1" 500 162 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:20 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:20 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:39 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:39 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:10:40 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:11:29 [INFO]: ::1 - - [25/Dec/2025:08:11:29 +0000] "GET /api/expenses HTTP/1.1" 200 94 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:11:43 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:11:43 [INFO]: ::1 - - [25/Dec/2025:08:11:43 +0000] "POST /api/expenses HTTP/1.1" 400 473 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:12:30 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:12:30 [INFO]: ::1 - - [25/Dec/2025:08:12:30 +0000] "POST /api/expenses HTTP/1.1" 400 451 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:12:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:12:58 [INFO]: ::1 - - [25/Dec/2025:08:12:58 +0000] "POST /api/expenses HTTP/1.1" 400 316 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:04 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:14:04 [INFO]: ::1 - - [25/Dec/2025:08:14:04 +0000] "POST /api/expenses HTTP/1.1" 400 316 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:31 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:31 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:14:39 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:15:21 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:15:21 [INFO]: ::1 - - [25/Dec/2025:08:15:21 +0000] "POST /api/expenses HTTP/1.1" 400 451 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:16 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:16:16 [INFO]: ::1 - - [25/Dec/2025:08:16:16 +0000] "POST /api/expenses HTTP/1.1" 400 451 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:39 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:39 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:16:49 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:17:23 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:17:23 [INFO]: ::1 - - [25/Dec/2025:08:17:23 +0000] "POST /api/expenses HTTP/1.1" 400 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:17:32 [INFO]: ::1 - - [25/Dec/2025:08:17:32 +0000] "GET /api/expenses HTTP/1.1" 200 477 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:18:03 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:18:03 [INFO]: ::1 - - [25/Dec/2025:08:18:03 +0000] "POST /api/expenses HTTP/1.1" 400 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:01 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:19:01 [INFO]: ::1 - - [25/Dec/2025:08:19:01 +0000] "POST /api/expenses HTTP/1.1" 400 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:05 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:05 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:12 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:12 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:19:12 [ERROR]: 服务器启动失败: SQLITE_CONSTRAINT: FOREIGN KEY constraint failed {"service":"expense-system-api","environment":"development","name":"SequelizeForeignKeyConstraintError","parent":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"DROP TABLE `users`;"},"original":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"DROP TABLE `users`;"},"sql":"DROP TABLE `users`;","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.changeColumn (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query-interface.js:43:7)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:984:11)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:14:7)
+2025-12-25 16:22:47 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:22:47 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:22:47 [ERROR]: 服务器启动失败: Validation error {"service":"expense-system-api","environment":"development","name":"SequelizeUniqueConstraintError","errors":[{"message":"id must be unique","type":"unique violation","path":"id","value":null,"origin":"DB","instance":null,"validatorKey":"not_unique","validatorName":null,"validatorArgs":[]}],"parent":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"},"original":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"},"fields":["id"],"sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.changeColumn (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query-interface.js:43:7)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:984:11)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:14:7)
+2025-12-25 16:23:10 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:10 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:38 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/auth/login","url":"/api/auth/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:23:38 [INFO]: ::1 - - [25/Dec/2025:08:23:38 +0000] "POST /api/auth/login HTTP/1.1" 404 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:23:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:23:58 [INFO]: ::1 - - [25/Dec/2025:08:23:58 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:24:41 [INFO]: ::1 - - [25/Dec/2025:08:24:41 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:24:51 [INFO]: ::1 - - [25/Dec/2025:08:24:51 +0000] "POST /api/expenses HTTP/1.1" 201 800 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:24:57 [INFO]: ::1 - - [25/Dec/2025:08:24:57 +0000] "GET /api/expenses HTTP/1.1" 200 875 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:28:27 [INFO]: ::1 - - [25/Dec/2025:08:28:27 +0000] "GET /api/rules HTTP/1.1" 200 3764 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:28:57 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:28:57 [INFO]: ::1 - - [25/Dec/2025:08:28:57 +0000] "GET /api/city-tiers HTTP/1.1" 404 170 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:48 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:29:48 [INFO]: ::1 - - [25/Dec/2025:08:29:48 +0000] "GET /api/city-tiers HTTP/1.1" 404 170 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:52 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:52 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:29:57 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:30:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户不存在","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:30:09 [INFO]: ::1 - - [25/Dec/2025:08:30:09 +0000] "GET /api/city-tiers HTTP/1.1" 401 158 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:30:19 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:30:19 [INFO]: ::1 - - [25/Dec/2025:08:30:19 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:30:24 [INFO]: ::1 - - [25/Dec/2025:08:30:24 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:30:47 [INFO]: ::1 - - [25/Dec/2025:08:30:47 +0000] "GET /api/city-tiers HTTP/1.1" 200 50 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:32:53 [INFO]: ::1 - - [25/Dec/2025:08:32:53 +0000] "GET /api/city-tiers HTTP/1.1" 200 2509 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:33:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/expenses/1/validate","url":"/api/expenses/1/validate","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:33:44 [INFO]: ::1 - - [25/Dec/2025:08:33:44 +0000] "POST /api/expenses/1/validate HTTP/1.1" 404 189 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:35:28 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/expenses/1/validate","url":"/api/expenses/1/validate","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:35:28 [INFO]: ::1 - - [25/Dec/2025:08:35:28 +0000] "POST /api/expenses/1/validate HTTP/1.1" 404 189 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:42 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:42 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:53:45 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:54:03 [INFO]: ::1 - - [25/Dec/2025:08:54:03 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:54:32 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:54:32 [INFO]: ::1 - - [25/Dec/2025:08:54:32 +0000] "POST /api/expenses HTTP/1.1" 400 317 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:54:40 [INFO]: ::1 - - [25/Dec/2025:08:54:40 +0000] "POST /api/expenses HTTP/1.1" 201 801 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:55:02 [INFO]: ::1 - - [25/Dec/2025:08:55:02 +0000] "POST /api/expenses/1/validate HTTP/1.1" 200 1826 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:56:52 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:56:52 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:18 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:24 [INFO]: ::1 - - [25/Dec/2025:08:57:24 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:32 [INFO]: ::1 - - [25/Dec/2025:08:57:32 +0000] "POST /api/expenses HTTP/1.1" 201 801 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:57:53 [INFO]: ::1 - - [25/Dec/2025:08:57:53 +0000] "POST /api/expenses/1/validate HTTP/1.1" 200 126 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:07 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:07 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:11 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:18 [INFO]: ::1 - - [25/Dec/2025:08:58:18 +0000] "POST /api/users/register HTTP/1.1" 201 310 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:26 [INFO]: ::1 - - [25/Dec/2025:08:58:26 +0000] "POST /api/expenses HTTP/1.1" 201 801 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:34 [INFO]: ::1 - - [25/Dec/2025:08:58:34 +0000] "POST /api/expenses/1/validate HTTP/1.1" 200 126 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 16:58:45 [INFO]: ::1 - - [25/Dec/2025:08:58:45 +0000] "GET /api/rules HTTP/1.1" 200 91 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:06:17 [INFO]: ::1 - - [25/Dec/2025:09:06:17 +0000] "GET /health HTTP/1.1" 200 235 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:06:37 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"无效的访问令牌","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:06:37 [INFO]: ::1 - - [25/Dec/2025:09:06:37 +0000] "GET /api/expenses HTTP/1.1" 401 161 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:06:41 [INFO]: ::1 - - [25/Dec/2025:09:06:41 +0000] "POST /api/users/login HTTP/1.1" 200 308 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:06:48 [INFO]: ::1 - - [25/Dec/2025:09:06:48 +0000] "GET /api/expenses HTTP/1.1" 200 94 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:07:12 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:07:12 [INFO]: ::1 - - [25/Dec/2025:09:07:12 +0000] "POST /api/expenses HTTP/1.1" 400 688 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:07:50 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:07:50 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:01 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:14 [INFO]: ::1 - - [25/Dec/2025:09:08:14 +0000] "POST /api/users/login HTTP/1.1" 200 308 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:08:36 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:08:36 [INFO]: ::1 - - [25/Dec/2025:09:08:36 +0000] "POST /api/expenses HTTP/1.1" 400 356 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:11 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:11 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:13:34 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:00 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"无效的访问令牌","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:00 [INFO]: ::1 - - [25/Dec/2025:09:14:00 +0000] "POST /api/expenses HTTP/1.1" 401 162 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:04 [INFO]: ::1 - - [25/Dec/2025:09:14:04 +0000] "POST /api/users/login HTTP/1.1" 200 308 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:11 [INFO]: ::1 - - [25/Dec/2025:09:14:11 +0000] "POST /api/expenses HTTP/1.1" 201 561 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:40 [INFO]: ::1 - - [25/Dec/2025:09:14:40 +0000] "POST /api/expenses/1/validate HTTP/1.1" 200 1705 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [INFO]: ::1 - - [25/Dec/2025:09:14:50 +0000] "GET /api/city-tiers HTTP/1.1" 401 160 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [INFO]: ::1 - - [25/Dec/2025:09:14:50 +0000] "GET /api/city-tiers/name/%e5%8c%97%e4%ba%ac HTTP/1.1" 404 218 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/city-tiers/tier/first","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [INFO]: ::1 - - [25/Dec/2025:09:14:50 +0000] "GET /api/city-tiers/tier/first HTTP/1.1" 401 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:15:54 [INFO]: ::1 - - [25/Dec/2025:09:15:54 +0000] "GET /api/city-tiers HTTP/1.1" 200 2509 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:15:54 [INFO]: ::1 - - [25/Dec/2025:09:15:54 +0000] "GET /api/city-tiers/tier/first HTTP/1.1" 200 489 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:15:54 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:15:54 [INFO]: ::1 - - [25/Dec/2025:09:15:54 +0000] "GET /api/city-tiers/name/%e5%8c%97%e4%ba%ac HTTP/1.1" 404 218 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:16:11 [INFO]: ::1 - - [25/Dec/2025:09:16:11 +0000] "GET /api/city-tiers/name/%e5%8c%97%e4%ba%ac HTTP/1.1" 404 218 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:15 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:15 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:16:20 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:18:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/health","url":"/api/health","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:18:09 [INFO]: ::1 - - [25/Dec/2025:09:18:09 +0000] "GET /api/health HTTP/1.1" 404 162 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:18:14 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/auth/login","url":"/api/auth/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:18:14 [INFO]: ::1 - - [25/Dec/2025:09:18:14 +0000] "POST /api/auth/login HTTP/1.1" 404 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:18:30 [INFO]: ::1 - - [25/Dec/2025:09:18:30 +0000] "GET /health HTTP/1.1" 200 235 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:26:33 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:26:33 [INFO]: ::1 - - [25/Dec/2025:09:26:33 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:26:42 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:26:42 [INFO]: ::1 - - [25/Dec/2025:09:26:42 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:03 [INFO]: ::1 - - [25/Dec/2025:09:27:03 +0000] "POST /api/users/login HTTP/1.1" 200 308 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:18 [INFO]: ::1 - - [25/Dec/2025:09:27:18 +0000] "GET /api/city-tiers HTTP/1.1" 200 2509 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:18 [INFO]: ::1 - - [25/Dec/2025:09:27:18 +0000] "GET /api/city-tiers/name/%e5%8c%97%e4%ba%ac HTTP/1.1" 200 145 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:19 [INFO]: ::1 - - [25/Dec/2025:09:27:19 +0000] "GET /api/city-tiers/tier/first HTTP/1.1" 200 489 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:35 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Cannot read properties of undefined (reading 'map')","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:27:35 [INFO]: ::1 - - [25/Dec/2025:09:27:35 +0000] "POST /api/expenses HTTP/1.1" 500 200 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:27:51 [INFO]: ::1 - - [25/Dec/2025:09:27:51 +0000] "POST /api/expenses HTTP/1.1" 201 559 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:28:07 [INFO]: ::1 - - [25/Dec/2025:09:28:07 +0000] "POST /api/expenses/2/validate HTTP/1.1" 200 1705 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:28:33 [INFO]: ::1 - - [25/Dec/2025:09:28:33 +0000] "POST /api/expenses HTTP/1.1" 201 996 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:28:40 [INFO]: ::1 - - [25/Dec/2025:09:28:40 +0000] "POST /api/expenses/3/validate HTTP/1.1" 200 1692 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:28:52 [INFO]: ::1 - - [25/Dec/2025:09:28:52 +0000] "GET /api/rules HTTP/1.1" 200 3764 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:29:15 [INFO]: ::1 - - [25/Dec/2025:09:29:15 +0000] "GET /api/expenses HTTP/1.1" 200 12610 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:45:14 [INFO]: ::1 - - [25/Dec/2025:09:45:14 +0000] "POST /api/users/login HTTP/1.1" 200 308 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:45:35 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"权限不足","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:45:35 [INFO]: ::1 - - [25/Dec/2025:09:45:35 +0000] "GET /api/users HTTP/1.1" 403 160 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:45:45 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:45:45 [INFO]: ::1 - - [25/Dec/2025:09:45:45 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:46:47 [INFO]: ::1 - - [25/Dec/2025:09:46:47 +0000] "POST /api/users/login HTTP/1.1" 200 297 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:47:08 [INFO]: ::1 - - [25/Dec/2025:09:47:08 +0000] "GET /api/users HTTP/1.1" 200 1077 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:47:27 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:47:27 [INFO]: ::1 - - [25/Dec/2025:09:47:27 +0000] "POST /api/users/register HTTP/1.1" 400 248 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:48:59 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:48:59 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:08 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:49 [INFO]: ::1 - - [25/Dec/2025:09:49:49 +0000] "POST /api/users/register HTTP/1.1" 201 322 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:49:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"权限不足","url":"/api/users/4","method":"PUT","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:49:58 [INFO]: ::1 - - [25/Dec/2025:09:49:58 +0000] "PUT /api/users/4 HTTP/1.1" 403 162 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:50:14 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:50:14 [INFO]: ::1 - - [25/Dec/2025:09:50:14 +0000] "POST /api/users/login HTTP/1.1" 401 174 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:50:41 [INFO]: ::1 - - [25/Dec/2025:09:50:41 +0000] "POST /api/users/login HTTP/1.1" 200 316 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 17:50:50 [INFO]: ::1 - - [25/Dec/2025:09:50:50 +0000] "PUT /api/users/4 HTTP/1.1" 200 276 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:02:29 [INFO]: ::1 - - [25/Dec/2025:10:02:29 +0000] "DELETE /api/users/4 HTTP/1.1" 200 47 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:34:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:34:44 [INFO]: ::1 - - [25/Dec/2025:10:34:44 +0000] "GET /api/users HTTP/1.1" 401 155 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:34:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:34:44 [INFO]: ::1 - - [25/Dec/2025:10:34:44 +0000] "GET /api/expenses HTTP/1.1" 401 158 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:37:58 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:37:58 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:20 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:38:39 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:38:39 [INFO]: ::1 - - [25/Dec/2025:10:38:39 +0000] "GET /api/users HTTP/1.1" 401 155 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:21 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:21 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 端口: 3001 {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: 健康检查: http://localhost:3001/health {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:36 [INFO]: API信息: http://localhost:3001/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:42 [INFO]: ::1 - - [25/Dec/2025:10:39:42 +0000] "GET /api/users HTTP/1.1" 200 91 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:51 [INFO]: ::1 - - [25/Dec/2025:10:39:51 +0000] "POST /api/users/register HTTP/1.1" 201 332 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:39:58 [INFO]: ::1 - - [25/Dec/2025:10:39:58 +0000] "GET /api/users HTTP/1.1" 200 332 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:40:04 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error: 结束日期必须晚于开始日期","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:40:04 [INFO]: ::1 - - [25/Dec/2025:10:40:04 +0000] "POST /api/expenses HTTP/1.1" 400 270 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:40:11 [INFO]: ::1 - - [25/Dec/2025:10:40:11 +0000] "POST /api/expenses HTTP/1.1" 201 678 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:40:14 [INFO]: ::1 - - [25/Dec/2025:10:40:14 +0000] "POST /api/expenses/1/validate HTTP/1.1" 200 126 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:40:20 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"只允许上传图片（JPEG、JPG、PNG、GIF）和文档（PDF、DOC、DOCX）文件","url":"/api/upload/receipt","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:40:20 [INFO]: ::1 - - [25/Dec/2025:10:40:20 +0000] "POST /api/upload/receipt HTTP/1.1" 500 241 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-25 18:40:25 [INFO]: ::1 - - [25/Dec/2025:10:40:25 +0000] "POST /api/upload/receipt HTTP/1.1" 200 389 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}

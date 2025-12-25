@@ -4,6 +4,7 @@ import zhCN from 'antd/locale/zh_CN';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import UserList from './pages/users/UserList';
+import ExpenseForm from './pages/expense/ExpenseForm';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
             element={<MainLayout />}
           >
             <Route index element={<Home />} />
+            <Route path="expenses" element={<ExpenseForm />} />
             <Route path="users" element={<UserList />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

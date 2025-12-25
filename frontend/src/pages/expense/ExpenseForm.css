@@ -1,0 +1,26 @@
+.expense-form-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 64px);
+}
+
+.expense-form-container h2 {
+  margin-bottom: 24px;
+}
+
+.form-section {
+  margin-bottom: 16px;
+}
+
+.form-section .ant-card-head {
+  background-color: #1890ff;
+  color: white;
+}
+
+.form-section .ant-card-head-title {
+  color: white;
+}
+
+.form-section .ant-form-item-label > label {
+  font-weight: 500;
+}

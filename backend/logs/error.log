@@ -1,0 +1,69 @@
+2025-12-25 15:21:36 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:04:00 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:04:51 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:05:31 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户账户已被禁用","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:06:53 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: user.full_name","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:11:43 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:12:30 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:12:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:14:04 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:15:21 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:16:16 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null,\nnotNull Violation: expenses.destination_city cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:17:23 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:18:03 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:19:01 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:19:12 [ERROR]: 服务器启动失败: SQLITE_CONSTRAINT: FOREIGN KEY constraint failed {"service":"expense-system-api","environment":"development","name":"SequelizeForeignKeyConstraintError","parent":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"DROP TABLE `users`;"},"original":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"DROP TABLE `users`;"},"sql":"DROP TABLE `users`;","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.changeColumn (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query-interface.js:43:7)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:984:11)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:14:7)
+2025-12-25 16:22:47 [ERROR]: 服务器启动失败: Validation error {"service":"expense-system-api","environment":"development","name":"SequelizeUniqueConstraintError","errors":[{"message":"id must be unique","type":"unique violation","path":"id","value":null,"origin":"DB","instance":null,"validatorKey":"not_unique","validatorName":null,"validatorArgs":[]}],"parent":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"},"original":{"errno":19,"code":"SQLITE_CONSTRAINT","sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"},"fields":["id"],"sql":"INSERT INTO `users_backup` SELECT `id`, `username`, `password`, `email`, `name`, `employee_id`, `department`, `position_level`, `role`, `created_at`, `updated_at` FROM `users`;"}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.changeColumn (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query-interface.js:43:7)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:984:11)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:14:7)
+2025-12-25 16:23:38 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/auth/login","url":"/api/auth/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:23:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:28:57 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:29:48 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:30:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户不存在","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:30:19 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:33:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/expenses/1/validate","url":"/api/expenses/1/validate","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:35:28 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/expenses/1/validate","url":"/api/expenses/1/validate","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 16:54:32 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:06:37 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"无效的访问令牌","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:07:12 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:08:36 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: expenses.trip_start_date cannot be null,\nnotNull Violation: expenses.trip_end_date cannot be null","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:00 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"无效的访问令牌","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:14:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/city-tiers/tier/first","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:15:54 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:16:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/name/%e5%8c%97%e4%ba%ac","url":"/api/city-tiers/name/%e5%8c%97%e4%ba%ac","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:18:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/health","url":"/api/health","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:18:14 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/auth/login","url":"/api/auth/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:26:33 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:26:42 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:27:35 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Cannot read properties of undefined (reading 'map')","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:45:35 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"权限不足","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:45:45 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:47:27 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:49:58 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"权限不足","url":"/api/users/4","method":"PUT","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 17:50:14 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"用户名或密码错误","url":"/api/users/login","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:34:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:34:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:38:39 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:40:04 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error: 结束日期必须晚于开始日期","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-25 18:40:20 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"只允许上传图片（JPEG、JPG、PNG、GIF）和文档（PDF、DOC、DOCX）文件","url":"/api/upload/receipt","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}

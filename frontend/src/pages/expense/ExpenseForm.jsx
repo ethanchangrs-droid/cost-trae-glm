@@ -1,0 +1,463 @@
+import { useState, useEffect } from 'react';
+import { Card, Form, Button, Upload, Table, Input, DatePicker, Select, message, Row, Col, Alert, Space, Tag, Typography } from 'antd';
+import { UploadOutlined, CheckCircleOutlined, CloseCircleOutlined, WarningOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { expenseAPI, uploadAPI } from '../../api';
+import UserSelectModal from '../users/UserSelectModal';
+import './ExpenseForm.css';
+
+const { TextArea } = Input;
+const { Option } = Select;
+const { Title, Text } = Typography;
+
+const ExpenseForm = () => {
+  const [form] = Form.useForm();
+  const [userSelectVisible, setUserSelectVisible] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [receiptPreview, setReceiptPreview] = useState(null);
+  const [extractedInfo, setExtractedInfo] = useState(null);
+  const [intelligentDescription, setIntelligentDescription] = useState('');
+  const [expenseItems, setExpenseItems] = useState([]);
+  const [validationResults, setValidationResults] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
+  const itemTypeOptions = [
+    { label: '交通', value: 'transport' },
+    { label: '住宿', value: 'accommodation' },
+    { label: '餐饮', value: 'meal' },
+  ];
+
+  const positionLevelOptions = [
+    { label: '员工', value: 'employee' },
+    { label: '经理', value: 'manager' },
+    { label: '高管', value: 'executive' },
+  ];
+
+  const handleUserSelect = (users) => {
+    if (users && users.length > 0) {
+      const user = users[0];
+      setSelectedUser(user);
+      form.setFieldsValue({
+        user_id: user.id,
+        user_name: user.name,
+        employee_id: user.employee_id,
+        position_level: user.position_level,
+      });
+    }
+    setUserSelectVisible(false);
+  };
+
+  const handleUpload = async (file) => {
+    setUploading(true);
+    try {
+      const response = await uploadAPI.uploadReceipt(file);
+      if (response.data.success) {
+        const { preview_url, extracted_data, description } = response.data.data;
+        setReceiptPreview(preview_url);
+        setExtractedInfo(extracted_data);
+        setIntelligentDescription(description);
+        
+        if (extracted_data) {
+          const newItem = {
+            id: Date.now(),
+            item_type: extracted_data.item_type || 'transport',
+            description: extracted_data.description || '',
+            amount: extracted_data.amount || 0,
+            date: extracted_data.date ? new Date(extracted_data.date) : new Date(),
+            details: extracted_data.details || {},
+          };
+          setExpenseItems([...expenseItems, newItem]);
+          calculateTotal([...expenseItems, newItem]);
+        }
+        message.success('票据识别成功');
+      }
+    } catch (error) {
+      message.error('票据上传失败，请重试');
+    } finally {
+      setUploading(false);
+    }
+    return false;
+  };
+
+  const handleAddItem = () => {
+    const newItem = {
+      id: Date.now(),
+      item_type: 'transport',
+      description: '',
+      amount: 0,
+      date: new Date(),
+      details: {},
+    };
+    setExpenseItems([...expenseItems, newItem]);
+  };
+
+  const handleUpdateItem = (id, field, value) => {
+    const updatedItems = expenseItems.map(item =>
+      item.id === id ? { ...item, [field]: value } : item
+    );
+    setExpenseItems(updatedItems);
+    calculateTotal(updatedItems);
+  };
+
+  const handleDeleteItem = (id) => {
+    const updatedItems = expenseItems.filter(item => item.id !== id);
+    setExpenseItems(updatedItems);
+    calculateTotal(updatedItems);
+  };
+
+  const calculateTotal = (items) => {
+    const total = items.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
+    setTotalAmount(total);
+  };
+
+  const handleSaveDraft = async () => {
+    try {
+      setLoading(true);
+      const values = await form.validateFields();
+      const expenseData = {
+        user_id: values.user_id,
+        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
+        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
+        destination_city: values.destination_city,
+        trip_reason: values.trip_reason,
+        status: 'draft',
+        total_amount: totalAmount,
+        items: expenseItems.map(item => ({
+          item_type: item.item_type,
+          description: item.description,
+          amount: item.amount,
+          date: item.date?.format('YYYY-MM-DD'),
+          details: item.details,
+        })),
+      };
+      await expenseAPI.createExpense(expenseData);
+      message.success('草稿保存成功');
+      form.resetFields();
+      setExpenseItems([]);
+      setReceiptPreview(null);
+      setExtractedInfo(null);
+      setIntelligentDescription('');
+      setTotalAmount(0);
+    } catch (error) {
+      message.error('保存失败：' + (error.response?.data?.message || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmitValidation = async () => {
+    try {
+      setLoading(true);
+      const values = await form.validateFields();
+      const expenseData = {
+        user_id: values.user_id,
+        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
+        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
+        destination_city: values.destination_city,
+        trip_reason: values.trip_reason,
+        total_amount: totalAmount,
+        items: expenseItems.map(item => ({
+          item_type: item.item_type,
+          description: item.description,
+          amount: item.amount,
+          date: item.date?.format('YYYY-MM-DD'),
+          details: item.details,
+        })),
+      };
+      
+      const response = await expenseAPI.createExpense(expenseData);
+      const expenseId = response.data.id;
+      
+      const validationResponse = await expenseAPI.validateExpense(expenseId);
+      if (validationResponse.data.success) {
+        setValidationResults(validationResponse.data.data.validation_results || []);
+        message.success('验证完成');
+      }
+    } catch (error) {
+      message.error('验证失败：' + (error.response?.data?.message || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmitExpense = async () => {
+    try {
+      setLoading(true);
+      const values = await form.validateFields();
+      const expenseData = {
+        user_id: values.user_id,
+        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
+        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
+        destination_city: values.destination_city,
+        trip_reason: values.trip_reason,
+        status: 'submitted',
+        total_amount: totalAmount,
+        items: expenseItems.map(item => ({
+          item_type: item.item_type,
+          description: item.description,
+          amount: item.amount,
+          date: item.date?.format('YYYY-MM-DD'),
+          details: item.details,
+        })),
+      };
+      await expenseAPI.createExpense(expenseData);
+      message.success('提交成功');
+      form.resetFields();
+      setExpenseItems([]);
+      setReceiptPreview(null);
+      setExtractedInfo(null);
+      setIntelligentDescription('');
+      setTotalAmount(0);
+      setValidationResults([]);
+    } catch (error) {
+      message.error('提交失败：' + (error.response?.data?.message || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const itemColumns = [
+    {
+      title: '类型',
+      dataIndex: 'item_type',
+      key: 'item_type',
+      width: 100,
+      render: (value, record) => (
+        <Select
+          value={value}
+          onChange={(v) => handleUpdateItem(record.id, 'item_type', v)}
+          style={{ width: '100%' }}
+        >
+          {itemTypeOptions.map(option => (
+            <Option key={option.value} value={option.value}>{option.label}</Option>
+          ))}
+        </Select>
+      ),
+    },
+    {
+      title: '描述',
+      dataIndex: 'description',
+      key: 'description',
+      render: (value, record) => (
+        <Input
+          value={value}
+          onChange={(e) => handleUpdateItem(record.id, 'description', e.target.value)}
+          placeholder="请输入描述"
+        />
+      ),
+    },
+    {
+      title: '金额',
+      dataIndex: 'amount',
+      key: 'amount',
+      width: 120,
+      render: (value, record) => (
+        <Input
+          type="number"
+          value={value}
+          onChange={(e) => handleUpdateItem(record.id, 'amount', parseFloat(e.target.value) || 0)}
+          placeholder="0.00"
+        />
+      ),
+    },
+    {
+      title: '日期',
+      dataIndex: 'date',
+      key: 'date',
+      width: 140,
+      render: (value, record) => (
+        <DatePicker
+          value={value}
+          onChange={(date) => handleUpdateItem(record.id, 'date', date)}
+          format="YYYY-MM-DD"
+          style={{ width: '100%' }}
+        />
+      ),
+    },
+    {
+      title: '操作',
+      key: 'action',
+      width: 80,
+      render: (_, record) => (
+        <Button
+          type="text"
+          danger
+          icon={<DeleteOutlined />}
+          onClick={() => handleDeleteItem(record.id)}
+        />
+      ),
+    },
+  ];
+
+  return (
+    <div className="expense-form-container">
+      <Title level={2}>费用报销</Title>
+      
+      <Card title="报销人信息" className="form-section">
+        <Row gutter={16}>
+          <Col span={6}>
+            <Form.Item label="报销人">
+              <Input value={selectedUser?.name || ''} readOnly placeholder="请选择报销人" />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item label="工号">
+              <Input value={selectedUser?.employee_id || ''} readOnly placeholder="工号" />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item label="级别">
+              <Input value={selectedUser?.position_level || ''} readOnly placeholder="级别" />
+            </Form.Item>
+          </Col>
+          <Col span={6}>
+            <Form.Item label="选择用户">
+              <Button type="primary" onClick={() => setUserSelectVisible(true)}>
+                选择用户
+              </Button>
+            </Form.Item>
+          </Col>
+        </Row>
+      </Card>
+
+      <Card title="票据识别结果" className="form-section">
+        <Upload
+          beforeUpload={handleUpload}
+          showUploadList={false}
+          accept="image/*"
+        >
+          <Button icon={<UploadOutlined />} loading={uploading}>
+            上传票据照片
+          </Button>
+        </Upload>
+        {uploading && <div style={{ marginTop: 8 }}>AI识别中...</div>}
+        {receiptPreview && (
+          <div style={{ marginTop: 16 }}>
+            <img src={receiptPreview} alt="票据预览" style={{ maxWidth: 200 }} />
+          </div>
+        )}
+      </Card>
+
+      <Card title="结构化信息（自动提取）" className="form-section">
+        <Table
+          columns={itemColumns}
+          dataSource={expenseItems}
+          rowKey="id"
+          pagination={false}
+          size="small"
+        />
+        <Button
+          type="dashed"
+          icon={<PlusOutlined />}
+          onClick={handleAddItem}
+          style={{ width: '100%', marginTop: 16 }}
+        >
+          添加费用项目
+        </Button>
+        <div style={{ marginTop: 16, textAlign: 'right' }}>
+          <Text strong>总金额：¥{totalAmount.toFixed(2)}</Text>
+        </div>
+      </Card>
+
+      <Card title="智能说明（LLM生成）" className="form-section">
+        <TextArea
+          value={intelligentDescription}
+          onChange={(e) => setIntelligentDescription(e.target.value)}
+          rows={4}
+          placeholder="AI将自动生成票据说明"
+        />
+      </Card>
+
+      <Card title="基础信息补充" className="form-section">
+        <Form form={form} layout="vertical">
+          <Row gutter={16}>
+            <Col span={8}>
+              <Form.Item
+                label="出差开始日期"
+                name="trip_start_date"
+                rules={[{ required: true, message: '请选择出差开始日期' }]}
+              >
+                <DatePicker style={{ width: '100%' }} />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                label="出差结束日期"
+                name="trip_end_date"
+                rules={[{ required: true, message: '请选择出差结束日期' }]}
+              >
+                <DatePicker style={{ width: '100%' }} />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item
+                label="目的地城市"
+                name="destination_city"
+                rules={[{ required: true, message: '请输入目的地城市' }]}
+              >
+                <Input placeholder="请输入目的地城市" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={24}>
+              <Form.Item label="出差事由" name="trip_reason">
+                <TextArea rows={2} placeholder="请输入出差事由" />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Form.Item name="user_id" hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item name="user_name" hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item name="employee_id" hidden>
+            <Input />
+          </Form.Item>
+          <Form.Item name="position_level" hidden>
+            <Input />
+          </Form.Item>
+        </Form>
+      </Card>
+
+      {validationResults.length > 0 && (
+        <Card title="实时验证结果" className="form-section">
+          {validationResults.map((result, index) => (
+            <Alert
+              key={index}
+              type={result.passed ? 'success' : 'warning'}
+              icon={result.passed ? <CheckCircleOutlined /> : <WarningOutlined />}
+              message={result.message}
+              description={typeof result.details === 'string' ? result.details : JSON.stringify(result.details, null, 2)}
+              style={{ marginBottom: 8 }}
+            />
+          ))}
+        </Card>
+      )}
+
+      <Card className="form-section">
+        <Space>
+          <Button onClick={handleSaveDraft} disabled={loading}>
+            保存草稿
+          </Button>
+          <Button type="primary" onClick={handleSubmitValidation} loading={loading}>
+            提交验证
+          </Button>
+          <Button type="primary" onClick={handleSubmitExpense} loading={loading}>
+            提交报销
+          </Button>
+        </Space>
+      </Card>
+
+      <UserSelectModal
+        visible={userSelectVisible}
+        onCancel={() => setUserSelectVisible(false)}
+        onConfirm={handleUserSelect}
+      />
+    </div>
+  );
+};
+
+export default ExpenseForm;
