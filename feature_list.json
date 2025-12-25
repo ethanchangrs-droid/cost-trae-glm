@@ -1,0 +1,383 @@
+{
+  "project": "费用报销系统",
+  "version": "1.0",
+  "created_at": "2025-12-25",
+  "total_features": 20,
+  "features": [
+    {
+      "id": "FEAT-001",
+      "title": "用户管理功能",
+      "category": "用户管理",
+      "description": "实现用户信息的增删改查管理功能",
+      "priority": "P0",
+      "steps": [
+        "创建用户管理页面UI",
+        "实现用户CRUD API接口",
+        "添加按姓名搜索功能",
+        "实现用户选择弹窗组件"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "用户管理功能测试",
+        "type": "e2e",
+        "path": "users/manage"
+      }
+    },
+    {
+      "id": "FEAT-003",
+      "title": "票据识别与信息提取",
+      "category": "智能识别",
+      "description": "支持上传票据照片，AI自动识别关键信息",
+      "priority": "P1",
+      "steps": [
+        "实现票据上传功能",
+        "集成图像识别API",
+        "提取结构化信息（类型、金额、日期等）",
+        "生成智能描述文本"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "票据识别准确性测试",
+        "type": "integration",
+        "path": "upload/ocr"
+      }
+    },
+    {
+      "id": "FEAT-004",
+      "title": "混合填单界面",
+      "category": "表单功能",
+      "description": "提供票据识别结果、结构化信息和智能说明的混合界面",
+      "priority": "P0",
+      "steps": [
+        "设计三栏式布局界面",
+        "实现票据预览功能",
+        "创建结构化信息编辑表格",
+        "添加智能说明编辑区域"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "混合填单界面交互测试",
+        "type": "e2e",
+        "path": "expense/form"
+      }
+    },
+    {
+      "id": "FEAT-005",
+      "title": "LLM智能辅助功能",
+      "category": "智能辅助",
+      "description": "提供智能提示、自动填充和合规性建议",
+      "priority": "P1",
+      "steps": [
+        "集成阿里云百炼LLM服务",
+        "实现智能提示API",
+        "开发自动填充功能",
+        "添加合规性分析逻辑"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "LLM智能辅助功能测试",
+        "type": "integration",
+        "path": "llm/assist"
+      }
+    },
+    {
+      "id": "FEAT-006",
+      "title": "费用表单提交功能",
+      "category": "表单功能",
+      "description": "实现费用报销表单的提交和保存",
+      "priority": "P0",
+      "steps": [
+        "实现表单数据验证",
+        "创建提交API接口",
+        "添加表单状态管理",
+        "实现提交确认机制"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "表单提交流程测试",
+        "type": "e2e",
+        "path": "expense/submit"
+      }
+    },
+    {
+      "id": "FEAT-007",
+      "title": "实时规则验证",
+      "category": "规则验证",
+      "description": "表单填写过程中实时验证费用规则",
+      "priority": "P0",
+      "steps": [
+        "开发规则引擎核心逻辑",
+        "实现实时验证API",
+        "添加违规高亮提示",
+        "提供修改建议功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "实时规则验证测试",
+        "type": "e2e",
+        "path": "validation/realtime"
+      }
+    },
+    {
+      "id": "FEAT-008",
+      "title": "提交验证功能",
+      "category": "规则验证",
+      "description": "综合验证所有费用项目并生成验证报告",
+      "priority": "P0",
+      "steps": [
+        "实现综合验证逻辑",
+        "生成验证报告",
+        "创建验证结果展示",
+        "添加验证历史记录"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "提交验证功能测试",
+        "type": "e2e",
+        "path": "validation/submit"
+      }
+    },
+    {
+      "id": "FEAT-009",
+      "title": "自然语言规则配置",
+      "category": "规则管理",
+      "description": "支持通过自然语言描述配置费用规则",
+      "priority": "P1",
+      "steps": [
+        "创建规则配置界面",
+        "实现自然语言解析功能",
+        "添加规则冲突检测",
+        "提供规则预览功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "自然语言规则配置测试",
+        "type": "e2e",
+        "path": "rules/configure"
+      }
+    },
+    {
+      "id": "FEAT-010",
+      "title": "结构化规则管理",
+      "category": "规则管理",
+      "description": "支持传统结构化规则的增删改查",
+      "priority": "P1",
+      "steps": [
+        "实现规则CRUD API",
+        "创建规则管理界面",
+        "添加规则分类功能",
+        "实现规则版本管理"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "结构化规则管理测试",
+        "type": "e2e",
+        "path": "rules/structured"
+      }
+    },
+    {
+      "id": "FEAT-011",
+      "title": "混合规则模式",
+      "category": "规则管理",
+      "description": "支持结构化与自然语言结合的混合规则模式",
+      "priority": "P1",
+      "steps": [
+        "实现规则复杂度分析",
+        "开发混合规则解析器",
+        "创建混合验证策略",
+        "添加规则性能监控"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "混合规则模式测试",
+        "type": "integration",
+        "path": "rules/hybrid"
+      }
+    },
+    {
+      "id": "FEAT-012",
+      "title": "费用记录查看",
+      "category": "数据查询",
+      "description": "用户可以查看个人报销记录和状态",
+      "priority": "P1",
+      "steps": [
+        "创建费用记录列表页面",
+        "实现分页和筛选功能",
+        "添加状态标识显示",
+        "提供详情查看功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "费用记录查看测试",
+        "type": "e2e",
+        "path": "expense/list"
+      }
+    },
+    {
+      "id": "FEAT-013",
+      "title": "管理员数据查看",
+      "category": "数据查询",
+      "description": "管理员可以查看所有报销记录和验证结果",
+      "priority": "P1",
+      "steps": [
+        "创建管理员数据面板",
+        "实现全量数据查询",
+        "添加数据统计分析",
+        "提供导出功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "管理员数据查看测试",
+        "type": "e2e",
+        "path": "admin/dashboard"
+      }
+    },
+    {
+      "id": "FEAT-014",
+      "title": "数据库设计与实现",
+      "category": "基础架构",
+      "description": "设计和创建SQLite数据库表结构",
+      "priority": "P0",
+      "steps": [
+        "创建数据库迁移脚本",
+        "实现数据模型定义",
+        "添加数据库索引优化",
+        "创建初始数据种子"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "数据库连接和操作测试",
+        "type": "unit",
+        "path": "database"
+      }
+    },
+    {
+      "id": "FEAT-015",
+      "title": "后端API服务",
+      "category": "基础架构",
+      "description": "搭建Node.js Express后端服务框架",
+      "priority": "P0",
+      "steps": [
+        "创建Express应用框架",
+        "实现中间件配置",
+        "添加错误处理机制",
+        "集成日志记录功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "后端API健康检查测试",
+        "type": "integration",
+        "path": "api/health"
+      }
+    },
+    {
+      "id": "FEAT-016",
+      "title": "前端React应用",
+      "category": "基础架构",
+      "description": "创建React前端应用基础框架",
+      "priority": "P0",
+      "steps": [
+        "初始化React项目",
+        "配置路由系统",
+        "集成Ant Design组件库",
+        "设置状态管理"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "前端应用启动测试",
+        "type": "unit",
+        "path": "frontend"
+      }
+    },
+
+    {
+      "id": "FEAT-018",
+      "title": "数据验证中间件",
+      "category": "安全功能",
+      "description": "实现请求数据验证和清理",
+      "priority": "P1",
+      "steps": [
+        "创建数据验证规则",
+        "实现验证中间件",
+        "添加错误消息处理",
+        "配置验证日志"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "数据验证功能测试",
+        "type": "integration",
+        "path": "validation/middleware"
+      }
+    },
+    {
+      "id": "FEAT-019",
+      "title": "错误处理机制",
+      "category": "系统功能",
+      "description": "建立统一的错误处理和用户反馈机制",
+      "priority": "P1",
+      "steps": [
+        "创建错误处理中间件",
+        "设计错误响应格式",
+        "实现错误日志记录",
+        "添加用户友好提示"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "错误处理机制测试",
+        "type": "integration",
+        "path": "error/handling"
+      }
+    },
+    {
+      "id": "FEAT-020",
+      "title": "日志记录系统",
+      "category": "系统功能",
+      "description": "实现系统操作日志和审计跟踪",
+      "priority": "P1",
+      "steps": [
+        "集成Winston日志库",
+        "配置日志格式和级别",
+        "实现操作审计记录",
+        "添加日志轮转功能"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "日志记录功能测试",
+        "type": "unit",
+        "path": "logging"
+      }
+    },
+    {
+      "id": "FEAT-021",
+      "title": "系统配置管理",
+      "category": "系统功能",
+      "description": "实现环境配置和系统参数管理",
+      "priority": "P1",
+      "steps": [
+        "创建环境配置文件",
+        "实现配置加载机制",
+        "添加配置验证功能",
+        "支持配置热更新"
+      ],
+      "passes": false,
+      "test": {
+        "scenario": "配置管理功能测试",
+        "type": "unit",
+        "path": "config"
+      }
+    }
+  ],
+  "summary": {
+    "用户管理": 1,
+    "智能识别": 1,
+    "表单功能": 3,
+    "智能辅助": 1,
+    "规则验证": 2,
+    "规则管理": 3,
+    "数据查询": 2,
+    "基础架构": 3,
+    "安全功能": 1,
+    "系统功能": 2,
+    "total": 20
+  }
+}
