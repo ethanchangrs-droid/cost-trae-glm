@@ -1,0 +1,44 @@
+.main-layout {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  background: #001529;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.user-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.username {
+  color: white;
+}
+
+.sider {
+  background: #fff;
+  border-right: 1px solid #f0f0f0;
+}
+
+.content {
+  padding: 24px;
+  background: #f0f2f5;
+  min-height: calc(100vh - 64px);
+}

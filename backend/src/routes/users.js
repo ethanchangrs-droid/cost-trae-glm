@@ -38,7 +38,7 @@ router.post('/login', validateUser.login, asyncHandler(async (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
-        full_name: user.full_name,
+        name: user.name,
         role: user.role,
         is_active: user.is_active,
         created_at: user.created_at,
@@ -50,7 +50,7 @@ router.post('/login', validateUser.login, asyncHandler(async (req, res) => {
 }));
 
 router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
-  const { username, password, email, full_name, role = 'employee' } = req.body;
+  const { username, password, email, name, role = 'user', department, position_level } = req.body;
 
   const existingUser = await User.findOne({ where: { username } });
   if (existingUser) {
@@ -76,8 +76,10 @@ router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
     username,
     password: hashedPassword,
     email,
-    name: full_name,
+    name,
     role,
+    department,
+    position_level,
   });
 
   const token = generateToken(user);
@@ -89,9 +91,8 @@ router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
         id: user.id,
         username: user.username,
         email: user.email,
-        full_name: user.full_name,
+        name: user.name,
         role: user.role,
-        is_active: user.is_active,
         created_at: user.created_at,
         updated_at: user.updated_at,
       },
@@ -110,7 +111,7 @@ router.get('/profile', authenticate, asyncHandler(async (req, res) => {
 }));
 
 router.put('/profile', authenticate, validateUser.update, asyncHandler(async (req, res) => {
-  const { email, full_name } = req.body;
+  const { email, name } = req.body;
   const userId = req.user.id;
 
   if (email && email !== req.user.email) {
@@ -124,7 +125,7 @@ router.put('/profile', authenticate, validateUser.update, asyncHandler(async (re
   }
 
   await User.update(
-    { email, full_name },
+    { email, name },
     { where: { id: userId } }
   );
 
@@ -148,15 +149,12 @@ router.get('/', authenticate, authorize('admin', 'executive', 'manager'), valida
   if (search) {
     where[Op.or] = [
       { username: { [Op.like]: `%${search}%` } },
-      { full_name: { [Op.like]: `%${search}%` } },
+      { name: { [Op.like]: `%${search}%` } },
       { email: { [Op.like]: `%${search}%` } },
     ];
   }
   if (role) {
     where.role = role;
-  }
-  if (is_active !== undefined) {
-    where.is_active = is_active === 'true';
   }
 
   const { count, rows: users } = await User.findAndCountAll({
@@ -205,7 +203,7 @@ router.get('/:id', authenticate, authorize('admin', 'executive', 'manager'), asy
 
 router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncHandler(async (req, res) => {
   const { id } = req.params;
-  const { username, email, full_name, role, is_active } = req.body;
+  const { username, email, name, role, department, position_level } = req.body;
 
   const user = await User.findByPk(id);
   if (!user) {
@@ -238,9 +236,10 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   await user.update({
     username,
     email,
-    full_name,
+    name,
     role,
-    is_active,
+    department,
+    position_level,
   });
 
   const updatedUser = await User.findByPk(id, {

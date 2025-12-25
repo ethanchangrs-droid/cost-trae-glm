@@ -16,7 +16,7 @@
         "添加按姓名搜索功能",
         "实现用户选择弹窗组件"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "用户管理功能测试",
         "type": "e2e",
