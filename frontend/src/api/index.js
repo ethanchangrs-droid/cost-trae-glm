@@ -9,41 +9,17 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
-    }
     return Promise.reject(error);
   }
 );
-
-export const authAPI = {
-  login: (username, password) => api.post('/users/login', { username, password }),
-  register: (data) => api.post('/users/register', data),
-  getProfile: () => api.get('/users/profile'),
-  updateProfile: (data) => api.put('/users/profile', data),
-};
 
 export const userAPI = {
   getUsers: (params) => api.get('/users', { params }),
   getUser: (id) => api.get(`/users/${id}`),
+  createUser: (data) => api.post('/users', data),
   updateUser: (id, data) => api.put(`/users/${id}`, data),
   deleteUser: (id) => api.delete(`/users/${id}`),
 };

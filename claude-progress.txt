@@ -6,8 +6,8 @@
 
 | 属性 | 内容 |
 |------|------|
-| 最后更新 | 2025-12-25 18:02 |
-| 当前功能 | FEAT-001用户管理功能 |
+| 最后更新 | 2025-12-25 18:15 |
+| 当前功能 | Bug修复：删除登录功能 |
 | 代码状态 | ✅ 可运行 |
 | 最后 Commit | 待提交 |
 
@@ -160,6 +160,36 @@
 1. 开始开发 FEAT-004: 混合填单界面
 2. 实现票据识别与信息提取功能（FEAT-003）
 
+### 2025-12-25 会话 6
+
+**完成内容**:
+- ✅ Bug修复：删除登录功能，使系统与需求一致
+- ✅ 删除文件：Login.jsx、AuthContext.jsx
+- ✅ 修改App.jsx：移除AuthProvider、ProtectedRoute、/login路由
+- ✅ 修改MainLayout.jsx：移除用户信息、用户菜单、退出登录功能，移除角色权限控制
+- ✅ 修改api/index.js：移除authAPI、token拦截器、401跳转逻辑，添加userAPI.createUser
+- ✅ 修改UserList.jsx：移除authAPI导入，使用userAPI.createUser替代authAPI.register
+- ✅ 验证：前端HMR正常工作，无登录相关残留引用
+
+**Bug分析**:
+- 现象：feature_list.json中没有登录功能，但前端代码中存在完整登录实现
+- 原因：会话2需求变更移除登录功能时，前端代码未同步清理
+- 影响：用户管理功能依赖authAPI.register，需要改用userAPI.createUser
+
+**修复结果**:
+- 系统变为免登录访问模式
+- 所有页面可直接访问，无需认证
+- 移除所有用户身份验证和权限控制逻辑
+- MainLayout简化为纯导航布局
+
+**本次验证**:
+- 结果：通过
+- 证据：前端HMR正常，无登录相关残留引用
+
+**下一步**:
+1. 开始开发 FEAT-004: 混合填单界面
+2. 实现票据识别与信息提取功能（FEAT-003）
+
 ---
 
 ## 下一个待完成功能
@@ -185,7 +215,6 @@
 - **前端**: React 18.x + Ant Design 5.x + Vite
 - **后端**: Node.js 18.x + Express.js + SQLite3
 - **LLM**: 阿里云百炼平台
-- **身份验证**: JWT
 - **开发工具**: ESLint + Prettier + Git
 
 ---

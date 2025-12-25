@@ -15,7 +15,7 @@ import {
   Col,
 } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined, SearchOutlined } from '@ant-design/icons';
-import { userAPI, authAPI } from '../../api';
+import { userAPI } from '../../api';
 
 const { Search } = Input;
 const { Option } = Select;
@@ -110,7 +110,7 @@ const UserList = () => {
         await userAPI.updateUser(editingUser.id, submitData);
         message.success('更新成功');
       } else {
-        await authAPI.register(submitData);
+        await userAPI.createUser(submitData);
         message.success('创建成功');
       }
 
