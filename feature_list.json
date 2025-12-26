@@ -35,7 +35,7 @@
         "提取结构化信息（类型、金额、日期等）",
         "生成智能描述文本"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "票据识别准确性测试",
         "type": "integration",
@@ -73,7 +73,7 @@
         "开发自动填充功能",
         "添加合规性分析逻辑"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "LLM智能辅助功能测试",
         "type": "integration",
@@ -111,7 +111,7 @@
         "添加违规高亮提示",
         "提供修改建议功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "实时规则验证测试",
         "type": "e2e",
@@ -130,7 +130,7 @@
         "创建验证结果展示",
         "添加验证历史记录"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "提交验证功能测试",
         "type": "e2e",

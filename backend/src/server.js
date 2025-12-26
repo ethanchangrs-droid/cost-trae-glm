@@ -2,6 +2,7 @@ const app = require('./app');
 const config = require('./config');
 const logger = require('./utils/logger');
 const { sequelize } = require('./config/database');
+const { CityTier } = require('./models');
 
 const startServer = async () => {
   try {
@@ -13,6 +14,9 @@ const startServer = async () => {
     if (config.server.env === 'development') {
       await sequelize.sync({ force: true });
       logger.info('数据库模型同步完成');
+      
+      await CityTier.initializeCities();
+      logger.info('城市数据初始化完成');
     }
     
     const server = app.listen(config.server.port, () => {

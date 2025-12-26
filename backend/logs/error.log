@@ -67,3 +67,22 @@ Error
 2025-12-25 18:38:39 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-25 18:40:04 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error: 结束日期必须晚于开始日期","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-25 18:40:20 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"只允许上传图片（JPEG、JPG、PNG、GIF）和文档（PDF、DOC、DOCX）文件","url":"/api/upload/receipt","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 10:44:16 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Invalid value { departure: '北京', arrival: '上海', seat_class: '二等座' }","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 10:50:55 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_CONSTRAINT: FOREIGN KEY constraint failed","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 10:51:20 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_CONSTRAINT: FOREIGN KEY constraint failed","url":"/api/expenses","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:12:40 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/validation/rules/active","url":"/api/validation/rules/active","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:12:47 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/validation/realtime/summary","url":"/api/validation/realtime/summary","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:16:01 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/rules","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:16:01 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/rules","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:16:22 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/city-tiers","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 11:17:40 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers/bulk-init","url":"/api/city-tiers/bulk-init","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 12:32:38 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/expenses/validate/submit","url":"/api/expenses/validate/submit","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 12:41:40 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:41:19 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/llm/suggestion","url":"/api/llm/suggestion","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:41:55 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/suggestion","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:42:10 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/autofill","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:42:10 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/compliance","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:42:46 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/suggestion","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:42:47 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/autofill","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 14:44:57 [ERROR]: 端口 3001 已被占用 {"service":"expense-system-api","environment":"development"}
+2025-12-26 14:46:46 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/llm/suggestion","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}

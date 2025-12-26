@@ -31,6 +31,9 @@ export const expenseAPI = {
   updateExpense: (id, data) => api.put(`/expenses/${id}`, data),
   deleteExpense: (id) => api.delete(`/expenses/${id}`),
   validateExpense: (id) => api.post(`/expenses/${id}/validate`),
+  validateSubmit: (expenseData, userId) => api.post('/expenses/validate/submit', { expenseData, user_id: userId }),
+  getValidationHistory: (id, limit = 10) => api.get(`/expenses/${id}/validation-history`, { params: { limit } }),
+  getValidationStats: (id) => api.get(`/expenses/${id}/validation-stats`),
 };
 
 export const ruleAPI = {
@@ -59,6 +62,17 @@ export const uploadAPI = {
 
 export const llmAPI = {
   getAssistance: (prompt) => api.post('/llm/assist', { prompt }),
+  getSuggestion: (field, value, context) => api.post('/llm/suggestion', { field, value, context }),
+  getAutofill: (itemType, partialData) => api.post('/llm/autofill', { item_type: itemType, partial_data: partialData }),
+  getCompliance: (expenseData, rules) => api.post('/llm/compliance', { expense_data: expenseData, rules }),
+};
+
+export const validationAPI = {
+  validateItem: (itemData, userId, cityName) => api.post('/validation/realtime/item', { itemData, user_id: userId, city_name: cityName }),
+  validateForm: (expenseData, userId) => api.post('/validation/realtime/form', { expenseData, user_id: userId }),
+  validateSummary: (expenseData, userId) => api.post('/validation/realtime/summary', { expenseData, user_id: userId }),
+  getActiveRules: (params) => api.get('/validation/rules/active', { params }),
+  getApplicableRules: (userId, cityName) => api.get('/validation/rules/applicable', { params: { user_id: userId, city_name: cityName } }),
 };
 
 export default api;

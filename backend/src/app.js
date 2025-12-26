@@ -94,6 +94,7 @@ app.use('/api/rules', require('./routes/rules'));
 app.use('/api/city-tiers', require('./routes/cityTiers'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/llm', require('./routes/llm'));
+app.use('/api/validation', require('./routes/validation'));
 
 app.use(notFound);
 app.use(errorHandler);

@@ -5,6 +5,39 @@ const fs = require('fs').promises;
 const { authenticate } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const config = require('../config');
+const { extractStructuredData } = require('../services/ocrService');
+
+const callLLM = async (prompt) => {
+  const response = await fetch(`${config.llm.baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${config.llm.apiKey}`,
+    },
+    body: JSON.stringify({
+      model: config.llm.model,
+      messages: [
+        {
+          role: 'system',
+          content: '你是一个专业的费用报销助手，能够基于票据识别结果生成简洁、专业的报销描述。'
+        },
+        {
+          role: 'user',
+          content: prompt,
+        },
+      ],
+      temperature: 0.5,
+      max_tokens: 200,
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`LLM API调用失败: ${response.status} ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data.choices[0].message.content;
+};
 
 const router = express.Router();
 
@@ -62,23 +95,48 @@ router.post('/receipt', upload.single('file'), asyncHandler(async (req, res) => 
     url: `/uploads/${req.file.filename}`,
   };
 
+  const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+
+  const ocrResult = await extractStructuredData(imageUrl);
+
+  let extractedData;
+  let description = '';
+
+  if (ocrResult.success) {
+    extractedData = ocrResult.data;
+
+    const descriptionPrompt = `请为以下票据识别结果生成简洁、专业的报销描述（50-100字）：
+
+票据类型：${extractedData.item_type}
+金额：${extractedData.amount}
+日期：${extractedData.date}
+商家：${extractedData.merchant}
+详情：${JSON.stringify(extractedData.details)}`;
+
+    try {
+      description = await callLLM(descriptionPrompt);
+    } catch (error) {
+      console.error('LLM描述生成失败:', error);
+      description = '系统自动生成的描述';
+    }
+  } else {
+    extractedData = {
+      item_type: 'other',
+      description: '未识别的票据',
+      amount: 0,
+      date: new Date().toISOString().split('T')[0],
+      merchant: '未知',
+      details: {},
+    };
+    description = '票据识别失败，请手动填写信息';
+  }
+
   res.json({
     success: true,
     data: {
       preview_url: `/uploads/${req.file.filename}`,
-      extracted_data: {
-        item_type: 'transport',
-        description: '北京至上海高铁票',
-        amount: 553.5,
-        date: new Date().toISOString().split('T')[0],
-        details: {
-          departure: '北京',
-          arrival: '上海',
-          seat_class: '二等座',
-          ticket_number: 'G1234567890',
-        },
-      },
-      description: '乘坐高铁从北京前往上海，出差期间交通费用',
+      extracted_data: extractedData,
+      description: description.trim(),
     },
   });
 }));

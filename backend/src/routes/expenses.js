@@ -432,11 +432,11 @@ async function validateWithStructuredRule(expense, rule, structuredContent) {
 
   // 检查职位等级是否匹配
   if (rule.position_level && expense.user) {
-    if (expense.user.role !== rule.position_level) {
+    if (expense.user.position_level !== rule.position_level) {
       ruleApplicable = false;
       result.passed = true;
       result.message = '规则不适用（职位等级不匹配）';
-      result.details.position_level = { expected: rule.position_level, actual: expense.user.role };
+      result.details.position_level = { expected: rule.position_level, actual: expense.user.position_level };
       return result;
     }
   }
@@ -487,6 +487,259 @@ async function validateWithNaturalRule(expense, rule) {
   }
 
   return result;
+}
+
+const ruleEngine = require('../services/ruleEngine');
+
+router.post('/validate/submit', asyncHandler(async (req, res) => {
+  const { expenseData, user_id } = req.body;
+
+  const validationErrors = validateExpenseData(expenseData);
+  if (validationErrors.length > 0) {
+    return res.status(400).json({
+      success: false,
+      error: {
+        code: 'VALIDATION_ERROR',
+        message: '表单数据验证失败',
+        details: validationErrors,
+      },
+    });
+  }
+
+  const user = await User.findByPk(user_id, {
+    attributes: ['id', 'name', 'employee_id', 'position_level', 'role'],
+  });
+
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'USER_NOT_FOUND',
+        message: '用户不存在',
+      },
+    });
+  }
+
+  const cityTier = await ruleEngine.getCityTierByCityName(expenseData.destination_city);
+
+  const validationResults = await ruleEngine.validateExpenseForm(expenseData, user);
+
+  const overallStatus = validationResults.overall_valid ? 'approved' : 
+                         (validationResults.summary.passed_items > 0 ? 'partial' : 'rejected');
+
+  const itemsValidation = {};
+  validationResults.items_validation.forEach(item => {
+    const itemData = expenseData.items[item.item_index];
+    const itemValidation = item.validation_results;
+    const passed = itemValidation.every(r => r.passed);
+    const failed = itemValidation.some(r => !r.passed);
+
+    let status = 'passed';
+    if (failed) {
+      status = 'failed';
+    } else if (itemValidation.some(r => r.warning)) {
+      status = 'warning';
+    }
+
+    itemsValidation[item.item_index] = {
+      item_index: item.item_index,
+      item_type: itemData.item_type,
+      description: itemData.description,
+      amount: itemData.amount,
+      status: status,
+      validation_results: itemValidation,
+      validation_message: itemValidation.length > 0 ? 
+        itemValidation.find(r => !r.passed)?.message || itemValidation[0].message : 
+        '验证通过',
+    };
+  });
+
+  const allWarnings = validationResults.warnings.map(w => 
+    typeof w === 'string' ? w : w.message || w.toString()
+  );
+
+  const allSuggestions = validationResults.suggestions.map(s =>
+    typeof s === 'string' ? s : s.toString()
+  );
+
+  const report = {
+    validation_id: Date.now(),
+    validated_at: new Date().toISOString(),
+    user_info: {
+      user_id: user.id,
+      user_name: user.name,
+      employee_id: user.employee_id,
+      position_level: user.position_level,
+    },
+    expense_info: {
+      total_amount: expenseData.total_amount,
+      total_items: expenseData.items.length,
+      destination_city: expenseData.destination_city,
+      city_tier: cityTier,
+      trip_start_date: expenseData.trip_start_date,
+      trip_end_date: expenseData.trip_end_date,
+    },
+    summary: {
+      overall_status: overallStatus,
+      total_items: validationResults.summary.total_items,
+      passed_items: validationResults.summary.passed_items,
+      failed_items: validationResults.summary.failed_items,
+      warnings_count: allWarnings.length,
+    },
+    items_validation: itemsValidation,
+    all_warnings: allWarnings,
+    all_suggestions: allSuggestions,
+    recommendations: generateRecommendations(validationResults, user),
+  };
+
+  res.json({
+    success: true,
+    data: report,
+  });
+}));
+
+router.get('/:id/validation-history', asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { limit = 10 } = req.query;
+
+  const expense = await Expense.findByPk(id);
+  if (!expense) {
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'EXPENSE_NOT_FOUND',
+        message: '费用记录不存在',
+      },
+    });
+  }
+
+  const history = await RuleValidation.findAll({
+    where: { expense_id: id },
+    include: [
+      {
+        model: require('../models').Rule,
+        as: 'rule',
+        attributes: ['id', 'name', 'rule_type', 'rule_storage_type'],
+      },
+    ],
+    order: [['created_at', 'DESC']],
+    limit: parseInt(limit),
+  });
+
+  res.json({
+    success: true,
+    data: history,
+  });
+}));
+
+router.get('/:id/validation-stats', asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const expense = await Expense.findByPk(id);
+  if (!expense) {
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'EXPENSE_NOT_FOUND',
+        message: '费用记录不存在',
+      },
+    });
+  }
+
+  const validations = await RuleValidation.findAll({
+    where: { expense_id: id },
+  });
+
+  const stats = {
+    total_validations: validations.length,
+    passed_count: 0,
+    failed_count: 0,
+    total_execution_time_ms: 0,
+    avg_execution_time_ms: 0,
+    total_llm_calls: 0,
+    validation_types: {
+      structured: 0,
+      natural: 0,
+      hybrid: 0,
+    },
+    rule_stats: {},
+  };
+
+  validations.forEach(v => {
+    const result = JSON.parse(v.validation_result);
+    if (result.passed) {
+      stats.passed_count++;
+    } else {
+      stats.failed_count++;
+    }
+    stats.total_execution_time_ms += v.execution_time_ms;
+    stats.total_llm_calls += v.llm_calls_count || 0;
+    stats.validation_types[v.validation_type] = (stats.validation_types[v.validation_type] || 0) + 1;
+
+    if (!stats.rule_stats[v.rule_id]) {
+      stats.rule_stats[v.rule_id] = {
+        rule_id: v.rule_id,
+        validation_count: 0,
+        passed_count: 0,
+        failed_count: 0,
+        avg_execution_time_ms: 0,
+      };
+    }
+    stats.rule_stats[v.rule_id].validation_count++;
+    if (result.passed) {
+      stats.rule_stats[v.rule_id].passed_count++;
+    } else {
+      stats.rule_stats[v.rule_id].failed_count++;
+    }
+    stats.rule_stats[v.rule_id].avg_execution_time_ms += v.execution_time_ms;
+  });
+
+  if (validations.length > 0) {
+    stats.avg_execution_time_ms = stats.total_execution_time_ms / validations.length;
+    Object.keys(stats.rule_stats).forEach(ruleId => {
+      stats.rule_stats[ruleId].avg_execution_time_ms /= stats.rule_stats[ruleId].validation_count;
+    });
+  }
+
+  res.json({
+    success: true,
+    data: stats,
+  });
+}));
+
+function generateRecommendations(validationResults, user) {
+  const recommendations = [];
+
+  if (validationResults.summary.failed_items > 0) {
+    recommendations.push(
+      `有 ${validationResults.summary.failed_items} 项费用未通过验证，请检查并调整`
+    );
+  }
+
+  if (validationResults.warnings.length > 0) {
+    recommendations.push(
+      `发现 ${validationResults.warnings.length} 条警告，建议在提交前处理`
+    );
+  }
+
+  const highAmountItems = validationResults.items_validation.filter(item => {
+    const itemData = item.validation_results.find(r => r.rule_type === 'accommodation');
+    return itemData && itemData.details && itemData.details.amount && itemData.details.amount.actual > 500;
+  });
+
+  if (highAmountItems.length > 0) {
+    recommendations.push(
+      `部分费用金额较高，建议提供详细的报销说明或补充材料`
+    );
+  }
+
+  if (user.position_level === 'executive') {
+    recommendations.push(
+      '作为高管人员，您的报销额度较高，请确保费用符合公司财务制度'
+    );
+  }
+
+  return recommendations;
 }
 
 module.exports = router;

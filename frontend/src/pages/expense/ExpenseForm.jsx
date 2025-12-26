@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Card, Form, Button, Upload, Table, Input, DatePicker, Select, message, Row, Col, Alert, Space, Tag, Typography, Modal, Statistic } from 'antd';
 import { UploadOutlined, CheckCircleOutlined, CloseCircleOutlined, WarningOutlined, PlusOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { expenseAPI, uploadAPI } from '../../api';
+import { expenseAPI, uploadAPI, validationAPI } from '../../api';
 import UserSelectModal from '../users/UserSelectModal';
 import './ExpenseForm.css';
 
@@ -22,6 +22,11 @@ const ExpenseForm = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [formStatus, setFormStatus] = useState('draft');
+  const [itemValidationStates, setItemValidationStates] = useState({});
+  const [realtimeValidating, setRealtimeValidating] = useState(false);
+  const [formValidationSummary, setFormValidationSummary] = useState(null);
+  const [validationReportVisible, setValidationReportVisible] = useState(false);
+  const [currentValidationReport, setCurrentValidationReport] = useState(null);
 
   const itemTypeOptions = [
     { label: '交通', value: 'transport' },
@@ -93,12 +98,84 @@ const ExpenseForm = () => {
     setExpenseItems([...expenseItems, newItem]);
   };
 
-  const handleUpdateItem = (id, field, value) => {
+  const handleUpdateItem = async (id, field, value) => {
     const updatedItems = expenseItems.map(item =>
       item.id === id ? { ...item, [field]: value } : item
     );
     setExpenseItems(updatedItems);
     calculateTotal(updatedItems);
+    
+    const updatedItem = updatedItems.find(item => item.id === id);
+    if (updatedItem && updatedItem.amount > 0 && selectedUser) {
+      await performRealtimeItemValidation(updatedItem, id);
+    } else {
+      setItemValidationStates(prev => ({
+        ...prev,
+        [id]: null,
+      }));
+    }
+  };
+
+  const performRealtimeItemValidation = async (item, itemId) => {
+    try {
+      setRealtimeValidating(true);
+      
+      const itemData = {
+        item_type: item.item_type,
+        description: item.description,
+        amount: item.amount,
+        date: item.date ? item.date.format('YYYY-MM-DD') : null,
+        item_index: expenseItems.findIndex(i => i.id === itemId),
+      };
+      
+      const formValues = form.getFieldsValue();
+      const cityName = formValues.destination_city || null;
+      
+      const response = await validationAPI.validateItem(itemData, selectedUser?.id, cityName);
+      
+      if (response.data.success) {
+        const validationResult = response.data.data;
+        setItemValidationStates(prev => ({
+          ...prev,
+          [itemId]: validationResult,
+        }));
+        
+        await performRealtimeFormValidation();
+      }
+    } catch (error) {
+      console.error('实时验证失败:', error);
+    } finally {
+      setRealtimeValidating(false);
+    }
+  };
+
+  const performRealtimeFormValidation = async () => {
+    if (expenseItems.length === 0 || !selectedUser) {
+      setFormValidationSummary(null);
+      return;
+    }
+    
+    try {
+      const formValues = form.getFieldsValue();
+      const expenseData = {
+        items: expenseItems.map((item, index) => ({
+          item_type: item.item_type,
+          description: item.description,
+          amount: item.amount,
+          date: item.date ? item.date.format('YYYY-MM-DD') : null,
+          details: item.details || {},
+        })),
+        destination_city: formValues.destination_city || null,
+      };
+      
+      const response = await validationAPI.validateSummary(expenseData, selectedUser?.id);
+      
+      if (response.data.success) {
+        setFormValidationSummary(response.data.data);
+      }
+    } catch (error) {
+      console.error('表单实时验证失败:', error);
+    }
   };
 
   const handleDeleteItem = (id) => {
@@ -218,90 +295,52 @@ const ExpenseForm = () => {
       return;
     }
     
-    Modal.confirm({
-      title: '确认提交验证',
-      icon: <ExclamationCircleOutlined />,
-      content: (
-        <div>
-          <p>您即将提交费用报销申请进行验证，提交后将无法修改。</p>
-          <div style={{ marginTop: 16 }}>
-            <Space direction="vertical" style={{ width: '100%' }}>
-              <Statistic title="报销人" value={selectedUser?.name || '-'} />
-              <Statistic title="总金额" value={totalAmount} precision={2} prefix="¥" />
-              <Statistic title="费用项目数" value={expenseItems.length} suffix="项" />
-            </Space>
-          </div>
-        </div>
-      ),
-      okText: '确认提交',
-      cancelText: '取消',
-      onOk: async () => {
-        try {
-          setLoading(true);
-          const values = await form.validateFields();
-          
-          if (!values.trip_start_date || !values.trip_end_date) {
-            message.error('请选择出差日期');
-            return;
-          }
-          
-          if (values.trip_start_date.isAfter(values.trip_end_date)) {
-            message.error('出差开始日期不能晚于结束日期');
-            return;
-          }
-          
-          const expenseData = {
-            user_id: values.user_id,
-            trip_start_date: values.trip_start_date.format('YYYY-MM-DD'),
-            trip_end_date: values.trip_end_date.format('YYYY-MM-DD'),
-            destination_city: values.destination_city,
-            trip_reason: values.trip_reason,
-            total_amount: totalAmount,
-            items: expenseItems.map(item => ({
-              item_type: item.item_type,
-              description: item.description,
-              amount: item.amount,
-              date: item.date?.format('YYYY-MM-DD'),
-              details: item.details,
-            })),
-          };
-          
-          const response = await expenseAPI.createExpense(expenseData);
-          const expenseId = response.data.id;
-          
-          const validationResponse = await expenseAPI.validateExpense(expenseId);
-          if (validationResponse.data.success) {
-            setValidationResults(validationResponse.data.data.validation_results || []);
-            const overallStatus = validationResponse.data.data.status;
-            
-            form.resetFields();
-            setExpenseItems([]);
-            setReceiptPreview(null);
-            setExtractedInfo(null);
-            setIntelligentDescription('');
-            setTotalAmount(0);
-            setSelectedUser(null);
-            setFormStatus('draft');
-            
-            if (overallStatus === 'approved') {
-              Modal.success({
-                title: '验证通过',
-                content: '您的费用报销申请已通过验证，可以提交报销。',
-              });
-            } else {
-              Modal.warning({
-                title: '验证未通过',
-                content: '您的费用报销申请未通过验证，请根据验证结果修改后重新提交。',
-              });
-            }
-          }
-        } catch (error) {
-          message.error('验证失败：' + (error.response?.data?.message || error.message));
-        } finally {
-          setLoading(false);
-        }
-      },
-    });
+    try {
+      setLoading(true);
+      const values = await form.validateFields();
+      
+      if (!values.trip_start_date || !values.trip_end_date) {
+        message.error('请选择出差日期');
+        return;
+      }
+      
+      if (values.trip_start_date.isAfter(values.trip_end_date)) {
+        message.error('出差开始日期不能晚于结束日期');
+        return;
+      }
+      
+      const expenseData = {
+        user_id: values.user_id,
+        trip_start_date: values.trip_start_date.format('YYYY-MM-DD'),
+        trip_end_date: values.trip_end_date.format('YYYY-MM-DD'),
+        destination_city: values.destination_city,
+        trip_reason: values.trip_reason,
+        total_amount: totalAmount,
+        items: expenseItems.map(item => ({
+          item_type: item.item_type,
+          description: item.description,
+          amount: item.amount,
+          date: item.date?.format('YYYY-MM-DD'),
+          details: item.details,
+        })),
+      };
+      
+      const response = await expenseAPI.validateSubmit(expenseData, selectedUser?.id);
+      
+      if (response.data.success) {
+        setCurrentValidationReport(response.data.data);
+        setValidationReportVisible(true);
+      }
+    } catch (error) {
+      message.error('验证失败：' + (error.response?.data?.message || error.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleReportClose = () => {
+    setValidationReportVisible(false);
+    setCurrentValidationReport(null);
   };
 
   const handleSubmitExpense = async () => {
@@ -433,14 +472,26 @@ const ExpenseForm = () => {
       dataIndex: 'amount',
       key: 'amount',
       width: 120,
-      render: (value, record) => (
-        <Input
-          type="number"
-          value={value}
-          onChange={(e) => handleUpdateItem(record.id, 'amount', parseFloat(e.target.value) || 0)}
-          placeholder="0.00"
-        />
-      ),
+      render: (value, record) => {
+        const validationState = itemValidationStates[record.id];
+        const hasError = validationState && !validationState.overall_valid;
+        return (
+          <div>
+            <Input
+              type="number"
+              value={value}
+              onChange={(e) => handleUpdateItem(record.id, 'amount', parseFloat(e.target.value) || 0)}
+              placeholder="0.00"
+              style={hasError ? { borderColor: '#ff4d4f' } : {}}
+            />
+            {hasError && validationState.warnings && validationState.warnings.length > 0 && (
+              <div style={{ fontSize: 12, color: '#ff4d4f', marginTop: 4 }}>
+                {validationState.warnings[0]}
+              </div>
+            )}
+          </div>
+        );
+      },
     },
     {
       title: '日期',
@@ -455,6 +506,25 @@ const ExpenseForm = () => {
           style={{ width: '100%' }}
         />
       ),
+    },
+    {
+      title: '验证状态',
+      key: 'validation_status',
+      width: 100,
+      render: (_, record) => {
+        const validationState = itemValidationStates[record.id];
+        if (!validationState) {
+          return <Tag color="default">待验证</Tag>;
+        }
+        if (validationState.overall_valid) {
+          return <Tag color="success" icon={<CheckCircleOutlined />}>通过</Tag>;
+        }
+        return (
+          <Tag color="error" icon={<CloseCircleOutlined />}>
+            未通过
+          </Tag>
+        );
+      },
     },
     {
       title: '操作',
@@ -623,8 +693,70 @@ const ExpenseForm = () => {
         </Form>
       </Card>
 
+      {formValidationSummary && (
+        <Card 
+          title={
+            <Space>
+              <span>实时验证摘要</span>
+              {realtimeValidating && <Tag color="processing">验证中...</Tag>}
+            </Space>
+          } 
+          className="form-section"
+          extra={
+            <Tag 
+              color={formValidationSummary.overall_valid ? 'success' : 'error'}
+              icon={formValidationSummary.overall_valid ? <CheckCircleOutlined /> : <CloseCircleOutlined />}
+            >
+              {formValidationSummary.overall_valid ? '验证通过' : '验证未通过'}
+            </Tag>
+          }
+        >
+          <Row gutter={16}>
+            <Col span={6}>
+              <Statistic 
+                title="费用项目数" 
+                value={formValidationSummary.total_items} 
+                suffix="项"
+              />
+            </Col>
+            <Col span={6}>
+              <Statistic 
+                title="验证通过" 
+                value={formValidationSummary.passed_items} 
+                suffix="项"
+                valueStyle={{ color: '#52c41a' }}
+              />
+            </Col>
+            <Col span={6}>
+              <Statistic 
+                title="验证未通过" 
+                value={formValidationSummary.failed_items} 
+                suffix="项"
+                valueStyle={{ color: '#ff4d4f' }}
+              />
+            </Col>
+            <Col span={6}>
+              <Statistic 
+                title="总金额" 
+                value={formValidationSummary.total_amount} 
+                precision={2}
+                prefix="¥"
+              />
+            </Col>
+          </Row>
+          {formValidationSummary.warnings_count > 0 && (
+            <Alert
+              type="warning"
+              message={`发现 ${formValidationSummary.warnings_count} 条警告，请检查费用项目详情`}
+              showIcon
+              style={{ marginTop: 16 }}
+            />
+          )}
+        </Card>
+      )}
+
       {validationResults.length > 0 && (
-        <Card title="实时验证结果" className="form-section">
+        <Card title="提交验证结果" className="form-section">
           {validationResults.map((result, index) => (
             <Alert
               key={index}
@@ -657,6 +789,166 @@ const ExpenseForm = () => {
         onCancel={() => setUserSelectVisible(false)}
         onConfirm={handleUserSelect}
       />
+
+      <Modal
+        title="提交验证报告"
+        open={validationReportVisible}
+        onCancel={handleReportClose}
+        width={800}
+        footer={[
+          <Button key="close" onClick={handleReportClose}>
+            关闭
+          </Button>,
+          <Button 
+            key="submit" 
+            type="primary" 
+            disabled={currentValidationReport?.summary?.overall_status === 'rejected'}
+            onClick={() => {
+              handleReportClose();
+              handleSubmitExpense();
+            }}
+          >
+            提交报销
+          </Button>,
+        ]}
+      >
+        {currentValidationReport && (
+          <div>
+            <Row gutter={16} style={{ marginBottom: 24 }}>
+              <Col span={12}>
+                <Statistic 
+                  title="验证状态" 
+                  value={currentValidationReport.summary.overall_status === 'approved' ? '通过' : 
+                         currentValidationReport.summary.overall_status === 'rejected' ? '未通过' : '部分通过'}
+                  valueStyle={{ 
+                    color: currentValidationReport.summary.overall_status === 'approved' ? '#52c41a' :
+                           currentValidationReport.summary.overall_status === 'rejected' ? '#ff4d4f' : '#faad14'
+                  }}
+                />
+              </Col>
+              <Col span={12}>
+                <Statistic 
+                  title="总金额" 
+                  value={currentValidationReport.expense_info.total_amount} 
+                  precision={2}
+                  prefix="¥"
+                />
+              </Col>
+            </Row>
+
+            <Row gutter={16} style={{ marginBottom: 24 }}>
+              <Col span={8}>
+                <Statistic title="费用项目数" value={currentValidationReport.summary.total_items} suffix="项" />
+              </Col>
+              <Col span={8}>
+                <Statistic 
+                  title="验证通过" 
+                  value={currentValidationReport.summary.passed_items} 
+                  suffix="项"
+                  valueStyle={{ color: '#52c41a' }}
+                />
+              </Col>
+              <Col span={8}>
+                <Statistic 
+                  title="验证未通过" 
+                  value={currentValidationReport.summary.failed_items} 
+                  suffix="项"
+                  valueStyle={{ color: '#ff4d4f' }}
+                />
+              </Col>
+            </Row>
+
+            {currentValidationReport.summary.warnings_count > 0 && (
+              <Alert
+                type="warning"
+                message={`发现 ${currentValidationReport.summary.warnings_count} 条警告`}
+                description={
+                  <ul style={{ marginTop: 8, marginBottom: 0 }}>
+                    {currentValidationReport.all_warnings?.map((warning, index) => (
+                      <li key={index}>{warning}</li>
+                    ))}
+                  </ul>
+                }
+                showIcon
+                style={{ marginBottom: 16 }}
+              />
+            )}
+
+            {currentValidationReport.recommendations && currentValidationReport.recommendations.length > 0 && (
+              <Alert
+                type="info"
+                message="优化建议"
+                description={
+                  <ul style={{ marginTop: 8, marginBottom: 0 }}>
+                    {currentValidationReport.recommendations.map((rec, index) => (
+                      <li key={index}>{rec}</li>
+                    ))}
+                  </ul>
+                }
+                showIcon
+                style={{ marginBottom: 16 }}
+              />
+            )}
+
+            <div style={{ marginBottom: 16 }}>
+              <Title level={5}>费用项目验证详情</Title>
+              <Table
+                columns={[
+                  {
+                    title: '序号',
+                    dataIndex: 'item_index',
+                    key: 'item_index',
+                    width: 60,
+                  },
+                  {
+                    title: '类型',
+                    dataIndex: 'item_type',
+                    key: 'item_type',
+                    render: (text) => {
+                      const typeMap = { transport: '交通', accommodation: '住宿', meal: '餐饮' };
+                      return typeMap[text] || text;
+                    },
+                  },
+                  {
+                    title: '描述',
+                    dataIndex: 'description',
+                    key: 'description',
+                    ellipsis: true,
+                  },
+                  {
+                    title: '金额',
+                    dataIndex: 'amount',
+                    key: 'amount',
+                    render: (text) => `¥${text.toFixed(2)}`,
+                  },
+                  {
+                    title: '状态',
+                    dataIndex: 'status',
+                    key: 'status',
+                    render: (text) => (
+                      <Tag 
+                        color={text === 'passed' ? 'success' : text === 'failed' ? 'error' : 'warning'}
+                      >
+                        {text === 'passed' ? '通过' : text === 'failed' ? '未通过' : '警告'}
+                      </Tag>
+                    ),
+                  },
+                  {
+                    title: '验证信息',
+                    dataIndex: 'validation_message',
+                    key: 'validation_message',
+                    ellipsis: true,
+                  },
+                ]}
+                dataSource={Object.values(currentValidationReport.items_validation || {})}
+                rowKey="item_index"
+                pagination={false}
+                size="small"
+              />
+            </div>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };

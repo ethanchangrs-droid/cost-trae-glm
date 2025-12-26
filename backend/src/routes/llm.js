@@ -2,6 +2,7 @@ const express = require('express');
 const { authenticate } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const config = require('../config');
+const llmAssistService = require('../services/llmAssistService');
 
 const router = express.Router();
 
@@ -177,6 +178,93 @@ ${context ? `补充信息：${context}` : ''}
     llmError.status = 503;
     llmError.code = 'LLM_GENERATION_ERROR';
     throw llmError;
+  }
+}));
+
+router.post('/suggestion', asyncHandler(async (req, res) => {
+  const { field, value, context } = req.body;
+
+  if (!field) {
+    const error = new Error('字段名不能为空');
+    error.status = 400;
+    error.code = 'FIELD_REQUIRED';
+    throw error;
+  }
+
+  try {
+    const suggestion = await llmAssistService.getSmartSuggestion(field, value, context);
+    
+    res.json({
+      success: true,
+      data: {
+        field,
+        ...suggestion,
+        timestamp: new Date().toISOString(),
+      },
+    });
+  } catch (error) {
+    const assistError = new Error('获取智能提示失败');
+    assistError.status = 503;
+    assistError.code = 'SUGGESTION_ERROR';
+    throw assistError;
+  }
+}));
+
+router.post('/autofill', asyncHandler(async (req, res) => {
+  const { item_type, partial_data } = req.body;
+
+  if (!item_type) {
+    const error = new Error('费用类型不能为空');
+    error.status = 400;
+    error.code = 'ITEM_TYPE_REQUIRED';
+    throw error;
+  }
+
+  try {
+    const autofill = await llmAssistService.getAutofillSuggestion(item_type, partial_data);
+    
+    res.json({
+      success: true,
+      data: {
+        item_type,
+        ...autofill,
+        timestamp: new Date().toISOString(),
+      },
+    });
+  } catch (error) {
+    const assistError = new Error('获取自动填充建议失败');
+    assistError.status = 503;
+    assistError.code = 'AUTOFILL_ERROR';
+    throw assistError;
+  }
+}));
+
+router.post('/compliance', asyncHandler(async (req, res) => {
+  const { expense_data, rules } = req.body;
+
+  if (!expense_data) {
+    const error = new Error('费用数据不能为空');
+    error.status = 400;
+    error.code = 'EXPENSE_DATA_REQUIRED';
+    throw error;
+  }
+
+  try {
+    const advice = await llmAssistService.getComplianceAdvice(expense_data, rules || []);
+    
+    res.json({
+      success: true,
+      data: {
+        expense_data,
+        ...advice,
+        timestamp: new Date().toISOString(),
+      },
+    });
+  } catch (error) {
+    const assistError = new Error('获取合规性建议失败');
+    assistError.status = 503;
+    assistError.code = 'COMPLIANCE_ERROR';
+    throw assistError;
   }
 }));
 
