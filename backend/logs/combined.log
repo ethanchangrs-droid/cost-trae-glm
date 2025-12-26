@@ -826,3 +826,323 @@ Error
 2025-12-26 17:22:15 [INFO]: ::1 - - [26/Dec/2025:09:22:15 +0000] "GET /api/expenses?min_amount=400&sort_by=total_amount&sort_order=DESC HTTP/1.1" 200 880 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
 2025-12-26 17:22:26 [INFO]: ::1 - - [26/Dec/2025:09:22:26 +0000] "GET /api/expenses?page=1&limit=10&sort_by=total_amount&sort_order=DESC HTTP/1.1" 200 1470 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
 2025-12-26 17:22:33 [INFO]: ::1 - - [26/Dec/2025:09:22:33 +0000] "GET /api/expenses?item_type=transport HTTP/1.1" 200 688 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:28:33 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:18 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:18 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:18 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:18 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:19 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:23 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:23 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:29:33 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:32:54 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"expenses is associated to expense_items using an alias. You must use the 'as' keyword to specify the alias within your include statement.","url":"/api/admin/stats","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:32:54 [INFO]: ::1 - - [26/Dec/2025:09:32:54 +0000] "GET /api/admin/stats HTTP/1.1" 500 288 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:32:54 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"users is associated to expenses using an alias. You must use the 'as' keyword to specify the alias within your include statement.","url":"/api/admin/expenses?page=1&limit=5","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:32:54 [INFO]: ::1 - - [26/Dec/2025:09:32:54 +0000] "GET /api/admin/expenses?page=1&limit=5 HTTP/1.1" 500 298 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such table: main.city_tiers {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `city_tiers_city_name` ON `city_tiers` (`city_name`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `city_tiers_city_name` ON `city_tiers` (`city_name`)"},"sql":"CREATE UNIQUE INDEX `city_tiers_city_name` ON `city_tiers` (`city_name`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async city_tiers.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-26 17:34:20 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:20 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [ERROR]: 服务器启动失败: SQLITE_ERROR: index users_username already exists {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-26 17:34:34 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:34 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:45 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:45 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:45 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:45 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:45 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such table: main.users {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-26 17:34:46 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:34:46 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [ERROR]: 服务器启动失败: SQLITE_ERROR: index users_username already exists {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-26 17:36:04 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:04 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such table: city_tiers {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'上海','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'广州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'深圳','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'杭州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南京','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'武汉','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'成都','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西安','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'郑州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'重庆','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'天津','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'苏州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长沙','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'青岛','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'石家庄','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'太原','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'沈阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长春','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'济南','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'昆明','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'兰州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'银川','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'拉萨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'海口','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'贵阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'福州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南昌','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'合肥','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00');"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'上海','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'广州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'深圳','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'杭州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南京','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'武汉','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'成都','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西安','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'郑州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'重庆','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'天津','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'苏州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长沙','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'青岛','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'石家庄','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'太原','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'沈阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长春','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'济南','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'昆明','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'兰州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'银川','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'拉萨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'海口','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'贵阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'福州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南昌','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'合肥','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00');"},"sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'上海','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'广州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'深圳','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'杭州','first','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南京','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'武汉','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'成都','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西安','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'郑州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'重庆','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'天津','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'苏州','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长沙','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'青岛','second','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'石家庄','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'太原','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'沈阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'长春','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'济南','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'昆明','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'兰州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'银川','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'西宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'拉萨','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'海口','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南宁','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'贵阳','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'福州','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'南昌','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00'),(NULL,'合肥','third','2025-12-26 09:36:32.200 +00:00','2025-12-26 09:36:32.200 +00:00');","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.bulkInsert (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:346:21)
+    at async recursiveBulkCreate (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:1697:25)
+    at async city_tiers.bulkCreate (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:1786:12)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:18:7)
+2025-12-26 17:36:32 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:32 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:36:58 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:09 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such table: city_tiers {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'上海','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'广州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'深圳','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'杭州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南京','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'武汉','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'成都','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西安','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'郑州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'重庆','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'天津','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'苏州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长沙','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'青岛','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'石家庄','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'太原','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'沈阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长春','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'济南','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'昆明','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'兰州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'银川','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'拉萨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'海口','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'贵阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'福州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南昌','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'合肥','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00');"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'上海','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'广州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'深圳','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'杭州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南京','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'武汉','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'成都','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西安','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'郑州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'重庆','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'天津','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'苏州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长沙','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'青岛','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'石家庄','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'太原','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'沈阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长春','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'济南','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'昆明','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'兰州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'银川','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'拉萨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'海口','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'贵阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'福州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南昌','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'合肥','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00');"},"sql":"INSERT OR IGNORE INTO `city_tiers` (`id`,`city_name`,`tier`,`created_at`,`updated_at`) VALUES (NULL,'北京','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'上海','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'广州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'深圳','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'杭州','first','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南京','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'武汉','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'成都','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西安','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'郑州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'重庆','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'天津','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'苏州','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长沙','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'青岛','second','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'石家庄','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'太原','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'呼和浩特','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'沈阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'长春','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'哈尔滨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'济南','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'昆明','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'兰州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'银川','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'西宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'乌鲁木齐','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'拉萨','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'海口','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南宁','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'贵阳','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'福州','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'南昌','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00'),(NULL,'合肥','third','2025-12-26 09:37:52.391 +00:00','2025-12-26 09:37:52.391 +00:00');","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.bulkInsert (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:346:21)
+    at async recursiveBulkCreate (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:1697:25)
+    at async city_tiers.bulkCreate (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:1786:12)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:18:7)
+2025-12-26 17:37:52 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:37:52 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [ERROR]: 服务器启动失败: SQLITE_ERROR: index users_username already exists {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)"},"sql":"CREATE UNIQUE INDEX `users_username` ON `users` (`username`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async users.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-26 17:38:11 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:11 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:18 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:19 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:19 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:19 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:49 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:38:55 [INFO]: ::1 - - [26/Dec/2025:09:38:55 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:40:21 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/auth/register","url":"/api/auth/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:40:21 [INFO]: ::1 - - [26/Dec/2025:09:40:21 +0000] "POST /api/auth/register HTTP/1.1" 404 177 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:40:42 [INFO]: ::1 - - [26/Dec/2025:09:40:42 +0000] "POST /api/users/register HTTP/1.1" 201 320 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:10 [INFO]: ::1 - - [26/Dec/2025:09:41:10 +0000] "POST /api/expenses HTTP/1.1" 400 127 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:21 [INFO]: ::1 - - [26/Dec/2025:09:41:21 +0000] "POST /api/expenses HTTP/1.1" 400 127 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:26 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: user.user_id","url":"/api/admin/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:41:26 [INFO]: ::1 - - [26/Dec/2025:09:41:26 +0000] "GET /api/admin/expenses HTTP/1.1" 500 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:44 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:44 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:44 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:44 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:53 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:53 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:53 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:41:53 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:24 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:24 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:24 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:24 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:47 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:47 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:47 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:42:47 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:03 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:03 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:10 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:43:21 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: items.item_id","url":"/api/admin/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:43:21 [INFO]: ::1 - - [26/Dec/2025:09:43:21 +0000] "GET /api/admin/expenses HTTP/1.1" 500 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:21 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:21 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:23 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:29 [INFO]: ::1 - - [26/Dec/2025:09:44:29 +0000] "GET /api/admin/expenses HTTP/1.1" 200 70 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:44:39 [INFO]: ::1 - - [26/Dec/2025:09:44:39 +0000] "POST /api/expenses HTTP/1.1" 400 153 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:45:11 [INFO]: ::1 - - [26/Dec/2025:09:45:11 +0000] "POST /api/expenses HTTP/1.1" 404 115 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:45:17 [INFO]: ::1 - - [26/Dec/2025:09:45:17 +0000] "GET /api/admin/expenses HTTP/1.1" 200 70 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:45:17 [INFO]: ::1 - - [26/Dec/2025:09:45:17 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:46:56 [INFO]: ::1 - - [26/Dec/2025:09:46:56 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:47:01 [INFO]: ::1 - - [26/Dec/2025:09:47:01 +0000] "GET /api/admin/expenses HTTP/1.1" 200 70 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:54:05 [INFO]: ::1 - - [26/Dec/2025:09:54:05 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:54:12 [INFO]: ::1 - - [26/Dec/2025:09:54:12 +0000] "GET /api/admin/expenses HTTP/1.1" 200 70 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:54:12 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: rule.description","url":"/api/admin/validations","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-26 17:54:12 [INFO]: ::1 - - [26/Dec/2025:09:54:12 +0000] "GET /api/admin/validations HTTP/1.1" 500 171 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:34 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:34 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:39 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:48 [INFO]: ::1 - - [26/Dec/2025:09:57:48 +0000] "GET /api/admin/validations HTTP/1.1" 200 73 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:57:48 [INFO]: ::1 - - [26/Dec/2025:09:57:48 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 200 70 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 304 - "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 200 70 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/stats HTTP/1.1" 304 - "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 17:58:07 [INFO]: ::1 - - [26/Dec/2025:09:58:07 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 200 70 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 304 - "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/expenses?page=1&limit=20&user_name= HTTP/1.1" 200 70 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 304 - "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}

@@ -8,6 +8,7 @@ import ExpenseForm from './pages/expense/ExpenseForm';
 import ExpenseList from './pages/expense/ExpenseList';
 import RuleConfig from './pages/rules/RuleConfig';
 import RuleManagement from './pages/rules/RuleManagement';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="users" element={<UserList />} />
             <Route path="rules/config" element={<RuleConfig />} />
             <Route path="rules/manage" element={<RuleManagement />} />
+            <Route path="admin" element={<AdminDashboard />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

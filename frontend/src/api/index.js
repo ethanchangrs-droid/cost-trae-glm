@@ -78,4 +78,23 @@ export const validationAPI = {
   getApplicableRules: (userId, cityName) => api.get('/validation/rules/applicable', { params: { user_id: userId, city_name: cityName } }),
 };
 
+export const adminAPI = {
+  getStats: (params) => api.get('/admin/stats', { params }),
+  getExpenses: (params) => api.get('/admin/expenses', { params }),
+  getExpenseDetail: (id) => api.get(`/admin/expenses/${id}`),
+  exportExpenses: (params) => api.get('/admin/export/expenses', {
+    params,
+    responseType: 'blob',
+  }).then((response) => {
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'text/csv;charset=utf-8;' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `费用记录导出_${new Date().toISOString().slice(0, 10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  }),
+  getValidations: (params) => api.get('/admin/validations', { params }),
+};
+
 export default api;

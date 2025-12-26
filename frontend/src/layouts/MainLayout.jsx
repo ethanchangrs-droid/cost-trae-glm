@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined, ThunderboltOutlined, UnorderedListOutlined } from '@ant-design/icons';
+import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined, ThunderboltOutlined, UnorderedListOutlined, BarChartOutlined } from '@ant-design/icons';
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
@@ -51,6 +51,11 @@ const MainLayout = () => {
           label: '自然语言规则配置',
         },
       ],
+    },
+    {
+      key: '/admin',
+      icon: <BarChartOutlined />,
+      label: '管理员面板',
     },
   ];
 

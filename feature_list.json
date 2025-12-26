@@ -225,7 +225,7 @@
         "添加数据统计分析",
         "提供导出功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "管理员数据查看测试",
         "type": "e2e",
