@@ -1,0 +1,15 @@
+.expense-list-container {
+  padding: 24px;
+  background: #f0f2f5;
+  min-height: calc(100vh - 64px);
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-card {
+  background: #fafafa;
+}

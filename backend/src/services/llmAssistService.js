@@ -206,8 +206,122 @@ ${rulesText}
   }
 };
 
+const parseNaturalLanguageRule = async (description, existingRules = []) => {
+  const rulesText = existingRules.length > 0
+    ? `现有规则：\n${existingRules.map(r => `- ${r.rule_name} (${r.rule_type}): ${r.description}`).join('\n')}`
+    : '无现有规则';
+
+  const prompt = `作为专业的费用报销规则解析专家，请将以下自然语言描述转换为结构化规则：
+
+规则描述：
+${description}
+
+${rulesText}
+
+费用报销规则类型：
+- expense_limit: 费用总额限制
+- item_limit: 单项费用限制
+- city_limit: 城市等级限制
+- position_limit: 职位级别限制
+- custom: 自定义规则
+
+职位级别：admin, executive, manager, employee
+城市等级：tier1, tier2, tier3
+费用类型：transport, accommodation, meal, other
+
+请提取以下信息并生成结构化规则：
+1. rule_name: 规则名称（简洁明确）
+2. rule_type: 规则类型
+3. position_level: 适用职位级别（如适用）
+4. city_tier: 适用城市等级（如适用）
+5. item_type: 适用费用类型（如适用）
+6. conditions: 条件数组，每个条件包含 { field, operator, value }
+7. actions: 动作数组，每个动作包含 { type, value }
+8. description: 规则描述
+9. is_active: 是否启用（true/false）
+
+请检测是否存在规则冲突，并返回冲突列表。
+
+请以JSON格式回复：
+{
+  "rule_name": "规则名称",
+  "rule_type": "规则类型",
+  "position_level": "职位级别或null",
+  "city_tier": "城市等级或null",
+  "item_type": "费用类型或null",
+  "conditions": [
+    {
+      "field": "字段名",
+      "operator": "操作符（eq/gt/lt/gte/lte/in）",
+      "value": "值"
+    }
+  ],
+  "actions": [
+    {
+      "type": "动作类型（limit/warn/reject）",
+      "value": "值或null"
+    }
+  ],
+  "description": "规则描述",
+  "is_active": true,
+  "conflicts": [
+    {
+      "id": "冲突规则ID",
+      "conflict_type": "冲突类型",
+      "conflicting_rule": "冲突规则名称",
+      "description": "冲突描述"
+    }
+  ]
+}`;
+
+  try {
+    const response = await callLLM([
+      {
+        role: 'system',
+        content: '你是一个专业的费用报销规则解析专家，能够准确理解自然语言规则描述，将其转换为结构化规则数据，并检测潜在冲突。请直接返回JSON，不要使用Markdown代码块。'
+      },
+      {
+        role: 'user',
+        content: prompt
+      }
+    ], { temperature: 0.3, max_tokens: 800 });
+
+    let jsonContent = response;
+
+    if (jsonContent.includes('```json')) {
+      jsonContent = jsonContent.replace(/```json/g, '').replace(/```/g, '').trim();
+    } else if (jsonContent.includes('```')) {
+      jsonContent = jsonContent.replace(/```/g, '').trim();
+    }
+
+    let result;
+    try {
+      result = JSON.parse(jsonContent);
+    } catch (parseError) {
+      console.error('JSON解析失败:', jsonContent);
+      result = {
+        rule_name: '未命名规则',
+        rule_type: 'custom',
+        position_level: null,
+        city_tier: null,
+        item_type: null,
+        conditions: [],
+        actions: [],
+        description: description,
+        is_active: true,
+        conflicts: [],
+      };
+    }
+
+    return result;
+  } catch (error) {
+    throw new Error(`解析自然语言规则失败: ${error.message}`);
+  }
+};
+
 module.exports = {
   getSmartSuggestion,
   getAutofillSuggestion,
   getComplianceAdvice,
+  parseNaturalLanguageRule,
 };

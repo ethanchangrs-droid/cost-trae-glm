@@ -170,18 +170,43 @@ const validateExpense = {
 const validateRule = {
   create: [
     body('name')
-      .isLength({ min: 1, max: 200 })
-      .withMessage('规则名称长度必须在1-200个字符之间'),
+      .isLength({ min: 1, max: 100 })
+      .withMessage('规则名称长度必须在1-100个字符之间'),
     body('description')
       .optional()
       .isLength({ max: 1000 })
       .withMessage('规则描述长度不能超过1000个字符'),
     body('rule_type')
-      .isIn(['structured', 'natural_language'])
-      .withMessage('规则类型必须是 structured 或 natural_language'),
-    body('rule_content')
-      .notEmpty()
-      .withMessage('规则内容不能为空'),
+      .isIn(['accommodation', 'transport', 'meal'])
+      .withMessage('规则类型必须是 accommodation、transport 或 meal'),
+    body('rule_storage_type')
+      .optional()
+      .isIn(['structured', 'natural', 'hybrid'])
+      .withMessage('规则存储类型必须是 structured、natural 或 hybrid'),
+    body('structured_content')
+      .optional()
+      .isString()
+      .withMessage('结构化内容必须是字符串'),
+    body('natural_content')
+      .optional()
+      .isString()
+      .withMessage('自然语言内容必须是字符串'),
+    body('position_level')
+      .optional()
+      .isString()
+      .withMessage('职位级别必须是字符串'),
+    body('city_tier')
+      .optional()
+      .isString()
+      .withMessage('城市等级必须是字符串'),
+    body('complexity_score')
+      .optional()
+      .isInt({ min: 0, max: 100 })
+      .withMessage('复杂度分数必须是0-100之间的整数'),
+    body('validation_strategy')
+      .optional()
+      .isString()
+      .withMessage('验证策略必须是字符串'),
     body('is_active')
       .optional()
       .isBoolean()
@@ -192,20 +217,36 @@ const validateRule = {
   update: [
     body('name')
       .optional()
-      .isLength({ min: 1, max: 200 })
-      .withMessage('规则名称长度必须在1-200个字符之间'),
+      .isLength({ min: 1, max: 100 })
+      .withMessage('规则名称长度必须在1-100个字符之间'),
     body('description')
       .optional()
       .isLength({ max: 1000 })
       .withMessage('规则描述长度不能超过1000个字符'),
     body('rule_type')
       .optional()
-      .isIn(['structured', 'natural_language'])
-      .withMessage('规则类型必须是 structured 或 natural_language'),
-    body('rule_content')
+      .isIn(['accommodation', 'transport', 'meal'])
+      .withMessage('规则类型必须是 accommodation、transport 或 meal'),
+    body('rule_storage_type')
       .optional()
-      .notEmpty()
-      .withMessage('规则内容不能为空'),
+      .isIn(['structured', 'natural', 'hybrid'])
+      .withMessage('规则存储类型必须是 structured、natural 或 hybrid'),
+    body('structured_content')
+      .optional()
+      .isString()
+      .withMessage('结构化内容必须是字符串'),
+    body('natural_content')
+      .optional()
+      .isString()
+      .withMessage('自然语言内容必须是字符串'),
+    body('position_level')
+      .optional()
+      .isString()
+      .withMessage('职位级别必须是字符串'),
+    body('city_tier')
+      .optional()
+      .isString()
+      .withMessage('城市等级必须是字符串'),
     body('is_active')
       .optional()
       .isBoolean()

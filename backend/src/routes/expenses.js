@@ -55,7 +55,19 @@ const validateExpenseData = (expenseData) => {
 };
 
 router.get('/', asyncHandler(async (req, res) => {
-  const { page = 1, limit = 20, status, user_id } = req.query;
+  const { 
+    page = 1, 
+    limit = 20, 
+    status, 
+    user_id, 
+    start_date, 
+    end_date, 
+    min_amount, 
+    max_amount,
+    item_type,
+    sort_by = 'created_at',
+    sort_order = 'DESC'
+  } = req.query;
   const offset = (page - 1) * limit;
 
   const where = {};
@@ -68,12 +80,49 @@ router.get('/', asyncHandler(async (req, res) => {
     where.user_id = user_id;
   }
 
-  const { count, rows: expenses } = await Expense.findAndCountAll({
-    where,
-    include: [
+  if (start_date || end_date) {
+    where.trip_start_date = {};
+    if (start_date) {
+      where.trip_start_date[Op.gte] = start_date;
+    }
+    if (end_date) {
+      where.trip_start_date[Op.lte] = end_date;
+    }
+  }
+
+  if (min_amount || max_amount) {
+    where.total_amount = {};
+    if (min_amount) {
+      where.total_amount[Op.gte] = parseFloat(min_amount);
+    }
+    if (max_amount) {
+      where.total_amount[Op.lte] = parseFloat(max_amount);
+    }
+  }
+
+  let include = [
+    {
+      model: ExpenseItem,
+      as: 'items',
+    },
+    {
+      model: User,
+      as: 'user',
+      attributes: ['id', 'name', 'employee_id', 'position_level'],
+    },
+    {
+      model: RuleValidation,
+      as: 'validations',
+    },
+  ];
+
+  if (item_type) {
+    include = [
       {
         model: ExpenseItem,
         as: 'items',
+        where: { item_type },
+        required: true,
       },
       {
         model: User,
@@ -84,10 +133,15 @@ router.get('/', asyncHandler(async (req, res) => {
         model: RuleValidation,
         as: 'validations',
       },
-    ],
+    ];
+  }
+
+  const { count, rows: expenses } = await Expense.findAndCountAll({
+    where,
+    include,
     limit: parseInt(limit),
     offset: parseInt(offset),
-    order: [['created_at', 'DESC']],
+    order: [[sort_by, sort_order]],
   });
 
   res.json({

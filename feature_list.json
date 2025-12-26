@@ -149,7 +149,7 @@
         "添加规则冲突检测",
         "提供规则预览功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "自然语言规则配置测试",
         "type": "e2e",
@@ -168,7 +168,7 @@
         "添加规则分类功能",
         "实现规则版本管理"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "结构化规则管理测试",
         "type": "e2e",
@@ -187,7 +187,7 @@
         "创建混合验证策略",
         "添加规则性能监控"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "混合规则模式测试",
         "type": "integration",
@@ -206,7 +206,7 @@
         "添加状态标识显示",
         "提供详情查看功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "费用记录查看测试",
         "type": "e2e",

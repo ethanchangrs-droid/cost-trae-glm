@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined, ThunderboltOutlined, UnorderedListOutlined } from '@ant-design/icons';
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
@@ -19,6 +19,17 @@ const MainLayout = () => {
       key: '/expenses',
       icon: <FileTextOutlined />,
       label: '费用管理',
+      children: [
+        {
+          key: '/expenses',
+          label: '费用报销',
+        },
+        {
+          key: '/expenses/list',
+          icon: <UnorderedListOutlined />,
+          label: '费用记录',
+        },
+      ],
     },
     {
       key: '/users',

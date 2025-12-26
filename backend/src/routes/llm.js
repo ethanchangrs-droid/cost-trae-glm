@@ -268,4 +268,37 @@ router.post('/compliance', asyncHandler(async (req, res) => {
   }
 }));
 
+router.post('/parse-rule', asyncHandler(async (req, res) => {
+  const { description } = req.body;
+
+  if (!description) {
+    const error = new Error('规则描述不能为空');
+    error.status = 400;
+    error.code = 'DESCRIPTION_REQUIRED';
+    throw error;
+  }
+
+  try {
+    const Rule = require('../models').Rule;
+
+    const existingRules = await Rule.findAll({
+      where: { is_active: true },
+      order: [['created_at', 'DESC']],
+    });
+
+    const parsedRule = await llmAssistService.parseNaturalLanguageRule(description, existingRules);
+    
+    res.json({
+      success: true,
+      data: parsedRule,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (error) {
+    const parseError = new Error('解析自然语言规则失败');
+    parseError.status = 503;
+    parseError.code = 'PARSE_ERROR';
+    throw parseError;
+  }
+}));
+
 module.exports = router;
