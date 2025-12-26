@@ -5,6 +5,8 @@ import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import UserList from './pages/users/UserList';
 import ExpenseForm from './pages/expense/ExpenseForm';
+import RuleConfig from './pages/rules/RuleConfig';
+import RuleManagement from './pages/rules/RuleManagement';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="expenses" element={<ExpenseForm />} />
             <Route path="users" element={<UserList />} />
+            <Route path="rules/config" element={<RuleConfig />} />
+            <Route path="rules/manage" element={<RuleManagement />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

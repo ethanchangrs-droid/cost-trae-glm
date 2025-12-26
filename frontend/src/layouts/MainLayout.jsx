@@ -1,6 +1,6 @@
 import { Layout, Menu } from 'antd';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined } from '@ant-design/icons';
+import { UserOutlined, FileTextOutlined, SettingOutlined, HomeOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import './MainLayout.css';
 
 const { Header, Sider, Content } = Layout;
@@ -29,6 +29,17 @@ const MainLayout = () => {
       key: '/rules',
       icon: <SettingOutlined />,
       label: '规则管理',
+      children: [
+        {
+          key: '/rules/manage',
+          label: '结构化规则管理',
+        },
+        {
+          key: '/rules/config',
+          icon: <ThunderboltOutlined />,
+          label: '自然语言规则配置',
+        },
+      ],
     },
   ];
 

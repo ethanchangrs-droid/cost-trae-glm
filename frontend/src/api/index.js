@@ -42,6 +42,8 @@ export const ruleAPI = {
   createRule: (data) => api.post('/rules', data),
   updateRule: (id, data) => api.put(`/rules/${id}`, data),
   deleteRule: (id) => api.delete(`/rules/${id}`),
+  getCategories: () => api.get('/rules/categories/list'),
+  getStats: () => api.get('/rules/stats/summary'),
 };
 
 export const cityTierAPI = {
@@ -65,6 +67,7 @@ export const llmAPI = {
   getSuggestion: (field, value, context) => api.post('/llm/suggestion', { field, value, context }),
   getAutofill: (itemType, partialData) => api.post('/llm/autofill', { item_type: itemType, partial_data: partialData }),
   getCompliance: (expenseData, rules) => api.post('/llm/compliance', { expense_data: expenseData, rules }),
+  parseNaturalLanguage: (description) => api.post('/llm/parse-rule', { description }),
 };
 
 export const validationAPI = {
