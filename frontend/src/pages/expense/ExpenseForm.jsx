@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Card, Form, Button, Upload, Table, Input, DatePicker, Select, message, Row, Col, Alert, Space, Tag, Typography } from 'antd';
-import { UploadOutlined, CheckCircleOutlined, CloseCircleOutlined, WarningOutlined, PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Card, Form, Button, Upload, Table, Input, DatePicker, Select, message, Row, Col, Alert, Space, Tag, Typography, Modal, Statistic } from 'antd';
+import { UploadOutlined, CheckCircleOutlined, CloseCircleOutlined, WarningOutlined, PlusOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { expenseAPI, uploadAPI } from '../../api';
 import UserSelectModal from '../users/UserSelectModal';
 import './ExpenseForm.css';
@@ -21,6 +21,7 @@ const ExpenseForm = () => {
   const [validationResults, setValidationResults] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [formStatus, setFormStatus] = useState('draft');
 
   const itemTypeOptions = [
     { label: '交通', value: 'transport' },
@@ -111,14 +112,67 @@ const ExpenseForm = () => {
     setTotalAmount(total);
   };
 
+  const validateFormData = () => {
+    const errors = [];
+    
+    if (!selectedUser) {
+      errors.push('请选择报销人');
+    }
+    
+    if (expenseItems.length === 0) {
+      errors.push('请至少添加一个费用项目');
+    }
+    
+    expenseItems.forEach((item, index) => {
+      if (!item.description || item.description.trim() === '') {
+        errors.push(`第${index + 1}个费用项目的描述不能为空`);
+      }
+      if (!item.amount || item.amount <= 0) {
+        errors.push(`第${index + 1}个费用项目的金额必须大于0`);
+      }
+      if (!item.date) {
+        errors.push(`第${index + 1}个费用项目的日期不能为空`);
+      }
+    });
+    
+    return errors;
+  };
+
   const handleSaveDraft = async () => {
     try {
       setLoading(true);
+      
+      const validationErrors = validateFormData();
+      if (validationErrors.length > 0) {
+        Modal.error({
+          title: '表单验证失败',
+          content: (
+            <ul>
+              {validationErrors.map((error, index) => (
+                <li key={index}>{error}</li>
+              ))}
+            </ul>
+          ),
+        });
+        return;
+      }
+      
       const values = await form.validateFields();
+      
+      if (!values.trip_start_date || !values.trip_end_date) {
+        message.error('请选择出差日期');
+        return;
+      }
+      
+      if (values.trip_start_date.isAfter(values.trip_end_date)) {
+        message.error('出差开始日期不能晚于结束日期');
+        return;
+      }
+      
       const expenseData = {
         user_id: values.user_id,
-        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
-        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
+        trip_start_date: values.trip_start_date.format('YYYY-MM-DD'),
+        trip_end_date: values.trip_end_date.format('YYYY-MM-DD'),
         destination_city: values.destination_city,
         trip_reason: values.trip_reason,
         status: 'draft',
@@ -139,6 +193,8 @@ const ExpenseForm = () => {
       setExtractedInfo(null);
       setIntelligentDescription('');
       setTotalAmount(0);
+      setSelectedUser(null);
+      setFormStatus('draft');
     } catch (error) {
       message.error('保存失败：' + (error.response?.data?.message || error.message));
     } finally {
@@ -147,74 +203,199 @@ const ExpenseForm = () => {
   };
 
   const handleSubmitValidation = async () => {
-    try {
-      setLoading(true);
-      const values = await form.validateFields();
-      const expenseData = {
-        user_id: values.user_id,
-        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
-        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
-        destination_city: values.destination_city,
-        trip_reason: values.trip_reason,
-        total_amount: totalAmount,
-        items: expenseItems.map(item => ({
-          item_type: item.item_type,
-          description: item.description,
-          amount: item.amount,
-          date: item.date?.format('YYYY-MM-DD'),
-          details: item.details,
-        })),
-      };
-      
-      const response = await expenseAPI.createExpense(expenseData);
-      const expenseId = response.data.id;
-      
-      const validationResponse = await expenseAPI.validateExpense(expenseId);
-      if (validationResponse.data.success) {
-        setValidationResults(validationResponse.data.data.validation_results || []);
-        message.success('验证完成');
-      }
-    } catch (error) {
-      message.error('验证失败：' + (error.response?.data?.message || error.message));
-    } finally {
-      setLoading(false);
+    const validationErrors = validateFormData();
+    if (validationErrors.length > 0) {
+      Modal.error({
+        title: '表单验证失败',
+        content: (
+          <ul>
+            {validationErrors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        ),
+      });
+      return;
     }
+    
+    Modal.confirm({
+      title: '确认提交验证',
+      icon: <ExclamationCircleOutlined />,
+      content: (
+        <div>
+          <p>您即将提交费用报销申请进行验证，提交后将无法修改。</p>
+          <div style={{ marginTop: 16 }}>
+            <Space direction="vertical" style={{ width: '100%' }}>
+              <Statistic title="报销人" value={selectedUser?.name || '-'} />
+              <Statistic title="总金额" value={totalAmount} precision={2} prefix="¥" />
+              <Statistic title="费用项目数" value={expenseItems.length} suffix="项" />
+            </Space>
+          </div>
+        </div>
+      ),
+      okText: '确认提交',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          setLoading(true);
+          const values = await form.validateFields();
+          
+          if (!values.trip_start_date || !values.trip_end_date) {
+            message.error('请选择出差日期');
+            return;
+          }
+          
+          if (values.trip_start_date.isAfter(values.trip_end_date)) {
+            message.error('出差开始日期不能晚于结束日期');
+            return;
+          }
+          
+          const expenseData = {
+            user_id: values.user_id,
+            trip_start_date: values.trip_start_date.format('YYYY-MM-DD'),
+            trip_end_date: values.trip_end_date.format('YYYY-MM-DD'),
+            destination_city: values.destination_city,
+            trip_reason: values.trip_reason,
+            total_amount: totalAmount,
+            items: expenseItems.map(item => ({
+              item_type: item.item_type,
+              description: item.description,
+              amount: item.amount,
+              date: item.date?.format('YYYY-MM-DD'),
+              details: item.details,
+            })),
+          };
+          
+          const response = await expenseAPI.createExpense(expenseData);
+          const expenseId = response.data.id;
+          
+          const validationResponse = await expenseAPI.validateExpense(expenseId);
+          if (validationResponse.data.success) {
+            setValidationResults(validationResponse.data.data.validation_results || []);
+            const overallStatus = validationResponse.data.data.status;
+            
+            form.resetFields();
+            setExpenseItems([]);
+            setReceiptPreview(null);
+            setExtractedInfo(null);
+            setIntelligentDescription('');
+            setTotalAmount(0);
+            setSelectedUser(null);
+            setFormStatus('draft');
+            
+            if (overallStatus === 'approved') {
+              Modal.success({
+                title: '验证通过',
+                content: '您的费用报销申请已通过验证，可以提交报销。',
+              });
+            } else {
+              Modal.warning({
+                title: '验证未通过',
+                content: '您的费用报销申请未通过验证，请根据验证结果修改后重新提交。',
+              });
+            }
+          }
+        } catch (error) {
+          message.error('验证失败：' + (error.response?.data?.message || error.message));
+        } finally {
+          setLoading(false);
+        }
+      },
+    });
   };
 
   const handleSubmitExpense = async () => {
-    try {
-      setLoading(true);
-      const values = await form.validateFields();
-      const expenseData = {
-        user_id: values.user_id,
-        trip_start_date: values.trip_start_date?.format('YYYY-MM-DD'),
-        trip_end_date: values.trip_end_date?.format('YYYY-MM-DD'),
-        destination_city: values.destination_city,
-        trip_reason: values.trip_reason,
-        status: 'submitted',
-        total_amount: totalAmount,
-        items: expenseItems.map(item => ({
-          item_type: item.item_type,
-          description: item.description,
-          amount: item.amount,
-          date: item.date?.format('YYYY-MM-DD'),
-          details: item.details,
-        })),
-      };
-      await expenseAPI.createExpense(expenseData);
-      message.success('提交成功');
-      form.resetFields();
-      setExpenseItems([]);
-      setReceiptPreview(null);
-      setExtractedInfo(null);
-      setIntelligentDescription('');
-      setTotalAmount(0);
-      setValidationResults([]);
-    } catch (error) {
-      message.error('提交失败：' + (error.response?.data?.message || error.message));
-    } finally {
-      setLoading(false);
+    const validationErrors = validateFormData();
+    if (validationErrors.length > 0) {
+      Modal.error({
+        title: '表单验证失败',
+        content: (
+          <ul>
+            {validationErrors.map((error, index) => (
+              <li key={index}>{error}</li>
+            ))}
+          </ul>
+        ),
+      });
+      return;
     }
+    
+    Modal.confirm({
+      title: '确认提交报销',
+      icon: <ExclamationCircleOutlined />,
+      content: (
+        <div>
+          <p>您即将提交费用报销申请，提交后将无法修改。</p>
+          <Alert
+            message="温馨提示"
+            description="建议在提交前先进行验证，确保费用符合规定。"
+            type="info"
+            showIcon
+            style={{ marginBottom: 16 }}
+          />
+          <div>
+            <Space direction="vertical" style={{ width: '100%' }}>
+              <Statistic title="报销人" value={selectedUser?.name || '-'} />
+              <Statistic title="总金额" value={totalAmount} precision={2} prefix="¥" />
+              <Statistic title="费用项目数" value={expenseItems.length} suffix="项" />
+            </Space>
+          </div>
+        </div>
+      ),
+      okText: '确认提交',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          setLoading(true);
+          const values = await form.validateFields();
+          
+          if (!values.trip_start_date || !values.trip_end_date) {
+            message.error('请选择出差日期');
+            return;
+          }
+          
+          if (values.trip_start_date.isAfter(values.trip_end_date)) {
+            message.error('出差开始日期不能晚于结束日期');
+            return;
+          }
+          
+          const expenseData = {
+            user_id: values.user_id,
+            trip_start_date: values.trip_start_date.format('YYYY-MM-DD'),
+            trip_end_date: values.trip_end_date.format('YYYY-MM-DD'),
+            destination_city: values.destination_city,
+            trip_reason: values.trip_reason,
+            status: 'submitted',
+            total_amount: totalAmount,
+            items: expenseItems.map(item => ({
+              item_type: item.item_type,
+              description: item.description,
+              amount: item.amount,
+              date: item.date?.format('YYYY-MM-DD'),
+              details: item.details,
+            })),
+          };
+          await expenseAPI.createExpense(expenseData);
+          Modal.success({
+            title: '提交成功',
+            content: '您的费用报销申请已提交成功，请等待审核。',
+          });
+          form.resetFields();
+          setExpenseItems([]);
+          setReceiptPreview(null);
+          setExtractedInfo(null);
+          setIntelligentDescription('');
+          setTotalAmount(0);
+          setValidationResults([]);
+          setSelectedUser(null);
+          setFormStatus('draft');
+        } catch (error) {
+          message.error('提交失败：' + (error.response?.data?.message || error.message));
+        } finally {
+          setLoading(false);
+        }
+      },
+    });
   };
 
   const itemColumns = [
@@ -290,9 +471,29 @@ const ExpenseForm = () => {
     },
   ];
 
+  const getFormStatusInfo = () => {
+    if (validationResults.length === 0) {
+      return { status: 'draft', label: '草稿', color: 'default', icon: null };
+    }
+    
+    const hasFailed = validationResults.some(r => !r.passed);
+    if (hasFailed) {
+      return { status: 'rejected', label: '验证未通过', color: 'error', icon: <CloseCircleOutlined /> };
+    }
+    
+    return { status: 'approved', label: '验证通过', color: 'success', icon: <CheckCircleOutlined /> };
+  };
+
+  const formStatusInfo = getFormStatusInfo();
+
   return (
     <div className="expense-form-container">
-      <Title level={2}>费用报销</Title>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+        <Title level={2} style={{ margin: 0 }}>费用报销</Title>
+        <Tag color={formStatusInfo.color} icon={formStatusInfo.icon} style={{ fontSize: 14 }}>
+          {formStatusInfo.label}
+        </Tag>
+      </div>
       
       <Card title="报销人信息" className="form-section">
         <Row gutter={16}>

@@ -5,6 +5,55 @@ const { asyncHandler, logger } = require('../middleware/errorHandler');
 
 const router = express.Router();
 
+const validateExpenseData = (expenseData) => {
+  const errors = [];
+  
+  if (!expenseData.user_id) {
+    errors.push('报销人ID不能为空');
+  }
+  
+  if (!expenseData.total_amount || expenseData.total_amount <= 0) {
+    errors.push('总金额必须大于0');
+  }
+  
+  if (!expenseData.trip_start_date) {
+    errors.push('出差开始日期不能为空');
+  }
+  
+  if (!expenseData.trip_end_date) {
+    errors.push('出差结束日期不能为空');
+  }
+  
+  if (expenseData.trip_start_date && expenseData.trip_end_date) {
+    const startDate = new Date(expenseData.trip_start_date);
+    const endDate = new Date(expenseData.trip_end_date);
+    if (startDate > endDate) {
+      errors.push('出差开始日期不能晚于结束日期');
+    }
+  }
+  
+  if (!expenseData.items || !Array.isArray(expenseData.items) || expenseData.items.length === 0) {
+    errors.push('必须至少有一个费用项目');
+  } else {
+    expenseData.items.forEach((item, index) => {
+      if (!item.item_type) {
+        errors.push(`第${index + 1}个费用项目的类型不能为空`);
+      }
+      if (!item.description || item.description.trim() === '') {
+        errors.push(`第${index + 1}个费用项目的描述不能为空`);
+      }
+      if (!item.amount || item.amount <= 0) {
+        errors.push(`第${index + 1}个费用项目的金额必须大于0`);
+      }
+      if (!item.date) {
+        errors.push(`第${index + 1}个费用项目的日期不能为空`);
+      }
+    });
+  }
+  
+  return errors;
+};
+
 router.get('/', asyncHandler(async (req, res) => {
   const { page = 1, limit = 20, status, user_id } = req.query;
   const offset = (page - 1) * limit;
@@ -100,7 +149,38 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }));
 
 router.post('/', asyncHandler(async (req, res) => {
-  const { user_id, total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, items } = req.body;
+  const { user_id, total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, items, status } = req.body;
+
+  const validationErrors = validateExpenseData({
+    user_id,
+    total_amount,
+    trip_start_date,
+    trip_end_date,
+    items,
+  });
+
+  if (validationErrors.length > 0) {
+    return res.status(400).json({
+      success: false,
+      error: {
+        code: 'VALIDATION_ERROR',
+        message: '表单数据验证失败',
+        details: validationErrors,
+      },
+    });
+  }
+
+  const user = await User.findByPk(user_id);
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      error: {
+        code: 'USER_NOT_FOUND',
+        message: '指定的报销人不存在',
+        details: { user_id },
+      },
+    });
+  }
 
   const expense = await Expense.create({
     total_amount,
@@ -109,7 +189,7 @@ router.post('/', asyncHandler(async (req, res) => {
     destination_city,
     trip_reason,
     user_id,
-    status: 'draft',
+    status: status || 'draft',
   });
 
   const expenseItems = items.map(item => ({
@@ -140,6 +220,7 @@ router.post('/', asyncHandler(async (req, res) => {
   res.status(201).json({
     success: true,
     data: createdExpense,
+    message: '费用记录创建成功',
   });
 }));
 
