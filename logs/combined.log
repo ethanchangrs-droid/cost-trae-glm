@@ -1,0 +1,29 @@
+2025-12-29 14:19:29 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:29 [INFO]: 配置管理: http://localhost:3002/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:39 [INFO]: ::1 - - [29/Dec/2025:06:19:39 +0000] "GET /api/config HTTP/1.1" 200 179 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:44 [INFO]: ::1 - - [29/Dec/2025:06:19:44 +0000] "GET /api/config/validate HTTP/1.1" 200 66 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:50 [INFO]: ::1 - - [29/Dec/2025:06:19:50 +0000] "GET /api/config/health HTTP/1.1" 200 304 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:19:55 [INFO]: ::1 - - [29/Dec/2025:06:19:55 +0000] "GET /api/config/export HTTP/1.1" 200 648 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:31 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:31 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:40 [INFO]: 配置管理: http://localhost:3002/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:23:47 [INFO]: 配置已通过热更新重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:24:01 [INFO]: ::1 - - [29/Dec/2025:06:24:01 +0000] "GET /api/config/export HTTP/1.1" 200 648 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:42 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}

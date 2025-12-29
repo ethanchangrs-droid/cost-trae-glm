@@ -263,3 +263,27 @@ Error
 2025-12-29 11:59:32 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["总金额必须大于0","出差开始日期不能为空","出差结束日期不能为空","第1个费用项目的日期不能为空"],"user_id":1}}
 2025-12-29 11:59:50 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["出差开始日期不能为空","出差结束日期不能为空"],"user_id":1}}
 2025-12-29 11:59:55 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["出差开始日期不能为空","出差结束日期不能为空"],"user_id":1}}
+2025-12-29 15:08:15 [ERROR]: 重新加载配置失败: config.getConfigHash is not a function {"service":"expense-system-api","environment":"development"}
+TypeError: config.getConfigHash is not a function
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/routes/config.js:50:24
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:582:12)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:291:5)
+    at Function.handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:186:3)
+2025-12-29 15:08:33 [ERROR]: 重新加载配置失败: config.getConfigHash is not a function {"service":"expense-system-api","environment":"development"}
+TypeError: config.getConfigHash is not a function
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/routes/config.js:50:24
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:582:12)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:291:5)
+    at Function.handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:186:3)

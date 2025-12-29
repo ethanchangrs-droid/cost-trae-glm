@@ -340,7 +340,7 @@
         "实现操作审计记录",
         "添加日志轮转功能"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "日志记录功能测试",
         "type": "unit",
@@ -359,7 +359,7 @@
         "添加配置验证功能",
         "支持配置热更新"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "配置管理功能测试",
         "type": "unit",

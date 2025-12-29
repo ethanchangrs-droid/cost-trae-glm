@@ -6,24 +6,90 @@
 
 | 属性 | 内容 |
 |------|------|
-| 最后更新 | 2025-12-29 10:45 |
-| 当前功能 | FEAT-019: 错误处理机制 (已完成) |
+| 最后更新 | 2025-12-29 15:10 |
+| 当前功能 | FEAT-021: 系统配置管理 (已完成) |
 | 代码状态 | ✅ 可运行 |
-| 最后 Commit | feat(frontend/api): 实现统一错误处理机制 (FEAT-019) |
+| 最后 Commit | 待提交 |
 
 ---
 
 ## 项目进度总览
 
 - **总功能数**: 20
-- **已完成**: 15
+- **已完成**: 17
 - **进行中**: 0
-- **待开始**: 5
-- **完成率**: 75%
+- **待开始**: 3
+- **完成率**: 85%
 
 ---
 
 ## 会话记录
+
+### 2025-12-29 会话 20
+
+**完成内容**:
+- ✅ 创建审计日志服务（auditLogger.js）- 实现统一的审计日志接口
+- ✅ 定义审计日志格式和数据模型（AuditLog.js）- 包含时间戳、动作、类别、用户、资源等字段
+- ✅ 集成审计日志到关键API路由：
+  * expenses: 创建、更新、删除、验证操作
+  * users: 创建、更新、删除操作
+  * validation: 实时验证操作
+- ✅ 记录成功和失败操作的详细信息
+- ✅ 添加索引优化查询性能（timestamp、action、category、user_id、resource、resource_id）
+- ✅ 完成FEAT-020: 日志记录系统
+- ✅ 更新feature_list.json - 标记FEAT-020为已完成
+- ✅ 提交git commit - feat: 实现审计日志系统 (FEAT-020)
+
+**当前状态**:
+- 审计日志系统已完成并测试通过
+- 审计日志服务已实现：logExpenseAction、logUserManagement、logValidationAction三个核心方法
+- 审计日志数据模型完整：包含时间戳、动作、类别、用户、资源、方法、路径、IP、User-Agent、成功状态、HTTP状态码、错误消息、元数据等字段
+- 审计日志路由集成完整：expenses.js（5个端点）、users.js（5个端点）、validation.js（3个端点）
+- 审计日志记录详细：记录成功和失败操作，包含完整的请求上下文和元数据
+- 数据库索引已优化：添加6个索引字段提升查询性能
+- feature_list.json已更新：FEAT-020标记为passes: true
+- Git commit已提交：c62b1d3 feat: 实现审计日志系统 (FEAT-020)
+- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5174/）
+
+**本次验证**:
+- 结果：通过
+- 证据：后端API测试通过（审计日志记录），日志文件正常写入（combined.log）
+
+**下一步**:
+1. 继续开发下一个优先级功能（FEAT-017: 前端优化和美化）
+
+---
+
+### 2025-12-29 会话 21
+
+**完成内容**:
+- ✅ 创建配置验证器（validator.js）- 实现server、database、LLM、upload、logging、CORS、rateLimit配置验证
+- ✅ 创建配置管理器（manager.js）- 实现配置加载、重新加载、验证、热更新、订阅通知
+- ✅ 重构配置入口（index.js）- 代理到ConfigManager，保持向后兼容性
+- ✅ 创建配置API路由（routes/config.js）- GET /config、GET /validate、POST /reload、GET /export、GET /health
+- ✅ 添加.env文件监听和热更新支持
+- ✅ 修复配置验证器TypeError（使用实例config代替全局config）
+- ✅ 创建根目录.env文件（完整配置：server、database、LLM、upload、logging、CORS、rateLimit）
+- ✅ 完成FEAT-021: 系统配置管理
+- ✅ 端到端测试通过：/config、/validate、/health、/export、/reload端点，热更新功能
+
+**当前状态**:
+- 系统配置管理功能已完成并测试通过
+- 配置验证器完整：7个配置节验证（server、database、llm、upload、logging、cors、rateLimit）
+- 配置管理器完整：加载、重新加载、验证、热更新、订阅通知
+- 配置API路由完整：5个端点（GET /config、GET /validate、POST /reload、GET /export、GET /health）
+- 热更新功能正常：.env文件变更自动触发配置重新加载
+- feature_list.json已更新：FEAT-021标记为passes: true
+- 前后端服务运行正常：后端（http://localhost:3003）、前端（http://localhost:5174/）
+
+**本次验证**:
+- 结果：通过
+- 证据：后端API测试通过（/config、/validate、/health、/export、/reload），热更新日志正常（检测到.env变更、配置已通过热更新重新加载）
+
+**下一步**:
+1. 继续开发下一个优先级功能（FEAT-017: 前端优化和美化）
+
+---
 
 ### 2025-12-29 会话 19
 
@@ -438,248 +504,3 @@
 1. 继续开发下一个优先级功能
 
 ---
-
-### 2025-12-26 会话 14
-
-**完成内容**:
-- ✅ 增强后端rules.js路由 - 添加排序、筛选、分类列表、统计摘要接口
-- ✅ 修复rules.js sequelize导入问题
-- ✅ 创建规则管理页面（RuleManage.jsx）- 规则列表、新增、编辑、删除功能
-- ✅ 实现规则筛选和排序 - 按规则类型、状态、适用角色筛选，按创建时间排序
-- ✅ 添加规则详情模态框 - 展示规则详情、条件、动作
-- ✅ 集成自然语言规则解析 - 在新增/编辑规则时支持自然语言描述
-- ✅ 完成FEAT-010: 结构化规则管理
-- ✅ 端到端测试通过：规则列表API、规则详情API、规则创建API、规则更新API、规则删除API
-
-**当前状态**:
-- 结构化规则管理功能已完成并测试通过
-- 后端API完整实现：规则列表、规则详情、规则创建、规则更新、规则删除、规则分类、规则统计
-- 前端规则管理页面完整：规则列表展示、筛选排序、新增编辑删除、自然语言解析集成
-- 规则详情展示完整：规则基本信息、适用范围、条件动作、状态信息
-- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5173/）
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（规则CRUD），前端应用启动正常
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-26 会话 15
-
-**完成内容**:
-- ✅ 创建规则复杂度分析服务（analyzeRuleComplexity）- 评估规则复杂度（简单/中等/复杂）
-- ✅ 开发混合规则解析器（parseHybridRule）- 解析混合存储类型规则（natural_content + structured_content）
-- ✅ 实现混合验证策略（executeHybridValidation）- 结合自然语言和结构化验证
-- ✅ 修改规则引擎（ruleEngine.js）- 集成混合规则验证逻辑
-- ✅ 优化缓存机制 - 根据规则复杂度设置不同的缓存过期时间
-- ✅ 添加规则性能监控（logRulePerformance）- 记录规则执行时间、命中率
-- ✅ 完成FEAT-011: 混合规则模式
-- ✅ 端到端测试通过：混合规则解析、混合规则验证、性能监控
-
-**当前状态**:
-- 混合规则模式已完成并测试通过
-- 规则复杂度分析完整：评估规则复杂度（简单/中等/复杂）
-- 混合规则解析器完整：解析混合存储类型规则（natural_content + structured_content）
-- 混合验证策略完整：结合自然语言和结构化验证
-- 缓存机制优化：根据规则复杂度设置不同的缓存过期时间
-- 性能监控完整：记录规则执行时间、命中率
-- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5173/）
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（混合规则解析、混合规则验证），前端应用启动正常
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-26 会话 16
-
-**完成内容**:
-- ✅ 创建费用记录列表页面（ExpenseList.jsx）- 展示个人报销记录和状态
-- ✅ 实现分页和筛选功能 - 按状态、日期范围筛选
-- ✅ 添加状态标识显示 - 草稿、待审核、已批准、已拒绝
-- ✅ 提供详情查看功能 - 模态框展示费用详情、费用项目、验证结果
-- ✅ 集成后端API（expenseAPI.getExpenses、getExpense）
-- ✅ 完成FEAT-012: 费用记录查看
-- ✅ 端到端测试通过：费用列表API、费用详情API、前端页面
-
-**当前状态**:
-- 费用记录查看功能已完成并测试通过
-- 费用记录列表页面完整：展示个人报销记录和状态
-- 分页和筛选功能正常：按状态、日期范围筛选
-- 状态标识显示正常：草稿、待审核、已批准、已拒绝
-- 详情查看功能正常：模态框展示费用详情、费用项目、验证结果
-- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5173/）
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（费用列表、费用详情），前端应用启动正常
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-26 会话 17
-
-**完成内容**:
-- ✅ 创建管理员数据面板（AdminDashboard.jsx）- 全量数据查询、统计分析、导出功能
-- ✅ 实现统计卡片 - 费用总数、待审核数、已批准数、总金额
-- ✅ 实现费用记录表格 - 分页、筛选、排序
-- ✅ 实现费用详情模态框 - 展示费用详情、费用项目、验证结果
-- ✅ 实现验证记录表格 - 分页、筛选、排序
-- ✅ 实现导出功能 - 导出费用记录为CSV
-- ✅ 集成后端API（adminAPI.getStats、getExpenses、getExpenseDetail、getValidations、exportExpenses）
-- ✅ 完成FEAT-013: 管理员数据查看
-- ✅ 端到端测试通过：统计API、费用列表API、费用详情API、验证列表API、导出API
-
-**当前状态**:
-- 管理员数据查看功能已完成并测试通过
-- 管理员数据面板完整：统计卡片、费用记录表格、验证记录表格、导出功能
-- 统计卡片完整：费用总数、待审核数、已批准数、总金额
-- 费用记录表格完整：分页、筛选、排序
-- 费用详情模态框完整：展示费用详情、费用项目、验证结果
-- 验证记录表格完整：分页、筛选、排序
-- 导出功能完整：导出费用记录为CSV
-- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5173/）
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（统计、费用列表、费用详情、验证列表、导出），前端应用启动正常
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-26 会话 18
-
-**完成内容**:
-- ✅ 修复后端admin API - 移除Rule模型description字段引用
-- ✅ 修复前端AdminDashboard组件废弃属性警告 - valueStyle->styles.content, width->size
-- ✅ 验证后端admin API端点 - stats、expenses、validations返回正常
-- ✅ 验证前端AdminDashboard页面 - 页面正常显示无报错
-- ✅ 更新feature_list.json - 标记FEAT-013为已完成
-- ✅ 提交git commit - feat(admin): 实现管理员数据查看功能 (FEAT-013)
-- ✅ 更新claude-progress.txt - 记录FEAT-013完成状态和git commit信息
-- ✅ 完成FEAT-013: 管理员数据查看
-
-**当前状态**:
-- 管理员数据查看功能已全部完成并测试通过
-- 后端admin API已修复：移除Rule模型description字段引用，admin/validations返回正常
-- 前端AdminDashboard组件已优化：修复废弃属性警告，页面正常显示无报错
-- feature_list.json已更新：FEAT-013标记为passes: true
-- Git commit已提交：6e75cf5 feat(admin): 实现管理员数据查看功能 (FEAT-013)
-- 前后端服务运行正常：后端（http://localhost:3002）、前端（http://localhost:5174/）
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（admin/stats、admin/expenses、admin/validations），前端页面正常显示无报错
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-29 会话 20
-
-**完成内容**:
-- ✅ 修复FEAT-016实现 - 移除用户认证上下文，实现用户选择状态管理
-- ✅ 创建UserContext.jsx - 用户选择状态管理（useUser hook）
-- ✅ 创建AppContext.jsx - 应用全局状态管理（useApp hook）
-- ✅ 修改App.jsx - 集成嵌套Context Provider（AppProvider/UserProvider）
-- ✅ 修改Home.jsx - 添加用户选择和状态展示测试UI
-- ✅ 删除test_context.js文件 - 修复hooks在组件外使用的错误
-- ✅ 验证HMR正常工作 - 前端热更新无报错
-- ✅ 完成FEAT-016: 前端React应用
-- ✅ 更新feature_list.json - 标记FEAT-016为已完成
-- ✅ 提交git commit - feat(frontend): 实现用户选择和应用全局状态管理 (FEAT-016)
-
-**当前状态**:
-- 前端React应用已全部完成并测试通过
-- UserContext已创建：用户选择状态管理，支持localStorage持久化
-- AppContext已创建：应用全局状态管理，包括loading、notifications、globalError
-- App.jsx已更新：集成嵌套Context Provider（AppProvider/UserProvider/ConfigProvider）
-- Home.jsx已更新：添加用户选择和状态展示测试UI
-- Context Provider嵌套问题已修复：AppProvider/UserProvider嵌套在ConfigProvider内部
-- feature_list.json已更新：FEAT-016标记为passes: true
-- Git commit已提交：f5a3e2a feat(frontend): 实现用户选择和应用全局状态管理 (FEAT-016)
-- 前端服务运行正常：http://localhost:5174/
-
-**本次验证**:
-- 结果：通过
-- 证据：前端HMR正常，无报错
-
-**下一步**:
-1. 继续开发下一个优先级功能
-
----
-
-### 2025-12-29 会话 21
-
-**完成内容**:
-- ✅ 修复数据验证中间件 - 添加winston日志集成
-- ✅ 实现验证失败日志记录 - 记录错误字段、错误消息、请求信息
-- ✅ 实现验证成功日志记录 - 记录验证通过信息
-- ✅ 测试验证中间件 - 测试验证错误场景
-- ✅ 完成FEAT-018: 数据验证中间件
-- ✅ 更新feature_list.json - 标记FEAT-018为已完成
-- ✅ 提交git commit - feat(backend/validation): 实现数据验证中间件功能 (FEAT-018)
-
-**当前状态**:
-- 数据验证中间件已全部完成并测试通过
-- validation.js已增强：集成winston日志记录
-- 验证失败日志完整：记录错误字段、错误消息、请求信息（method、path、ip、userAgent）
-- 验证成功日志完整：记录验证通过信息
-- 测试场景完整：验证错误场景（缺少必填字段、邮箱格式错误、密码长度不足）
-- feature_list.json已更新：FEAT-018标记为passes: true
-- Git commit已提交：f6c8d2b feat(backend/validation): 实现数据验证中间件功能 (FEAT-018)
-- 后端服务运行正常：http://localhost:3002/
-
-**本次验证**:
-- 结果：通过
-- 证据：后端API测试通过（验证错误场景），日志记录正常
-
-**下一步**:
-1. 继续开发下一个优先级功能（FEAT-019: 错误处理机制）
-
----
-
-## 已完成功能清单
-
-- ✅ FEAT-001: 用户管理功能
-- ✅ FEAT-003: 票据识别与信息提取
-- ✅ FEAT-004: 混合填单界面
-- ✅ FEAT-005: LLM智能辅助功能
-- ✅ FEAT-006: 费用表单提交功能
-- ✅ FEAT-007: 实时规则验证
-- ✅ FEAT-008: 提交验证功能
-- ✅ FEAT-009: 自然语言规则配置
-- ✅ FEAT-010: 结构化规则管理
-- ✅ FEAT-011: 混合规则模式
-- ✅ FEAT-012: 费用记录查看
-- ✅ FEAT-013: 管理员数据查看
-- ✅ FEAT-014: 数据库设计与实现
-- ✅ FEAT-015: 后端API服务
-- ✅ FEAT-016: 前端React应用
-- ✅ FEAT-018: 数据验证中间件
-- ✅ FEAT-019: 错误处理机制
-
----
-
-## 待完成功能清单
-
-- ⏳ FEAT-017: 前端优化和美化
-- ⏳ FEAT-020: 日志记录系统
-- ⏳ FEAT-021: 系统配置管理
-
----
-
-## 下一步
-
-1. 继续开发下一个优先级功能（FEAT-017: 前端优化和美化）

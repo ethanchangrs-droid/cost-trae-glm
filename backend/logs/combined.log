@@ -1231,3 +1231,63 @@ Error
 2025-12-29 11:59:50 [INFO]: ::1 - - [29/Dec/2025:03:59:50 +0000] "POST /api/expenses HTTP/1.1" 400 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
 2025-12-29 11:59:55 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["出差开始日期不能为空","出差结束日期不能为空"],"user_id":1}}
 2025-12-29 11:59:55 [INFO]: ::1 - - [29/Dec/2025:03:59:55 +0000] "POST /api/expenses HTTP/1.1" 400 168 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:14:33 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:14:33 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:25:57 [INFO]: 配置管理: http://localhost:3002/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:26:15 [INFO]: ::1 - - [29/Dec/2025:06:26:15 +0000] "GET /api/config/export HTTP/1.1" 200 598 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 14:26:40 [INFO]: ::1 - - [29/Dec/2025:06:26:40 +0000] "GET /api/config/export HTTP/1.1" 200 598 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:10 [INFO]: ::1 - - [29/Dec/2025:07:08:10 +0000] "GET /api/config/validate HTTP/1.1" 200 66 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:10 [INFO]: ::1 - - [29/Dec/2025:07:08:10 +0000] "GET /api/config/health HTTP/1.1" 200 304 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:15 [INFO]: 配置已重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:15 [ERROR]: 重新加载配置失败: config.getConfigHash is not a function {"service":"expense-system-api","environment":"development"}
+TypeError: config.getConfigHash is not a function
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/routes/config.js:50:24
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:582:12)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:291:5)
+    at Function.handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:186:3)
+2025-12-29 15:08:15 [INFO]: ::1 - - [29/Dec/2025:07:08:15 +0000] "POST /api/config/reload HTTP/1.1" 500 103 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:33 [INFO]: 配置已重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:33 [ERROR]: 重新加载配置失败: config.getConfigHash is not a function {"service":"expense-system-api","environment":"development"}
+TypeError: config.getConfigHash is not a function
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/routes/config.js:50:24
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:582:12)
+    at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:291:5)
+    at Function.handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:186:3)
+2025-12-29 15:08:33 [INFO]: ::1 - - [29/Dec/2025:07:08:33 +0000] "POST /api/config/reload HTTP/1.1" 500 103 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:37 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:37 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 端口: 3003 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 健康检查: http://localhost:3003/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: API信息: http://localhost:3003/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:41 [INFO]: 配置管理: http://localhost:3003/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:48 [INFO]: ::1 - - [29/Dec/2025:07:08:48 +0000] "GET /api/config/health HTTP/1.1" 200 304 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:48 [INFO]: 配置已重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:08:48 [INFO]: ::1 - - [29/Dec/2025:07:08:48 +0000] "POST /api/config/reload HTTP/1.1" 200 269 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:09:10 [INFO]: 配置已通过热更新重新加载 {"service":"expense-system-api","environment":"development"}

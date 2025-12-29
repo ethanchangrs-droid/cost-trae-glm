@@ -96,6 +96,7 @@ app.use('/api/upload', require('./routes/upload'));
 app.use('/api/llm', require('./routes/llm'));
 app.use('/api/validation', require('./routes/validation'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/config', require('./routes/config'));
 
 app.use(notFound);
 app.use(errorHandler);

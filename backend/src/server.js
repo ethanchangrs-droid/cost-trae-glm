@@ -25,6 +25,7 @@ const startServer = async () => {
       logger.info(`端口: ${config.server.port}`);
       logger.info(`健康检查: http://localhost:${config.server.port}/health`);
       logger.info(`API信息: http://localhost:${config.server.port}/api/info`);
+      logger.info(`配置管理: http://localhost:${config.server.port}/api/config`);
     });
     
     server.on('error', (error) => {
@@ -34,6 +35,14 @@ const startServer = async () => {
         logger.error('服务器启动失败:', error);
       }
       process.exit(1);
+    });
+
+    config.watchEnv((result) => {
+      if (result.success) {
+        logger.info('配置已通过热更新重新加载');
+      } else {
+        logger.error('配置热更新失败:', result.error);
+      }
     });
     
     return server;
