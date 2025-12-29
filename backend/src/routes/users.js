@@ -9,6 +9,51 @@ const auditLogger = require('../services/auditLogger');
 
 const router = express.Router();
 
+router.post('/', asyncHandler(async (req, res) => {
+  const { name, employee_id, level, username, password, email } = req.body;
+
+  if (username) {
+    const existingUser = await User.findOne({ where: { username } });
+    if (existingUser) {
+      const error = new Error('用户名已存在');
+      error.status = 409;
+      error.code = 'USERNAME_EXISTS';
+      throw error;
+    }
+  }
+
+  const userData = {
+    name,
+    employee_id,
+    position_level: level,
+    username: username || `user_${Date.now()}`,
+    password: password || '123456',
+    email: email || `${name.replace(/\s+/g, '').toLowerCase()}@test.com`,
+    role: level === 'executive' ? 'executive' : level === 'manager' ? 'manager' : 'user',
+    is_active: true
+  };
+
+  const user = await User.create(userData);
+
+  res.status(201).json({
+    success: true,
+    data: {
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        name: user.name,
+        employee_id: user.employee_id,
+        level: user.position_level,
+        role: user.role,
+        is_active: user.is_active,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+      },
+    },
+  });
+}));
+
 router.post('/login', validateUser.login, asyncHandler(async (req, res) => {
   const { username, password } = req.body;
 

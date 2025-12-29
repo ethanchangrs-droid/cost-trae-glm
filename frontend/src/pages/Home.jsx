@@ -1,7 +1,9 @@
-import { Card, Row, Col, Statistic, Button, Space } from 'antd';
+import { Card, Row, Col, Statistic, Button, Space, Typography, Descriptions } from 'antd';
 import { UserOutlined, FileTextOutlined, CheckCircleOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import { useApp } from '../contexts/AppContext';
 import { useUser } from '../contexts/UserContext';
+
+const { Title, Paragraph } = Typography;
 
 const Home = () => {
   const { success, error, info, warning } = useApp();
@@ -32,19 +34,30 @@ const Home = () => {
 
   return (
     <div>
-      <h2>欢迎使用费用报销系统</h2>
+      <Title level={2}>欢迎使用费用报销系统</Title>
+      <Paragraph type="secondary">
+        这是一个企业级的费用报销管理系统，支持费用申请、审批流程、用户管理等功能。
+      </Paragraph>
+
       {selectedUser && (
         <Card style={{ marginBottom: 16 }}>
-          <h3>当前选中用户</h3>
-          <p>姓名：{selectedUser.name}</p>
-          <p>职位：{selectedUser.position_level}</p>
-          {selectedUser.department && <p>部门：{selectedUser.department}</p>}
-          <Button onClick={testClearUser}>清空选择</Button>
+          <Title level={4}>当前选中用户</Title>
+          <Descriptions bordered column={{ xs: 1, sm: 2 }}>
+            <Descriptions.Item label="姓名">{selectedUser.name}</Descriptions.Item>
+            <Descriptions.Item label="职位">{selectedUser.position_level}</Descriptions.Item>
+            {selectedUser.department && (
+              <Descriptions.Item label="部门">{selectedUser.department}</Descriptions.Item>
+            )}
+          </Descriptions>
+          <div style={{ marginTop: 16 }}>
+            <Button onClick={testClearUser}>清空选择</Button>
+          </div>
         </Card>
       )}
+
       <Card style={{ marginBottom: 16 }}>
-        <h3>状态管理测试</h3>
-        <Space>
+        <Title level={4}>状态管理测试</Title>
+        <Space size="large">
           <Button type="primary" onClick={testNotifications}>
             测试通知
           </Button>
@@ -53,8 +66,10 @@ const Home = () => {
           </Button>
         </Space>
       </Card>
+
+      <Title level={4}>系统概览</Title>
       <Row gutter={[16, 16]}>
-        <Col xs={24} sm={12} md={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title="总用户数"
@@ -64,7 +79,7 @@ const Home = () => {
             />
           </Card>
         </Col>
-        <Col xs={24} sm={12} md={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title="费用申请"
@@ -74,7 +89,7 @@ const Home = () => {
             />
           </Card>
         </Col>
-        <Col xs={24} sm={12} md={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title="已审批"
@@ -84,7 +99,7 @@ const Home = () => {
             />
           </Card>
         </Col>
-        <Col xs={24} sm={12} md={6}>
+        <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
               title="待处理"
