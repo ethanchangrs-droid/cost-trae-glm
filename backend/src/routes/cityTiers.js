@@ -1,5 +1,4 @@
 const express = require('express');
-const { authenticate } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { CityTier } = require('../models');
 const logger = require('../utils/logger');
@@ -7,7 +6,7 @@ const logger = require('../utils/logger');
 const router = express.Router();
 
 // 按等级获取城市列表（需要放在 :cityName 之前）
-router.get('/tier/:tier', authenticate, asyncHandler(async (req, res) => {
+router.get('/tier/:tier', asyncHandler(async (req, res) => {
   const { tier } = req.params;
 
   const cities = await CityTier.findAll({
@@ -31,7 +30,7 @@ router.get('/tier/:tier', authenticate, asyncHandler(async (req, res) => {
 }));
 
 // 根据城市名获取等级
-router.get('/name/:cityName', authenticate, asyncHandler(async (req, res) => {
+router.get('/name/:cityName', asyncHandler(async (req, res) => {
   const { cityName } = req.params;
 
   const cityTier = await CityTier.findOne({
@@ -61,7 +60,7 @@ router.get('/name/:cityName', authenticate, asyncHandler(async (req, res) => {
 }));
 
 // 获取所有城市等级
-router.get('/', authenticate, asyncHandler(async (req, res) => {
+router.get('/', asyncHandler(async (req, res) => {
   const cityTiers = await CityTier.findAll({
     order: [['tier', 'ASC'], ['city_name', 'ASC']],
   });

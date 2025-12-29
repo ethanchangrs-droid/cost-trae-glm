@@ -1,5 +1,4 @@
 const express = require('express');
-const { authenticate } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const config = require('../config');
 const llmAssistService = require('../services/llmAssistService');
@@ -39,7 +38,7 @@ const callLLM = async (prompt, options = {}) => {
   return data.choices[0].message.content;
 };
 
-router.post('/chat', authenticate, asyncHandler(async (req, res) => {
+router.post('/chat', asyncHandler(async (req, res) => {
   const { message, context } = req.body;
 
   if (!message) {
@@ -72,7 +71,7 @@ router.post('/chat', authenticate, asyncHandler(async (req, res) => {
   }
 }));
 
-router.post('/analyze-expense', authenticate, asyncHandler(async (req, res) => {
+router.post('/analyze-expense', asyncHandler(async (req, res) => {
   const { expense_data, rules } = req.body;
 
   if (!expense_data) {
@@ -139,7 +138,7 @@ ${rules ? `适用规则：\n${JSON.stringify(rules, null, 2)}` : ''}
   }
 }));
 
-router.post('/generate-description', authenticate, asyncHandler(async (req, res) => {
+router.post('/generate-description', asyncHandler(async (req, res) => {
   const { expense_items, context } = req.body;
 
   if (!expense_items || !Array.isArray(expense_items)) {

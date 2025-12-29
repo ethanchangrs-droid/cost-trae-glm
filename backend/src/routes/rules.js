@@ -1,7 +1,6 @@
 const express = require('express');
 const { Rule, RuleValidation } = require('../models');
 const { sequelize } = require('../config/database');
-const { authenticate, authorize } = require('../middleware/auth');
 const { validateRule, validateId, validatePagination } = require('../middleware/validation');
 const { asyncHandler } = require('../middleware/errorHandler');
 const ruleComplexityAnalyzer = require('../services/ruleComplexityAnalyzer');

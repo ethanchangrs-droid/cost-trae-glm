@@ -10,7 +10,6 @@ yarn-error.log*
 *.db-wal
 
 # Logs
-logs/
 *.log
 backend/logs/
 

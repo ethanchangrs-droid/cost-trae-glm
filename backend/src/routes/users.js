@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const { User } = require('../models');
 const { Op } = require('sequelize');
-const { authenticate, authorize, generateToken } = require('../middleware/auth');
 const { validateUser, validatePagination } = require('../middleware/validation');
 const { asyncHandler } = require('../middleware/errorHandler');
 const auditLogger = require('../services/auditLogger');
@@ -54,171 +53,6 @@ router.post('/', asyncHandler(async (req, res) => {
   });
 }));
 
-router.post('/login', validateUser.login, asyncHandler(async (req, res) => {
-  const { username, password } = req.body;
-
-  const user = await User.findOne({ where: { username } });
-  if (!user) {
-    const error = new Error('用户名或密码错误');
-    error.status = 401;
-    error.code = 'INVALID_CREDENTIALS';
-    throw error;
-  }
-
-
-
-  const isValidPassword = await bcrypt.compare(password, user.password);
-  if (!isValidPassword) {
-    const error = new Error('用户名或密码错误');
-    error.status = 401;
-    error.code = 'INVALID_CREDENTIALS';
-    throw error;
-  }
-
-  const token = generateToken(user);
-
-  res.json({
-    success: true,
-    data: {
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-        is_active: user.is_active,
-        created_at: user.created_at,
-        updated_at: user.updated_at,
-      },
-      token,
-    },
-  });
-}));
-
-router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
-  const { username, password, email, name, role = 'user', department, position_level } = req.body;
-
-  const existingUser = await User.findOne({ where: { username } });
-  if (existingUser) {
-    auditLogger.logUserManagement('USER_CREATE_FAILED', null, null, {
-      path: req.path,
-      method: req.method,
-      ip: req.ip,
-      userAgent: req.get('User-Agent'),
-      success: false,
-      status: 400,
-      errorMessage: '用户名已存在',
-      metadata: { username }
-    });
-
-    const error = new Error('用户名已存在');
-    error.status = 400;
-    error.code = 'USERNAME_EXISTS';
-    throw error;
-  }
-
-  if (email) {
-    const existingEmail = await User.findOne({ where: { email } });
-    if (existingEmail) {
-      auditLogger.logUserManagement('USER_CREATE_FAILED', null, null, {
-        path: req.path,
-        method: req.method,
-        ip: req.ip,
-        userAgent: req.get('User-Agent'),
-        success: false,
-        status: 400,
-        errorMessage: '邮箱已存在',
-        metadata: { email }
-      });
-
-      const error = new Error('邮箱已存在');
-      error.status = 400;
-      error.code = 'EMAIL_EXISTS';
-      throw error;
-    }
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 12);
-
-  const user = await User.create({
-    username,
-    password: hashedPassword,
-    email,
-    name,
-    role,
-    department,
-    position_level,
-  });
-
-  auditLogger.logUserManagement('USER_CREATE', user, user, {
-    path: req.path,
-    method: req.method,
-    ip: req.ip,
-    userAgent: req.get('User-Agent'),
-    success: true,
-    status: 201,
-    metadata: { username, email, name, role, department, position_level }
-  });
-
-  const token = generateToken(user);
-
-  res.status(201).json({
-    success: true,
-    data: {
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-        created_at: user.created_at,
-        updated_at: user.updated_at,
-      },
-      token,
-    },
-  });
-}));
-
-router.get('/profile', authenticate, asyncHandler(async (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      user: req.user,
-    },
-  });
-}));
-
-router.put('/profile', authenticate, validateUser.update, asyncHandler(async (req, res) => {
-  const { email, name } = req.body;
-  const userId = req.user.id;
-
-  if (email && email !== req.user.email) {
-    const existingEmail = await User.findOne({ where: { email } });
-    if (existingEmail) {
-      const error = new Error('邮箱已存在');
-      error.status = 400;
-      error.code = 'EMAIL_EXISTS';
-      throw error;
-    }
-  }
-
-  await User.update(
-    { email, name },
-    { where: { id: userId } }
-  );
-
-  const updatedUser = await User.findByPk(userId, {
-    attributes: { exclude: ['password'] }
-  });
-
-  res.json({
-    success: true,
-    data: {
-      user: updatedUser,
-    },
-  });
-}));
-
 router.get('/', asyncHandler(async (req, res) => {
   const { page = 1, limit = 20, search, role, is_active } = req.query;
   const offset = (page - 1) * limit;
@@ -257,7 +91,7 @@ router.get('/', asyncHandler(async (req, res) => {
   });
 }));
 
-router.get('/:id', authenticate, authorize('admin', 'executive', 'manager'), asyncHandler(async (req, res) => {
+router.get('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const user = await User.findByPk(id, {
@@ -279,13 +113,13 @@ router.get('/:id', authenticate, authorize('admin', 'executive', 'manager'), asy
   });
 }));
 
-router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncHandler(async (req, res) => {
+router.put('/:id', validateUser.update, asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { username, email, name, role, department, position_level } = req.body;
 
   const user = await User.findByPk(id);
   if (!user) {
-    auditLogger.logUserManagement('USER_UPDATE_FAILED', null, req.user, {
+    auditLogger.logUserManagement('USER_UPDATE_FAILED', null, null, {
       path: req.path,
       method: req.method,
       ip: req.ip,
@@ -305,7 +139,7 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   if (username && username !== user.username) {
     const existingUser = await User.findOne({ where: { username } });
     if (existingUser) {
-      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, req.user, {
+      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, null, {
         path: req.path,
         method: req.method,
         ip: req.ip,
@@ -326,7 +160,7 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   if (email && email !== user.email) {
     const existingEmail = await User.findOne({ where: { email } });
     if (existingEmail) {
-      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, req.user, {
+      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, null, {
         path: req.path,
         method: req.method,
         ip: req.ip,
@@ -366,7 +200,7 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
     attributes: { exclude: ['password'] }
   });
 
-  auditLogger.logUserManagement('USER_UPDATE', updatedUser, req.user, {
+  auditLogger.logUserManagement('USER_UPDATE', updatedUser, null, {
     path: req.path,
     method: req.method,
     ip: req.ip,
@@ -384,12 +218,12 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   });
 }));
 
-router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req, res) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
   const { id } = req.params;
 
   const user = await User.findByPk(id);
   if (!user) {
-    auditLogger.logUserManagement('USER_DELETE_FAILED', null, req.user, {
+    auditLogger.logUserManagement('USER_DELETE_FAILED', null, null, {
       path: req.path,
       method: req.method,
       ip: req.ip,
@@ -407,7 +241,7 @@ router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req,
   }
 
   if (user.role === 'admin') {
-    auditLogger.logUserManagement('USER_DELETE_FAILED', user, req.user, {
+    auditLogger.logUserManagement('USER_DELETE_FAILED', user, null, {
       path: req.path,
       method: req.method,
       ip: req.ip,
@@ -426,7 +260,7 @@ router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req,
 
   await user.destroy();
 
-  auditLogger.logUserManagement('USER_DELETE', user, req.user, {
+  auditLogger.logUserManagement('USER_DELETE', user, null, {
     path: req.path,
     method: req.method,
     ip: req.ip,

@@ -1291,3 +1291,251 @@ TypeError: config.getConfigHash is not a function
 2025-12-29 15:08:48 [INFO]: 配置已重新加载 {"service":"expense-system-api","environment":"development"}
 2025-12-29 15:08:48 [INFO]: ::1 - - [29/Dec/2025:07:08:48 +0000] "POST /api/config/reload HTTP/1.1" 200 269 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
 2025-12-29 15:09:10 [INFO]: 配置已通过热更新重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:11:56 [INFO]: 配置已通过热更新重新加载 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:26:23 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:26:23 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:26:23 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:26:23 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 端口: 3003 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 健康检查: http://localhost:3003/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: API信息: http://localhost:3003/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:07 [INFO]: 配置管理: http://localhost:3003/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [INFO]: ::1 - - [29/Dec/2025:07:27:49 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:45 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:45 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 端口: 3003 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 健康检查: http://localhost:3003/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: API信息: http://localhost:3003/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:30:50 [INFO]: 配置管理: http://localhost:3003/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/users HTTP/1.1" 201 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/users HTTP/1.1" 201 173 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/users HTTP/1.1" 201 177 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/users HTTP/1.1" 201 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/users HTTP/1.1" 201 173 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/city-tiers HTTP/1.1" 404 171 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:31:05 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"name","message":"规则名称长度必须在1-100个字符之间"},{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal"}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [INFO]: ::1 - - [29/Dec/2025:07:31:05 +0000] "POST /api/rules HTTP/1.1" 400 339 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/users HTTP/1.1" 400 230 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/users HTTP/1.1" 400 230 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/users HTTP/1.1" 400 230 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/users HTTP/1.1" 400 230 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/users HTTP/1.1" 400 230 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":1}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 246 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":2}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 246 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":1}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 246 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":2}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 246 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":1}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 246 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:37:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"city_tier","message":"城市等级必须是字符串","value":null}],"ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [INFO]: ::1 - - [29/Dec/2025:07:37:11 +0000] "POST /api/rules HTTP/1.1" 400 249 "-" "axios/1.13.2" {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 端口: 3003 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 健康检查: http://localhost:3003/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: API信息: http://localhost:3003/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:17 [INFO]: 配置管理: http://localhost:3003/api/config {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:33 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 端口: 3003 {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 健康检查: http://localhost:3003/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: API信息: http://localhost:3003/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 17:13:48 [INFO]: 配置管理: http://localhost:3003/api/config {"service":"expense-system-api","environment":"development"}

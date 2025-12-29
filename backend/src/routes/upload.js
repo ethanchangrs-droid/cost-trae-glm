@@ -2,7 +2,6 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs').promises;
-const { authenticate } = require('../middleware/auth');
 const { asyncHandler } = require('../middleware/errorHandler');
 const config = require('../config');
 const { extractStructuredData } = require('../services/ocrService');
@@ -156,7 +155,7 @@ router.get('/:filename', asyncHandler(async (req, res) => {
   }
 }));
 
-router.delete('/:filename', authenticate, asyncHandler(async (req, res) => {
+router.delete('/:filename', asyncHandler(async (req, res) => {
   const { filename } = req.params;
   const filePath = path.join(process.cwd(), 'uploads', filename);
 

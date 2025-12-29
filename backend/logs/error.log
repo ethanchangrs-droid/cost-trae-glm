@@ -287,3 +287,85 @@ TypeError: config.getConfigHash is not a function
     at processParams (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:582:12)
     at next (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:291:5)
     at Function.handle (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/router/index.js:186:3)
+2025-12-29 15:26:23 [ERROR]: 端口 3003 已被占用 {"service":"expense-system-api","environment":"development"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:27:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/city-tiers","url":"/api/city-tiers","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:31:05 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"Validation error","url":"/api/users","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
+2025-12-29 15:37:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"axios/1.13.2"}
