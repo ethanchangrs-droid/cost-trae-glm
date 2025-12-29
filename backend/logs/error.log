@@ -227,3 +227,8 @@ Error
 2025-12-26 17:42:47 [ERROR]: 端口 3002 已被占用 {"service":"expense-system-api","environment":"development"}
 2025-12-26 17:43:21 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: items.item_id","url":"/api/admin/expenses","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-26 17:54:12 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"SQLITE_ERROR: no such column: rule.description","url":"/api/admin/validations","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:09:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:09:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:10:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:27 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules?page=abc&limit=1000","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}

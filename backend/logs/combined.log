@@ -1146,3 +1146,32 @@ Error
 2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
 2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 304 - "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
 2025-12-26 18:00:04 [INFO]: ::1 - - [26/Dec/2025:10:00:04 +0000] "GET /api/admin/stats HTTP/1.1" 200 182 "http://localhost:5174/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Trae/1.104.3 Chrome/138.0.7204.251 Electron/37.6.1 Safari/537.36" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:09:36 [INFO]: ::1 - - [29/Dec/2025:02:09:36 +0000] "GET /health HTTP/1.1" 200 238 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:09:44 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:09:44 [INFO]: ::1 - - [29/Dec/2025:02:09:44 +0000] "POST /api/users/register HTTP/1.1" 400 359 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:09:50 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"notNull Violation: users.name cannot be null","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:09:50 [INFO]: ::1 - - [29/Dec/2025:02:09:50 +0000] "POST /api/users/register HTTP/1.1" 400 248 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:24 [INFO]: 收到 SIGTERM 信号，开始优雅关闭... {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:24 [INFO]: 数据库连接已关闭 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 正在启动服务器... {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 数据库连接成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 数据库模型同步完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 城市数据初始化完成 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 服务器启动成功 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 环境: development {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 端口: 3002 {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: 健康检查: http://localhost:3002/health {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:34 [INFO]: API信息: http://localhost:3002/api/info {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:43 [INFO]: 数据验证通过 {"service":"expense-system-api","environment":"development","method":"POST","path":"/register","ip":"::1"}
+2025-12-29 10:10:43 [INFO]: ::1 - - [29/Dec/2025:02:10:43 +0000] "POST /api/users/register HTTP/1.1" 201 329 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/register","errors":[{"field":"username","message":"用户名长度必须在3-50个字符之间","value":"ab"},{"field":"password","message":"密码长度必须在6-100个字符之间","value":"123"}],"ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:10:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:10:49 [INFO]: ::1 - - [29/Dec/2025:02:10:49 +0000] "POST /api/users/register HTTP/1.1" 400 359 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:10:59 [INFO]: 数据验证通过 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","ip":"::1"}
+2025-12-29 10:10:59 [INFO]: ::1 - - [29/Dec/2025:02:10:59 +0000] "POST /api/rules HTTP/1.1" 201 240 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:11:11 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/","errors":[{"field":"rule_type","message":"规则类型必须是 accommodation、transport 或 meal","value":"invalid_type"}],"ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:11 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:11 [INFO]: ::1 - - [29/Dec/2025:02:11:11 +0000] "POST /api/rules HTTP/1.1" 400 285 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:11:27 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"GET","path":"/","errors":[{"field":"page","message":"页码必须是正整数","value":"abc"},{"field":"limit","message":"每页数量必须在1-100之间","value":"1000"}],"ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:27 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules?page=abc&limit=1000","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:11:27 [INFO]: ::1 - - [29/Dec/2025:02:11:27 +0000] "GET /api/rules?page=abc&limit=1000 HTTP/1.1" 400 336 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}

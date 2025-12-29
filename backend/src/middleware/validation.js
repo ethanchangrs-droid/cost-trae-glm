@@ -1,19 +1,37 @@
 const { body, param, query, validationResult } = require('express-validator');
 const { asyncHandler } = require('./errorHandler');
+const logger = require('../utils/logger');
 
 const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('数据验证失败');
-    error.status = 400;
-    error.code = 'VALIDATION_ERROR';
-    error.details = errors.array().map(error => ({
+    const errorDetails = errors.array().map(error => ({
       field: error.path,
       message: error.msg,
       value: error.value,
     }));
+
+    logger.warn('数据验证失败', {
+      method: req.method,
+      path: req.path,
+      errors: errorDetails,
+      ip: req.ip,
+      userAgent: req.get('user-agent'),
+    });
+
+    const error = new Error('数据验证失败');
+    error.status = 400;
+    error.code = 'VALIDATION_ERROR';
+    error.details = errorDetails;
     throw error;
   }
+
+  logger.info('数据验证通过', {
+    method: req.method,
+    path: req.path,
+    ip: req.ip,
+  });
+
   next();
 };
 
@@ -27,19 +45,28 @@ const validateUser = {
     body('password')
       .isLength({ min: 6, max: 100 })
       .withMessage('密码长度必须在6-100个字符之间'),
+    body('name')
+      .notEmpty()
+      .withMessage('姓名不能为空')
+      .isLength({ max: 100 })
+      .withMessage('姓名长度不能超过100个字符'),
     body('email')
       .optional()
       .isEmail()
       .withMessage('邮箱格式不正确')
       .normalizeEmail(),
-    body('full_name')
+    body('department')
       .optional()
       .isLength({ max: 100 })
-      .withMessage('姓名长度不能超过100个字符'),
+      .withMessage('部门长度不能超过100个字符'),
+    body('position_level')
+      .optional()
+      .isIn(['employee', 'manager', 'executive'])
+      .withMessage('职位级别必须是 employee、manager 或 executive'),
     body('role')
       .optional()
-      .isIn(['employee', 'manager', 'executive', 'admin'])
-      .withMessage('角色必须是 employee、manager、executive 或 admin'),
+      .isIn(['user', 'admin'])
+      .withMessage('角色必须是 user 或 admin'),
     handleValidationErrors,
   ],
   
@@ -50,19 +77,27 @@ const validateUser = {
       .withMessage('用户名长度必须在3-50个字符之间')
       .matches(/^[a-zA-Z0-9_]+$/)
       .withMessage('用户名只能包含字母、数字和下划线'),
+    body('name')
+      .optional()
+      .isLength({ max: 100 })
+      .withMessage('姓名长度不能超过100个字符'),
     body('email')
       .optional()
       .isEmail()
       .withMessage('邮箱格式不正确')
       .normalizeEmail(),
-    body('full_name')
+    body('department')
       .optional()
       .isLength({ max: 100 })
-      .withMessage('姓名长度不能超过100个字符'),
+      .withMessage('部门长度不能超过100个字符'),
+    body('position_level')
+      .optional()
+      .isIn(['employee', 'manager', 'executive'])
+      .withMessage('职位级别必须是 employee、manager 或 executive'),
     body('role')
       .optional()
-      .isIn(['employee', 'manager', 'executive', 'admin'])
-      .withMessage('角色必须是 employee、manager、executive 或 admin'),
+      .isIn(['user', 'admin'])
+      .withMessage('角色必须是 user 或 admin'),
     handleValidationErrors,
   ],
   

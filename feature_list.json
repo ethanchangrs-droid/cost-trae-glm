@@ -302,7 +302,7 @@
         "添加错误消息处理",
         "配置验证日志"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "数据验证功能测试",
         "type": "integration",
