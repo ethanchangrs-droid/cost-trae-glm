@@ -282,7 +282,7 @@
         "集成Ant Design组件库",
         "设置状态管理"
       ],
-      "passes": false,
+      "passes": true,
       "test": {
         "scenario": "前端应用启动测试",
         "type": "unit",
