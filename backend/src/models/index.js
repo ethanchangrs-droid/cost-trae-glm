@@ -7,6 +7,7 @@ const ExpenseItem = require('./ExpenseItem');
 const Rule = require('./Rule');
 const RuleValidation = require('./RuleValidation');
 const CityTier = require('./CityTier');
+const AuditLog = require('./AuditLog');
 
 // 定义模型关联
 const setupAssociations = () => {
@@ -68,5 +69,6 @@ module.exports = {
   Rule,
   RuleValidation,
   CityTier,
+  AuditLog,
   setupAssociations,
 };

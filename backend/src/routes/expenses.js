@@ -2,6 +2,7 @@ const express = require('express');
 const { Expense, ExpenseItem, User, RuleValidation } = require('../models');
 const { Op } = require('sequelize');
 const { asyncHandler, logger } = require('../middleware/errorHandler');
+const auditLogger = require('../services/auditLogger');
 
 const router = express.Router();
 
@@ -214,6 +215,17 @@ router.post('/', asyncHandler(async (req, res) => {
   });
 
   if (validationErrors.length > 0) {
+    auditLogger.logExpenseAction('EXPENSE_CREATE_FAILED', null, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 400,
+      errorMessage: '表单数据验证失败',
+      metadata: { validationErrors, user_id }
+    });
+
     return res.status(400).json({
       success: false,
       error: {
@@ -226,6 +238,17 @@ router.post('/', asyncHandler(async (req, res) => {
 
   const user = await User.findByPk(user_id);
   if (!user) {
+    auditLogger.logExpenseAction('EXPENSE_CREATE_FAILED', null, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 404,
+      errorMessage: '指定的报销人不存在',
+      metadata: { user_id }
+    });
+
     return res.status(404).json({
       success: false,
       error: {
@@ -271,6 +294,20 @@ router.post('/', asyncHandler(async (req, res) => {
     ],
   });
 
+  auditLogger.logExpenseAction('EXPENSE_CREATE', expense.id, user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 201,
+    metadata: { 
+      total_amount, 
+      destination_city, 
+      items_count: items.length 
+    }
+  });
+
   res.status(201).json({
     success: true,
     data: createdExpense,
@@ -284,6 +321,17 @@ router.put('/:id', asyncHandler(async (req, res) => {
 
   const expense = await Expense.findOne({ where: { id } });
   if (!expense) {
+    auditLogger.logExpenseAction('EXPENSE_UPDATE_FAILED', id, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 404,
+      errorMessage: '费用记录不存在',
+      metadata: { expense_id: id }
+    });
+
     return res.status(404).json({
       success: false,
       error: {
@@ -292,6 +340,15 @@ router.put('/:id', asyncHandler(async (req, res) => {
       },
     });
   }
+
+  const previousValues = {
+    total_amount: expense.total_amount,
+    trip_start_date: expense.trip_start_date,
+    trip_end_date: expense.trip_end_date,
+    destination_city: expense.destination_city,
+    trip_reason: expense.trip_reason,
+    status: expense.status
+  };
 
   await expense.update({
     total_amount,
@@ -316,6 +373,19 @@ router.put('/:id', asyncHandler(async (req, res) => {
     ],
   });
 
+  auditLogger.logExpenseAction('EXPENSE_UPDATE', id, updatedExpense.user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { 
+      previousValues,
+      newValues: { total_amount, trip_start_date, trip_end_date, destination_city, trip_reason, status }
+    }
+  });
+
   res.json({
     success: true,
     data: updatedExpense,
@@ -327,6 +397,17 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
   const expense = await Expense.findOne({ where: { id } });
   if (!expense) {
+    auditLogger.logExpenseAction('EXPENSE_DELETE_FAILED', id, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 404,
+      errorMessage: '费用记录不存在',
+      metadata: { expense_id: id }
+    });
+
     return res.status(404).json({
       success: false,
       error: {
@@ -336,7 +417,24 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     });
   }
 
+  const deletedExpenseData = {
+    id: expense.id,
+    total_amount: expense.total_amount,
+    destination_city: expense.destination_city,
+    status: expense.status
+  };
+
   await expense.destroy();
+
+  auditLogger.logExpenseAction('EXPENSE_DELETE', id, expense.user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { deletedExpense: deletedExpenseData }
+  });
 
   res.json({
     success: true,
@@ -442,6 +540,24 @@ router.post('/:id/validate', asyncHandler(async (req, res) => {
       results: validationResults,
       overall_status: newStatus,
     }),
+  });
+
+  auditLogger.logValidationAction('EXPENSE_VALIDATE', expense.id, {
+    total: validationResults.length,
+    passed: validationResults.filter(r => r.passed).length,
+    failed: validationResults.filter(r => !r.passed).length
+  }, expense.user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { 
+      expense_id: expense.id,
+      new_status: newStatus,
+      rules_count: rules.length
+    }
   });
 
   res.json({

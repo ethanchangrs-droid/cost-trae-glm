@@ -1,7 +1,9 @@
 const express = require('express');
 const { User, CityTier } = require('../models');
+const { Op } = require('sequelize');
 const ruleEngine = require('../services/ruleEngine');
 const { asyncHandler, logger } = require('../middleware/errorHandler');
+const auditLogger = require('../services/auditLogger');
 
 const router = express.Router();
 
@@ -9,6 +11,17 @@ router.post('/realtime/item', asyncHandler(async (req, res) => {
   const { itemData, user_id, city_name } = req.body;
 
   if (!itemData) {
+    auditLogger.logValidationAction('VALIDATION_ITEM_FAILED', null, null, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 400,
+      errorMessage: '缺少费用项目数据',
+      metadata: {}
+    });
+
     return res.status(400).json({
       success: false,
       error: {
@@ -19,6 +32,17 @@ router.post('/realtime/item', asyncHandler(async (req, res) => {
   }
 
   if (!itemData.item_type || !itemData.amount) {
+    auditLogger.logValidationAction('VALIDATION_ITEM_FAILED', null, null, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 400,
+      errorMessage: '费用项目缺少必要字段（item_type, amount）',
+      metadata: { itemData }
+    });
+
     return res.status(400).json({
       success: false,
       error: {
@@ -30,9 +54,10 @@ router.post('/realtime/item', asyncHandler(async (req, res) => {
 
   let userLevel = 'employee';
   let cityTier = null;
+  let user = null;
 
   if (user_id) {
-    const user = await User.findByPk(user_id);
+    user = await User.findByPk(user_id);
     if (user) {
       userLevel = user.position_level;
     }
@@ -47,6 +72,22 @@ router.post('/realtime/item', asyncHandler(async (req, res) => {
     userLevel,
     cityTier
   );
+
+  auditLogger.logValidationAction('VALIDATION_ITEM', null, validationResults, user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { 
+      itemData, 
+      user_id, 
+      city_name, 
+      userLevel, 
+      cityTier 
+    }
+  });
 
   res.json({
     success: true,

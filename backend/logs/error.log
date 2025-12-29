@@ -237,3 +237,29 @@ Error
 2025-12-29 10:43:55 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-29 10:44:08 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-29 10:45:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users/invalid-id-format","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 11:58:32 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such column: userId {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE INDEX `idx_audit_user` ON `audit_logs` (`userId`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE INDEX `idx_audit_user` ON `audit_logs` (`userId`)"},"sql":"CREATE INDEX `idx_audit_user` ON `audit_logs` (`userId`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async audit_logs.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-29 11:58:50 [ERROR]: 服务器启动失败: SQLITE_ERROR: no such column: resourceId {"service":"expense-system-api","environment":"development","name":"SequelizeDatabaseError","parent":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE INDEX `idx_audit_resource` ON `audit_logs` (`resource`, `resourceId`)"},"original":{"errno":1,"code":"SQLITE_ERROR","sql":"CREATE INDEX `idx_audit_resource` ON `audit_logs` (`resource`, `resourceId`)"},"sql":"CREATE INDEX `idx_audit_resource` ON `audit_logs` (`resource`, `resourceId`)","parameters":{}}
+Error
+    at Database.<anonymous> (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.addIndex (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:250:12)
+    at async audit_logs.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/model.js:999:7)
+    at async Sequelize.sync (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/node_modules/sequelize/lib/sequelize.js:377:9)
+    at async startServer (/Users/david/Desktop/pitem/cost-trae-glm4.6/backend/src/server.js:15:7)
+2025-12-29 11:59:08 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 11:59:32 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["总金额必须大于0","出差开始日期不能为空","出差结束日期不能为空","第1个费用项目的日期不能为空"],"user_id":1}}
+2025-12-29 11:59:50 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["出差开始日期不能为空","出差结束日期不能为空"],"user_id":1}}
+2025-12-29 11:59:55 [ERROR]: AUDIT: EXPENSE_CREATE_FAILED - EXPENSE {"service":"expense-system-api","environment":"development","action":"EXPENSE_CREATE_FAILED","category":"EXPENSE","user":null,"userId":null,"resource":"Expense","resourceId":null,"method":"POST","path":"/","ip":"::1","userAgent":"curl/8.7.1","success":false,"status":400,"errorMessage":"表单数据验证失败","metadata":{"validationErrors":["出差开始日期不能为空","出差结束日期不能为空"],"user_id":1}}

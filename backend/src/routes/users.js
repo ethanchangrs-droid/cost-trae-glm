@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const { authenticate, authorize, generateToken } = require('../middleware/auth');
 const { validateUser, validatePagination } = require('../middleware/validation');
 const { asyncHandler } = require('../middleware/errorHandler');
+const auditLogger = require('../services/auditLogger');
 
 const router = express.Router();
 
@@ -54,6 +55,17 @@ router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
 
   const existingUser = await User.findOne({ where: { username } });
   if (existingUser) {
+    auditLogger.logUserManagement('USER_CREATE_FAILED', null, null, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 400,
+      errorMessage: '用户名已存在',
+      metadata: { username }
+    });
+
     const error = new Error('用户名已存在');
     error.status = 400;
     error.code = 'USERNAME_EXISTS';
@@ -63,6 +75,17 @@ router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
   if (email) {
     const existingEmail = await User.findOne({ where: { email } });
     if (existingEmail) {
+      auditLogger.logUserManagement('USER_CREATE_FAILED', null, null, {
+        path: req.path,
+        method: req.method,
+        ip: req.ip,
+        userAgent: req.get('User-Agent'),
+        success: false,
+        status: 400,
+        errorMessage: '邮箱已存在',
+        metadata: { email }
+      });
+
       const error = new Error('邮箱已存在');
       error.status = 400;
       error.code = 'EMAIL_EXISTS';
@@ -80,6 +103,16 @@ router.post('/register', validateUser.create, asyncHandler(async (req, res) => {
     role,
     department,
     position_level,
+  });
+
+  auditLogger.logUserManagement('USER_CREATE', user, user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 201,
+    metadata: { username, email, name, role, department, position_level }
   });
 
   const token = generateToken(user);
@@ -207,6 +240,17 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
 
   const user = await User.findByPk(id);
   if (!user) {
+    auditLogger.logUserManagement('USER_UPDATE_FAILED', null, req.user, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 404,
+      errorMessage: '用户不存在',
+      metadata: { targetUserId: id }
+    });
+
     const error = new Error('用户不存在');
     error.status = 404;
     error.code = 'USER_NOT_FOUND';
@@ -216,6 +260,17 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   if (username && username !== user.username) {
     const existingUser = await User.findOne({ where: { username } });
     if (existingUser) {
+      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, req.user, {
+        path: req.path,
+        method: req.method,
+        ip: req.ip,
+        userAgent: req.get('User-Agent'),
+        success: false,
+        status: 400,
+        errorMessage: '用户名已存在',
+        metadata: { targetUserId: id, username }
+      });
+
       const error = new Error('用户名已存在');
       error.status = 400;
       error.code = 'USERNAME_EXISTS';
@@ -226,12 +281,32 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
   if (email && email !== user.email) {
     const existingEmail = await User.findOne({ where: { email } });
     if (existingEmail) {
+      auditLogger.logUserManagement('USER_UPDATE_FAILED', user, req.user, {
+        path: req.path,
+        method: req.method,
+        ip: req.ip,
+        userAgent: req.get('User-Agent'),
+        success: false,
+        status: 400,
+        errorMessage: '邮箱已存在',
+        metadata: { targetUserId: id, email }
+      });
+
       const error = new Error('邮箱已存在');
       error.status = 400;
       error.code = 'EMAIL_EXISTS';
       throw error;
     }
   }
+
+  const previousValues = {
+    username: user.username,
+    email: user.email,
+    name: user.name,
+    role: user.role,
+    department: user.department,
+    position_level: user.position_level
+  };
 
   await user.update({
     username,
@@ -244,6 +319,16 @@ router.put('/:id', authenticate, authorize('admin'), validateUser.update, asyncH
 
   const updatedUser = await User.findByPk(id, {
     attributes: { exclude: ['password'] }
+  });
+
+  auditLogger.logUserManagement('USER_UPDATE', updatedUser, req.user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { previousValues, newValues: { username, email, name, role, department, position_level } }
   });
 
   res.json({
@@ -259,6 +344,17 @@ router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req,
 
   const user = await User.findByPk(id);
   if (!user) {
+    auditLogger.logUserManagement('USER_DELETE_FAILED', null, req.user, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 404,
+      errorMessage: '用户不存在',
+      metadata: { targetUserId: id }
+    });
+
     const error = new Error('用户不存在');
     error.status = 404;
     error.code = 'USER_NOT_FOUND';
@@ -266,6 +362,17 @@ router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req,
   }
 
   if (user.role === 'admin') {
+    auditLogger.logUserManagement('USER_DELETE_FAILED', user, req.user, {
+      path: req.path,
+      method: req.method,
+      ip: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: false,
+      status: 400,
+      errorMessage: '不能删除管理员账户',
+      metadata: { targetUserId: id, targetUserRole: user.role }
+    });
+
     const error = new Error('不能删除管理员账户');
     error.status = 400;
     error.code = 'CANNOT_DELETE_ADMIN';
@@ -273,6 +380,24 @@ router.delete('/:id', authenticate, authorize('admin'), asyncHandler(async (req,
   }
 
   await user.destroy();
+
+  auditLogger.logUserManagement('USER_DELETE', user, req.user, {
+    path: req.path,
+    method: req.method,
+    ip: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true,
+    status: 200,
+    metadata: { 
+      deletedUser: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        name: user.name,
+        role: user.role
+      }
+    }
+  });
 
   res.json({
     success: true,
