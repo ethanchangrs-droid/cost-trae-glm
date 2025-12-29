@@ -1175,3 +1175,14 @@ Error
 2025-12-29 10:11:27 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"GET","path":"/","errors":[{"field":"page","message":"页码必须是正整数","value":"abc"},{"field":"limit","message":"每页数量必须在1-100之间","value":"1000"}],"ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-29 10:11:27 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/rules?page=abc&limit=1000","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
 2025-12-29 10:11:27 [INFO]: ::1 - - [29/Dec/2025:02:11:27 +0000] "GET /api/rules?page=abc&limit=1000 HTTP/1.1" 400 336 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:43:45 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/nonexistent/path","url":"/api/nonexistent/path","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:43:45 [INFO]: ::1 - - [29/Dec/2025:02:43:45 +0000] "GET /api/nonexistent/path HTTP/1.1" 404 182 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:43:49 [WARN]: 数据验证失败 {"service":"expense-system-api","environment":"development","method":"POST","path":"/register","errors":[{"field":"password","message":"密码长度必须在6-100个字符之间"},{"field":"name","message":"姓名不能为空"},{"field":"email","message":"邮箱格式不正确","value":"invalid-email"}],"ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:43:49 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"数据验证失败","url":"/api/users/register","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:43:49 [INFO]: ::1 - - [29/Dec/2025:02:43:49 +0000] "POST /api/users/register HTTP/1.1" 400 379 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:43:55 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:43:55 [INFO]: ::1 - - [29/Dec/2025:02:43:55 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:44:08 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"未找到路径: /api/users","url":"/api/users","method":"POST","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:44:08 [INFO]: ::1 - - [29/Dec/2025:02:44:08 +0000] "POST /api/users HTTP/1.1" 404 161 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}
+2025-12-29 10:45:09 [ERROR]: 错误处理中间件: {"service":"expense-system-api","environment":"development","error":"访问令牌缺失","url":"/api/users/invalid-id-format","method":"GET","ip":"::1","userAgent":"curl/8.7.1"}
+2025-12-29 10:45:09 [INFO]: ::1 - - [29/Dec/2025:02:45:09 +0000] "GET /api/users/invalid-id-format HTTP/1.1" 401 173 "-" "curl/8.7.1" {"service":"expense-system-api","environment":"development"}

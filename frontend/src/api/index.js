@@ -12,9 +12,50 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    return Promise.reject(error);
+    if (!error.response) {
+      const networkError = {
+        code: 'NETWORK_ERROR',
+        message: '网络连接失败，请检查网络设置',
+        timestamp: new Date().toISOString(),
+      };
+      return Promise.reject(networkError);
+    }
+
+    const { status, data } = error.response;
+    const errorInfo = {
+      status,
+      code: data?.error?.code || 'UNKNOWN_ERROR',
+      message: getErrorMessage(data?.error),
+      details: data?.error?.details,
+      timestamp: data?.error?.timestamp || new Date().toISOString(),
+      path: data?.error?.path,
+      method: data?.error?.method,
+    };
+
+    return Promise.reject(errorInfo);
   }
 );
+
+function getErrorMessage(error) {
+  if (!error) return '未知错误';
+
+  const errorMessages = {
+    VALIDATION_ERROR: '数据验证失败，请检查输入信息',
+    INVALID_ID: '无效的ID格式',
+    DUPLICATE_ENTRY: '数据已存在，请勿重复提交',
+    INVALID_TOKEN: '无效的访问令牌',
+    TOKEN_EXPIRED: '访问令牌已过期，请重新登录',
+    FOREIGN_KEY_CONSTRAINT: '外键约束错误，请检查关联数据',
+    DATABASE_ERROR: '数据库操作错误',
+    NOT_FOUND: '请求的资源不存在',
+    UNAUTHORIZED: '未授权访问',
+    FORBIDDEN: '无权限访问',
+    INTERNAL_SERVER_ERROR: '服务器内部错误，请稍后重试',
+    NETWORK_ERROR: '网络连接失败，请检查网络设置',
+  };
+
+  return errorMessages[error.code] || error.message || '未知错误';
+}
 
 export const userAPI = {
   getUsers: (params) => api.get('/users', { params }),
